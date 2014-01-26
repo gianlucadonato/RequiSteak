@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>System:</strong>
+  <%= @requirement.system %>
+</p>
+
+<p>
+  <strong>Typology:</strong>
+  <%= @requirement.typology %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @requirement.priority %>
+</p>
+
+<p>
+  <strong>Hierarchy:</strong>
+  <%= @requirement.hierarchy %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @requirement.title %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @requirement.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @requirement.description %>
+</p>
+
+<p>
+  <strong>Ancestry:</strong>
+  <%= @requirement.ancestry %>
+</p>
+
+<%= link_to 'Edit', edit_requirement_path(@requirement) %> |
+<%= link_to 'Back', requirements_path %>

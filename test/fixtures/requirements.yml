@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  system: MyString
+  typology: MyString
+  priority: MyString
+  hierarchy: MyString
+  title: MyString
+  status: false
+  description: MyText
+  ancestry: MyString
+
+two:
+  system: MyString
+  typology: MyString
+  priority: MyString
+  hierarchy: MyString
+  title: MyString
+  status: false
+  description: MyText
+  ancestry: MyString

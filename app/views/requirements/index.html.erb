@@ -1,0 +1,41 @@
+<h1>Listing requirements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Typology</th>
+      <th>Priority</th>
+      <th>Hierarchy</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Ancestry</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requirements.each do |requirement| %>
+      <tr>
+        <td><%= requirement.system %></td>
+        <td><%= requirement.typology %></td>
+        <td><%= requirement.priority %></td>
+        <td><%= requirement.hierarchy %></td>
+        <td><%= requirement.title %></td>
+        <td><%= requirement.status %></td>
+        <td><%= requirement.description %></td>
+        <td><%= requirement.ancestry %></td>
+        <td><%= link_to 'Show', requirement %></td>
+        <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+        <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Requirement', new_requirement_path %>

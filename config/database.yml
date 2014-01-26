@@ -1,0 +1,21 @@
+development:
+  adapter: mysql
+  database: requisteak_dev
+  username: root
+  password: root
+  host: localhost
+  encoding: utf8
+
+test:
+  adapter: mysql
+  database: requisteak_test
+  username: root
+  password: root
+  host: localhost
+
+production:
+  adapter: mysql
+  database: requisteak_db
+  username: root
+  password: root
+  host: localhost

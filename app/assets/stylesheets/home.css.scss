@@ -1,0 +1,43 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-bar {
+	a { text-decoration: none; }
+}
+.smart-menu {
+	padding-top: 10px;
+}
+#steak-logo {
+	width: 750px;
+	margin: 0 auto;
+	padding-top: 25px;
+	display: block;
+}
+.span-title {
+	font-size: 25px; 
+	line-height: 25px; 
+	color: #ccc;
+}
+.img-circle {
+	background: #f0f0f0;
+	width: 140px;
+	height: 140px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	border-radius: 500px;
+}
+.stay-center {
+	width: 235px;
+}
+.footer {
+	background: #333333;
+	color: #858585;
+	margin-top: 35px;
+	padding: 24px 0 20px;
+}
+@media only screen and (max-width: 40em) { 
+	.stay-center {
+		margin-left: 50px;
+	}
+} 
