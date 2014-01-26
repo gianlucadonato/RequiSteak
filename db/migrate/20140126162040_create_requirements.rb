@@ -6,7 +6,7 @@ class CreateRequirements < ActiveRecord::Migration
       t.string :priority, null: false
       t.string :hierarchy, null: false
       t.string :title, null: false
-      t.boolean :status, default: 0
+      t.boolean :status, default: false
       t.text :description
       t.string :ancestry
 
