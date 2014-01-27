@@ -132,7 +132,7 @@
       <div class="small-6 columns panel childs">
         <h4>CHILDS</h4><br>
         <% if !@requirement.descendants.empty? %>
-        <%= nested_requirements @requirement.descendants.arrange %>
+        <%=   nested_requirements @requirement.descendants.arrange %>
         <% else %>    
             <p>No childs :(</p>
         <% end %>

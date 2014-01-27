@@ -122,10 +122,10 @@
                 </div>
                 <div class="row">
                   <div class="small-12 columns">
-                    <% if !@use_case.ancestors.empty? %>
+                    <% if !@use_case.descendants.empty? %>
                     <%=   nested_usecases @use_case.descendants.arrange %>
                     <% else %>    
-                        <span class="right">No parents :(</span>
+                        <span class="right">No childs :(</span>
                     <% end %>
                   </div>
                 </div>

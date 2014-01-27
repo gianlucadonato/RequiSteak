@@ -17,7 +17,6 @@
             <tr>
               <th>Title</th>
               <th>Description</th>
-              <th>Ancestry</th>
               <th></th>
               <th></th>
               <th></th>
@@ -29,7 +28,6 @@
               <tr>
                 <td><%= link_to use_case.title, use_case_path(use_case) %></td>
                 <td><%= use_case.description %></td>
-                <td><%= use_case.ancestry %></td>
                 <td><%= link_to 'Show', use_case %></td>
                 <td><%= link_to 'Edit', edit_use_case_path(use_case) %></td>
                 <td><%= link_to 'Destroy', use_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>

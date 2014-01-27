@@ -3,7 +3,8 @@ class UseCasesController < ApplicationController
 
   # GET /use_cases
   def index
-    @use_cases = UseCase.all
+    use_cases = UseCase.first
+    @use_cases = use_cases.subtree
   end
 
   # GET /use_cases/1

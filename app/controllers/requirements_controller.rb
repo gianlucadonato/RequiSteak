@@ -3,7 +3,8 @@ class RequirementsController < ApplicationController
 
   # GET /requirements
   def index
-    @requirements = Requirement.all
+    requirements = Requirement.first
+    @requirements = requirements.subtree
   end
 
   # GET /requirements/1
