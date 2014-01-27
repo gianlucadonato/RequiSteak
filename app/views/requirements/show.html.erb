@@ -77,8 +77,8 @@
           <tbody>
               <% @requirement.use_cases.each do |uc| %>
               <tr>
-                <th width="70"><%= "#{uc.title}" %></th>
-                <th><%= "#{uc.description}" %></th>
+                <td><%= link_to "#{uc.title}", use_case_path(uc) %></td>
+                <td><%= "#{uc.description}" %></td>
               </tr>
             <% end %>
           </tbody>
