@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20140126162040) do
 
   create_table "requirements", force: true do |t|
-    t.string   "system",                      null: false
+    t.string   "system"
     t.string   "typology",                    null: false
     t.string   "priority",                    null: false
     t.string   "hierarchy",                   null: false
-    t.string   "title",                       null: false
+    t.string   "title"
     t.boolean  "status",      default: false
     t.text     "description"
     t.string   "ancestry"

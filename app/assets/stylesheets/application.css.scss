@@ -11,7 +11,23 @@
  *= require_self
  *= require_tree .
  */
-
-.mainTop {
+html, body {
+	height: 100%;
+}
+.main {
 	padding-top: 50px;
+	margin-bottom: 50px;
+}
+
+.footer {
+	background: #333333;
+	color: #858585;
+	margin-top: 35px;
+	padding: 24px 0 20px;
+}
+
+.radio_form_btn {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }

@@ -14,7 +14,7 @@ gem 'foundation-rails'
 gem 'ancestry'
 
 group :development do
-  gem 'mysql'
+  gem 'mysql2'
 	gem 'rails_layout'
 end
 

@@ -1,44 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-12 columns">
 
-<p>
-  <strong>System:</strong>
-  <%= @requirement.system %>
-</p>
+    <nav class="top-bar" data-topbar>
+      <section class="top-bar-section">
 
-<p>
-  <strong>Typology:</strong>
-  <%= @requirement.typology %>
-</p>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form"><%= link_to 'Edit', edit_requirement_path(@requirement), class: "info button" %></li> 
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Delete', edit_requirement_path(@requirement), class: "alert button" %></li>
+          <li class="divider"></li> 
+        </ul>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @requirement.priority %>
-</p>
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li class="has-form">
+            <%= link_to 'Add Child', new_requirement_path(parent_id: @requirement, system: @requirement.system,
+                                                          typology: @requirement.typology, priority: @requirement.priority,
+                                                          hierarchy: @requirement.hierarchy, status: @requirement.status,
+                                                          title: @prefix), class: "success button" %>
+          </li>
+          <li class="divider"></li> 
+          <li class="has-form"><%= link_to 'Add UML', "#", class: "button orange" %></li>
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Add System Test', "#", class: "button purple" %></li>
+          <li class="divider"></li> 
+          <li class="has-form"><%= link_to 'Add Validation Test', "#", class: "button water" %></li>
+          <li class="divider"></li>  
+        </ul>
 
-<p>
-  <strong>Hierarchy:</strong>
-  <%= @requirement.hierarchy %>
-</p>
+      </section>
+    </nav>
+  <br><br>
+  <div class="row">
+    <div class="small-12 columns panel">
+      <h4>REQUIREMENT</h4><br>
+      <table>
+        <thead>
+          <tr>
+            <th width="100">Status</th>
+            <th width="150">Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>Title:</strong>
-  <%= @requirement.title %>
-</p>
+        <tbody>
+            <tr>
+              <td>
+                <% if @requirement.status == false %>
+                  <label class="alert label">Pending</label>
+                <% else %>
+                  <label class="success label">Approved</label>
+                <% end %>
+              </td>
+              <td><%= @requirement.title %></td>
+              <td><%= @requirement.description %></td>
+            </tr>
+              
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="small-12 columns panel">
+      <h4>CHILDS</h4><br>
+      <%= nested_requirements @requirement.subtree.arrange %>
+    </div>
+  </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @requirement.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @requirement.description %>
-</p>
-
-<p>
-  <strong>Ancestry:</strong>
-  <%= @requirement.ancestry %>
-</p>
-
-<%= link_to 'Edit', edit_requirement_path(@requirement) %> |
-<%= link_to 'Back', requirements_path %>
+</div>

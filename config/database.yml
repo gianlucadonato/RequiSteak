@@ -1,5 +1,5 @@
 development:
-  adapter: mysql
+  adapter: mysql2
   database: requisteak_dev
   username: root
   password: root
@@ -7,14 +7,15 @@ development:
   encoding: utf8
 
 test:
-  adapter: mysql
+  adapter: mysql2
   database: requisteak_test
   username: root
   password: root
   host: localhost
+  encoding: utf8  
 
 production:
-  adapter: mysql
+  adapter: mysql2
   database: requisteak_db
   username: root
   password: root

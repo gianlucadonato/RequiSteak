@@ -8,11 +8,28 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1
   def show
+    unless @requirement.system.nil?
+      @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority 
+    else
+      @prefix = "R" + @requirement.typology + @requirement.priority
+    end    
   end
 
   # GET /requirements/new
   def new
-    @requirement = Requirement.new
+    unless params[:parent_id].nil?
+      @requirement = Requirement.new(:parent_id => params[:parent_id],
+                                     :system => params[:system],
+                                     :typology => params[:typology],
+                                     :priority => params[:priority],
+                                     :title => params[:title],
+                                     :hierarchy => params[:hierarchy],
+                                     :status => params[:status])
+    else
+      @requirement = Requirement.new()
+      @requirement.ancestry = 0
+      @requirement.title = "RXYZ"
+    end
   end
 
   # GET /requirements/1/edit
@@ -22,8 +39,15 @@ class RequirementsController < ApplicationController
   # POST /requirements
   def create
     @requirement = Requirement.new(requirement_params)
-
+  
     if @requirement.save
+      unless params[:requirement][:system].nil? 
+        @requirement.title = "R" + params[:requirement][:system] + params[:requirement][:typology] + 
+                                   params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy] 
+      else
+        @requirement.title = "R" + params[:requirement][:typology] + params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy]
+      end
+      @requirement.save
       redirect_to @requirement, notice: 'Requirement was successfully created.'
     else
       render action: 'new'

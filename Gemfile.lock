@@ -62,7 +62,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
-    mysql (2.9.1)
+    mysql2 (0.3.15)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
@@ -134,7 +134,7 @@ DEPENDENCIES
   foundation-rails
   i18n
   jquery-rails
-  mysql
+  mysql2
   pg
   rails (= 4.0.0)
   rails_12factor

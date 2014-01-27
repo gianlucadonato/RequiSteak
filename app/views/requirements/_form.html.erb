@@ -11,39 +11,69 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :system %><br>
-    <%= f.text_field :system %>
+  <%= f.hidden_field :parent_id %>
+  <%= f.hidden_field :ancestry %>
+  <br>
+  <div class="row panel">
+    <div class="small-4 columns">
+      <label><strong>SISTEMA</strong></label>
+      <ul class="radio_form_btn">
+        <li><%= radio_button("requirement", "system", "A")%>  (A) Application</li>
+        <li><%= radio_button("requirement", "system", "F")%>  (F) Framework</li>
+        <li><%= radio_button("requirement", "system", "S")%>  (S) MaaS</li>
+      </ul>
+    </div>
+    <div class="small-4 columns">
+      <label><strong>TYPOLOGY</strong></label>
+      <ul class="radio_form_btn">
+        <li><%= radio_button("requirement", "typology", "1")%>  (1) Funzionale</li>
+        <li><%= radio_button("requirement", "typology", "2")%>  (2) Prestazionale</li>
+        <li><%= radio_button("requirement", "typology", "3")%>  (3) Di Qualità</li>
+        <li><%= radio_button("requirement", "typology", "4")%>  (4) Di Vincolo</li>
+      </ul>
+    </div>
+    <div class="small-4 columns">
+      <label><strong>PRIORITY</strong></label>
+      <ul class="radio_form_btn">
+        <li><%= radio_button("requirement", "priority", "O")%>  (O) Obbligatorio</li>
+        <li><%= radio_button("requirement", "priority", "D")%>  (D) Desiderabile</li>
+        <li><%= radio_button("requirement", "priority", "F")%>  (F) Facoltativo</li>
+      </ul>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :typology %><br>
-    <%= f.text_field :typology %>
+  <br><br>
+
+  <div class="row collapse">
+    <div class="small-4 columns">
+      <label><strong>PREFIX</strong></label>
+        <span class="prefix"><%= @requirement.title %></span>
+    </div>
+    <div class="small-8 columns">
+      <label><strong>GERARCHIA</strong></label>
+      <%= f.text_field :hierarchy %>
+    </div>  
   </div>
-  <div class="field">
-    <%= f.label :priority %><br>
-    <%= f.text_field :priority %>
+  <br><br>
+  <div class="row">
+    <div class="small-12 columns">
+      <label><strong>DESCRIZIONE</strong></label>
+      <%= f.text_area :description, size: "60x12" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :hierarchy %><br>
-    <%= f.text_field :hierarchy %>
+  <br>
+  <div class="row">
+    <div class="small-12 columns">
+      <label><strong>STATUS</strong></label>
+      <br>
+      <%= radio_button("requirement", "status", "false")%><label class="alert label">Pending</label>
+      <%= radio_button("requirement", "status", "true")%><label class="success label">Accepted</label>  
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <br><br><br><br><br>
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      <button name="button" type="submit">Create Requirement</button>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :ancestry %><br>
-    <%= f.text_field :ancestry %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
