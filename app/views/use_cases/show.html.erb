@@ -68,10 +68,10 @@
                       <td><label><strong>MAIN FLOW</strong></label></td>
                       <td width="300"><%= @use_case.main_flow %></td>
                     </tr>
-                    <% if !@use_case.primary_actors.empty? %>
+                    <% if !@use_case.alternative_flow.empty? %>
                     <tr>
                       <td><label><strong>ALTERNATIVE FLOW</strong></label></td>
-                      <td width="300"><%= @use_case.primary_actors %></td>
+                      <td width="300"><%= @use_case.alternative_flow %></td>
                     </tr>
                     <% end %>
                     <% if !@use_case.inclusion.empty? %>
