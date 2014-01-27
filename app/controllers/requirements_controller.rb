@@ -8,6 +8,7 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1
   def show
+    # Calcolo il prefisso da passare con GET alla new 
     unless @requirement.system.nil?
       @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority 
     else
@@ -25,10 +26,13 @@ class RequirementsController < ApplicationController
                                      :title => params[:title],
                                      :hierarchy => params[:hierarchy],
                                      :status => params[:status])
+      @prefix = params[:title]
+      @hierarchy = params[:hierarchy] + ".? "
     else
       @requirement = Requirement.new()
       @requirement.ancestry = 0
-      @requirement.title = "RXYZ"
+      @prefix = "RXYZ"
+      @hierarchy = "0"
     end
   end
 

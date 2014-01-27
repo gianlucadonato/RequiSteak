@@ -46,11 +46,11 @@
   <div class="row collapse">
     <div class="small-4 columns">
       <label><strong>PREFIX</strong></label>
-        <span class="prefix"><%= @requirement.title %></span>
+        <span class="prefix"><%= @prefix %></span>
     </div>
     <div class="small-8 columns">
       <label><strong>GERARCHIA</strong></label>
-      <%= f.text_field :hierarchy %>
+      <%= f.text_field :hierarchy, :value => @hierarchy %>
     </div>  
   </div>
   <br><br>
