@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h1>Listing Use Cases</h1>
+      </div>
+      <div class="small-6 columns">      
+        <%= link_to 'New Use case', new_use_case_path, class: "button right" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Ancestry</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @use_cases.each do |use_case| %>
+              <tr>
+                <td><%= link_to use_case.title, use_case_path(use_case) %></td>
+                <td><%= use_case.description %></td>
+                <td><%= use_case.ancestry %></td>
+                <td><%= link_to 'Show', use_case %></td>
+                <td><%= link_to 'Edit', edit_use_case_path(use_case) %></td>
+                <td><%= link_to 'Destroy', use_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

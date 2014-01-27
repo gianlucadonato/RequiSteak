@@ -38,6 +38,8 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1/edit
   def edit
+    @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority
+    @hierarchy = @requirement.hierarchy
   end
 
   # POST /requirements
@@ -61,6 +63,13 @@ class RequirementsController < ApplicationController
   # PATCH/PUT /requirements/1
   def update
     if @requirement.update(requirement_params)
+      unless params[:requirement][:system].nil? 
+        @requirement.title = "R" + params[:requirement][:system] + params[:requirement][:typology] + 
+                                   params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy] 
+      else
+        @requirement.title = "R" + params[:requirement][:typology] + params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy]
+      end
+      @requirement.save
       redirect_to @requirement, notice: 'Requirement was successfully updated.'
     else
       render action: 'edit'

@@ -1,0 +1,95 @@
+<%= form_for(@use_case) do |f| %>
+  <% if @use_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@use_case.errors.count, "error") %> prohibited this use_case from being saved:</h2>
+
+      <ul>
+      <% @use_case.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :parent_id %>
+  <%= f.hidden_field :ancestry %>
+  <div class="row panel">
+    <div class="small-12 columns">
+      <label><strong>SISTEMA</strong></label>
+      <ul class="inline-list">
+        <li><a href="#"><%= radio_button("use_case", "system", "U")%>  (U) Utente</a></li>
+        <li><a href="#"><%= radio_button("use_case", "system", "F")%>  (F) Framework</a></li>
+        <li><a href="#"><%= radio_button("use_case", "system", "S")%>  (S) MaaS</a></li>
+      </ul>
+    </div>
+  </div>
+  <br><br>
+  <div class="row collapse">
+    <div class="small-4 columns">
+      <label><strong>PREFIX</strong></label>
+        <span class="prefix"><%= @prefix %></span>
+    </div>
+    <div class="small-4 columns">
+      <label><strong>SUBTITLE</strong></label>
+      <%= f.text_field :subtitle %>
+    </div> 
+    <div class="small-4 columns">
+      <label><strong>GERARCHIA</strong></label>
+      <%= f.text_field :hierarchy, :value => @hierarchy %>
+    </div>  
+  </div>
+  <br><br>
+  <div class="field">
+    <label><strong>PRIMARY ACTORS</strong></label>
+    <%= f.text_field :primary_actors %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>SECONDARY ACTORS</strong></label>
+    <%= f.text_field :secondary_actors %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>DESCRIPTION</strong></label>
+    <%= f.text_area :description %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>PRECONDITION</strong></label>
+    <%= f.text_field :precondition %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>POSTCONDITION</strong></label>
+    <%= f.text_field :postcondition %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>MAIN FLOW</strong></label>
+    <%= f.text_area :main_flow %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>ALTERNATIVE FLOW</strong></label>
+    <%= f.text_area :alternative_flow %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>INCLUSION</strong></label>
+    <%= f.text_area :inclusion %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>EXTENSION</strong></label>
+    <%= f.text_area :extension %>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>GRAPH</strong></label>
+    <%= f.text_area :graph %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>

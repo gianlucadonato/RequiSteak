@@ -1,44 +1,48 @@
 <div class="row">
   <div class="small-12 small-centered columns">
     
-    <h1>Listing Requirements</h1>
+    <div class="row">
+      <div class="small-6 columns">
+        <h1>Listing Requirements</h1>
+      </div>
+      <div class="small-6 columns">      
+        <%= link_to 'New Requirement', new_requirement_path(), class: "button right" %>
+      </div>
+    </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th width="100">Status</th>
-          <th width="100">Title</th>
-          <th>Description</th>
-          <th>Ancestry</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+    <div class="row">
+      <div class="small-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th width="100">Status</th>
+              <th width="100">Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
 
-      <tbody>
-        <% @requirements.each do |requirement| %>
-          <tr>
-            <td><% if requirement.status == false %>
-                  <label class="alert label">Pending</label>
-                <% else %>
-                  <label class="success label">Approved</label>
-                <% end %>
-            </td>
-            <td><%= link_to requirement.title, requirement_path(requirement) %></td>
-            <td><%= requirement.description %></td>
-            <td><%= requirement.ancestry %></td>
-            <td><%= link_to 'Show', requirement %></td>
-            <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
-            <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-    <%= link_to 'New Requirement', new_requirement_path(), class: "button" %>
-  
+          <tbody>
+            <% @requirements.each do |requirement| %>
+              <tr>
+                <td><% if requirement.status == false %>
+                      <label class="alert label">Pending</label>
+                    <% else %>
+                      <label class="success label">Approved</label>
+                    <% end %>
+                </td>
+                <td><%= link_to requirement.title, requirement_path(requirement) %></td>
+                <td><%= requirement.description %></td>
+                <td><%= link_to 'Show', requirement %></td>
+                <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+                <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126162040) do
+ActiveRecord::Schema.define(version: 20140127084158) do
 
   create_table "requirements", force: true do |t|
     t.string   "system"
@@ -27,6 +27,28 @@ ActiveRecord::Schema.define(version: 20140126162040) do
   end
 
   add_index "requirements", ["ancestry"], name: "index_requirements_on_ancestry", using: :btree
+
+  create_table "use_cases", force: true do |t|
+    t.string   "system",           null: false
+    t.string   "hierarchy",        null: false
+    t.string   "title"
+    t.string   "primary_actors",   null: false
+    t.string   "secondary_actors"
+    t.text     "description"
+    t.string   "precondition",     null: false
+    t.string   "postcondition",    null: false
+    t.text     "main_flow"
+    t.text     "alternative_flow"
+    t.text     "inclusion"
+    t.text     "extension"
+    t.text     "graph"
+    t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "subtitle"
+  end
+
+  add_index "use_cases", ["ancestry"], name: "index_use_cases_on_ancestry", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

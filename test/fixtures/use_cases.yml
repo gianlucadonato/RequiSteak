@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  system: MyString
+  hierarchy: MyString
+  title: MyString
+  primary_actors: MyString
+  secondary_actors: MyString
+  description: MyText
+  precondition: MyString
+  postcondition: MyString
+  main_flow: MyText
+  alternative_flow: MyText
+  inclusion: MyText
+  extension: MyText
+  graph: MyText
+  ancestry: MyString
+
+two:
+  system: MyString
+  hierarchy: MyString
+  title: MyString
+  primary_actors: MyString
+  secondary_actors: MyString
+  description: MyText
+  precondition: MyString
+  postcondition: MyString
+  main_flow: MyText
+  alternative_flow: MyText
+  inclusion: MyText
+  extension: MyText
+  graph: MyText
+  ancestry: MyString

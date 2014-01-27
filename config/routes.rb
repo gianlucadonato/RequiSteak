@@ -1,4 +1,6 @@
 Requisteak::Application.routes.draw do
+  resources :use_cases
+
   resources :requirements
 
   devise_for :users

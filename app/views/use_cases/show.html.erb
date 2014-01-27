@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+    <nav class="top-bar" data-topbar>
+      <section class="top-bar-section">
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form"><%= link_to 'Edit', edit_use_case_path(@use_case), class: "info button" %></li> 
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Delete', edit_use_case_path(@use_case), class: "alert button" %></li>
+          <li class="divider"></li> 
+        </ul>
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="divider"></li>
+          <li class="has-form">
+            <%= link_to 'Add Child', new_use_case_path(parent_id: @use_case, system: @use_case.system, hierarchy: @use_case.hierarchy, 
+                                                          title: @prefix), class: "success button" %>
+          </li>
+        </ul>
+
+      </section>
+    </nav>
+    <br><br>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>USE CASE</h4><br><br>
+      <div class="row">
+        <div class="medium-6 columns">
+          <div class="row">
+            <div class="small-12 columns"> 
+              <h5><%= @use_case.title %></h5>
+            </div>
+          </div>
+          <div class="row"> 
+              <%= @use_case.graph.html_safe%>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="small-12 columns">  
+              <table width="500">
+                <tbody>
+                    <tr>
+                      <td><label><strong>PRIMARY ACTORS</strong></label></td>
+                      <td width="300"><%= @use_case.primary_actors %></td>
+                    </tr>
+                    <% if !@use_case.primary_actors.empty? %>
+                    <tr>
+                      <td><label><strong>SECONDARY ACTORS</strong></label></td>
+                      <td width="300"><%= @use_case.primary_actors %></td>
+                    </tr>
+                    <% end %>
+                    <tr>
+                      <td><label><strong>DESCRIPTION</strong></label></td>
+                      <td width="300"><%= @use_case.description %></td>
+                    </tr>
+                    <tr>
+                      <td><label><strong>PRECONDITION</strong></label></td>
+                      <td width="300"><%= @use_case.precondition %></td>
+                    </tr>
+                    <tr>
+                      <td><label><strong>POSTCONDITION</strong></label></td>
+                      <td width="300"><%= @use_case.postcondition %></td>
+                    </tr>
+                    <tr>
+                      <td><label><strong>MAIN FLOW</strong></label></td>
+                      <td width="300"><%= @use_case.main_flow %></td>
+                    </tr>
+                    <% if !@use_case.primary_actors.empty? %>
+                    <tr>
+                      <td><label><strong>ALTERNATIVE FLOW</strong></label></td>
+                      <td width="300"><%= @use_case.primary_actors %></td>
+                    </tr>
+                    <% end %>
+                    <% if !@use_case.inclusion.empty? %>
+                    <tr>
+                      <td><label><strong>INCLUSION</strong></label></td>
+                      <td width="300"><%= @use_case.inclusion %></td>
+                    </tr>
+                    <% end %>
+                    <% if !@use_case.extension.empty? %>
+                    <tr>
+                      <td><label><strong>EXTENSION</strong></label></td>
+                      <td width="300"><%= @use_case.extension %></td>
+                    </tr>
+                    <% end %>                 
+                </tbody>
+              </table>
+            </div>
+          </div>  
+        </div>
+
+        <div class="medium-6 columns">
+          <div class="row">
+              <div class="small-12 columns">  
+                <h4 class="right">PARENTS</h4>
+                <% if !@use_case.ancestors.empty? %>
+                <%=   nested_usecases @use_case.ancestors.arrange %>
+                <% else %>    
+                    <p>No parents :(</p>
+                <% end %>
+              </div>
+          </div>
+          <div class="row">
+              <div class="small-12 columns"> 
+                <h4 class="right">CHILDS</h4>
+                <% if !@use_case.ancestors.empty? %>
+                <%=   nested_usecases @use_case.descendants.arrange %>
+                <% else %>    
+                    <p>No parents :(</p>
+                <% end %>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <br>
+  
+  </div>
+</div>
