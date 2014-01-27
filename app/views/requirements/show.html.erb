@@ -22,11 +22,11 @@
                                                           title: @prefix), class: "success button" %>
           </li>
           <li class="divider"></li> 
-          <li class="has-form"><%= link_to 'Add UML', "#", class: "button orange" %></li>
+          <li class="has-form"><a href="#" data-reveal data-reveal-id="addUML" class="button orange">Add Use Case</a></li>
           <li class="divider"></li>
           <li class="has-form"><%= link_to 'Add System Test', "#", class: "button purple" %></li>
           <li class="divider"></li> 
-          <li class="has-form"><%= link_to 'Add Validation Test', "#", class: "button water" %></li>
+          <li class="has-form"><%= link_to 'Add Validation', "#", class: "button water" %></li>
           <li class="divider"></li>  
         </ul>
 
@@ -65,7 +65,7 @@
     <br>
     <div class="row panel">
       <div class="small-4 columns">      
-        <h4><span class="orange">UML</span></h4><br>
+        <h4><span class="orange">USE CASE</span></h4><br>
         <table>
           <thead>
             <tr>
@@ -75,10 +75,12 @@
           </thead>
 
           <tbody>
+              <% @requirement.use_cases.each do |uc| %>
               <tr>
-                <td>UML Title</td>
-                <td>Lorem ipsum sit dolor amat</td>
+                <th width="70"><%= "#{uc.title}" %></th>
+                <th><%= "#{uc.description}" %></th>
               </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -101,7 +103,7 @@
         </table> 
       </div>
       <div class="small-4 columns ">
-        <h4><span class="water">VALIDATION TEST</span></h4><br>
+        <h4><span class="water">VALIDATION</span></h4><br>
         <table>
           <thead>
             <tr>
@@ -139,4 +141,57 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
+<div id="addUML" class="reveal-modal" data-reveal>
+  <h3>ADD USE CASE</h3>
+
+  <%= form_for @requirement do |f| %>
+    <div class="small-4 columns">
+      <div class="panel">  
+        <label><strong>UCU - AMBITO UTENTE</strong></label>
+        <p>
+            <%= f.collection_check_boxes(:use_case_ids, @UCU, :id, :title ) do |b|
+                  b.label { b.check_box + "\ " + b.text } 
+                end 
+            %>
+        </p>
+      </div> 
+    </div>
+    <div class="small-4 columns">
+      <div class="panel">  
+        <label><strong>UCS - AMBITO SVILUPPATORE</strong></label>
+        <p>
+            <%= f.collection_check_boxes(:use_case_ids, @UCS, :id, :title ) do |b|
+                  b.label { b.check_box + "\ " + b.text } 
+                end 
+            %>
+        </p>
+      </div> 
+    </div>
+    <div class="small-4 columns">
+      <div class="panel">  
+        <label><strong>UCM - AMBITO MAAS</strong></label>
+        <p>
+            <%= f.collection_check_boxes(:use_case_ids, @UCM, :id, :title ) do |b|
+                  b.label { b.check_box + "\ " + b.text } 
+                end 
+            %>
+        </p>
+      </div> 
+    </div>
+    <br><br><br><br><br>
+    <%= f.hidden_field :system %>
+    <%= f.hidden_field :typology %>
+    <%= f.hidden_field :hierarchy %>
+    <%= f.hidden_field :priority %>
+
+    <div class="row">
+      <div class="small-4 small-centered columns">
+        <%= f.submit class: "button" %>
+      </div>
+    </div>
+  <% end %>
+  <a class="close-reveal-modal">&#215;</a>        
 </div>

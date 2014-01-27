@@ -10,6 +10,9 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1
   def show
+    @UCU = UseCase.where({system: "U"})
+    @UCS = UseCase.where({system: "S"})
+    @UCM = UseCase.where({system: "M"})
     # Calcolo il prefisso da passare con GET alla new 
     unless @requirement.system.nil?
       @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority 
@@ -71,6 +74,7 @@ class RequirementsController < ApplicationController
       else
         @requirement.title = "R" + params[:requirement][:typology] + params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy]
       end
+      @requirement.use_case_ids = params[:requirement][:use_case_ids] unless params[:requirement][:use_case_ids].blank?
       @requirement.save
       redirect_to @requirement, notice: 'Requirement was successfully updated.'
     else
@@ -92,6 +96,6 @@ class RequirementsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def requirement_params
-      params.require(:requirement).permit(:system, :typology, :priority, :hierarchy, :title, :status, :description, :ancestry)
+      params.require(:requirement).permit(:system, :typology, :priority, :hierarchy, :title, :status, :description, :ancestry, :use_case_ids)
     end
 end
