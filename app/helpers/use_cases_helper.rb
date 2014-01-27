@@ -3,8 +3,8 @@ module UseCasesHelper
 		uc.map do |use_case, sub_uc|
 			content_tag(:div,
 				content_tag(:dl, 
-					content_tag(:dd, content_tag(:a, @prefix + use_case.hierarchy, href: "#panel#{use_case.id}", class: "green"), class: "active") +
-					content_tag(:dd, content_tag(:a, "Requiremnts", href: "#panel-req", class: "water")),
+					content_tag(:dd, content_tag(:a, @prefix + use_case.hierarchy, href: "#panel#{use_case.id}", class: "orange"), class: "active") +
+					content_tag(:dd, content_tag(:a, "Requirements", href: "#panel-req", class: "green")),
 				class: "tabs", data: { tab: "" }) +
 				content_tag(:div, 
 					content_tag(:div, content_tag(:p, content_tag(:a, capture do link_to use_case.title, use_case_path(use_case) end) + 
