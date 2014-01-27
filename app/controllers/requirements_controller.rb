@@ -3,8 +3,9 @@ class RequirementsController < ApplicationController
 
   # GET /requirements
   def index
-    requirements = Requirement.first
-    @requirements = requirements.subtree
+    @funzionali = Requirement.where({typology: "1"})
+    @qualita = Requirement.where({typology: "3"})
+    @vincolo = Requirement.where({typology: "4"})
   end
 
   # GET /requirements/1

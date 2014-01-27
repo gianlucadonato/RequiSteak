@@ -9,9 +9,10 @@
         <%= link_to 'New Requirement', new_requirement_path(), class: "button right" %>
       </div>
     </div>
-
+    <br>
     <div class="row">
       <div class="small-12 columns">
+        <label><strong>REQUISITI FUNZIONALI</strong></label>
         <table>
           <thead>
             <tr>
@@ -25,7 +26,79 @@
           </thead>
 
           <tbody>
-            <% @requirements.each do |requirement| %>
+            <% @funzionali.each do |requirement| %>
+              <tr>
+                <td><% if requirement.status == false %>
+                      <label class="alert label">Pending</label>
+                    <% else %>
+                      <label class="success label">Approved</label>
+                    <% end %>
+                </td>
+                <td><%= link_to requirement.title, requirement_path(requirement) %></td>
+                <td><%= requirement.description %></td>
+                <td><%= link_to 'Show', requirement %></td>
+                <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+                <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <label><strong>REQUISITI DI QUALITA'</strong></label>
+        <table>
+          <thead>
+            <tr>
+              <th width="100">Status</th>
+              <th width="100">Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @qualita.each do |requirement| %>
+              <tr>
+                <td><% if requirement.status == false %>
+                      <label class="alert label">Pending</label>
+                    <% else %>
+                      <label class="success label">Approved</label>
+                    <% end %>
+                </td>
+                <td><%= link_to requirement.title, requirement_path(requirement) %></td>
+                <td><%= requirement.description %></td>
+                <td><%= link_to 'Show', requirement %></td>
+                <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+                <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <label><strong>REQUISITI DI VINCOLO</strong></label>
+        <table>
+          <thead>
+            <tr>
+              <th width="100">Status</th>
+              <th width="100">Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @vincolo.each do |requirement| %>
               <tr>
                 <td><% if requirement.status == false %>
                       <label class="alert label">Pending</label>

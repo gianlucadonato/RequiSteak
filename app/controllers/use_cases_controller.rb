@@ -3,8 +3,9 @@ class UseCasesController < ApplicationController
 
   # GET /use_cases
   def index
-    use_cases = UseCase.first
-    @use_cases = use_cases.subtree
+    @UCU = UseCase.where({system: "U"})
+    @UCF = UseCase.where({system: "F"})
+    @UCS = UseCase.where({system: "S"})
   end
 
   # GET /use_cases/1
