@@ -28,7 +28,7 @@
       <div class="small-12 columns panel">
         <h4>USE CASE</h4><br><br>
       <div class="row">
-        <div class="medium-6 columns">
+        <div class="small-6 small-centered columns">
           <div class="row">
             <div class="small-12 columns"> 
               <h5><%= @use_case.title %></h5>
@@ -92,12 +92,12 @@
           </div>  
         </div>
 
-        <div class="medium-6 columns">
+        <div class="small-12 columns">
           <div class="row">
               <div class="small-12 columns">
                 <div class="row">
                   <div class="small-12 columns">  
-                    <h4 class="right">PARENTS</h4>
+                    <h4>PARENTS</h4>
                   </div>
                 </div>
                 <div class="row">
@@ -105,7 +105,7 @@
                     <% if !@use_case.ancestors.empty? %>
                     <%=   nested_usecases @use_case.ancestors.arrange %>
                     <% else %>    
-                        <span class="right">No parents :(</span>
+                        <span>No parents :(</span>
                     <% end %>
                   </div>
                 </div>
@@ -117,7 +117,7 @@
                 
                 <div class="row">
                   <div class="small-12 columns">
-                    <h4 class="right">CHILDS</h4>
+                    <h4>CHILDS</h4>
                   </div>
                 </div>
                 <div class="row">
@@ -125,7 +125,7 @@
                     <% if !@use_case.descendants.empty? %>
                     <%=   nested_usecases @use_case.descendants.arrange %>
                     <% else %>    
-                        <span class="right">No childs :(</span>
+                        <span>No childs :(</span>
                     <% end %>
                   </div>
                 </div>
