@@ -32,42 +32,111 @@
 
       </section>
     </nav>
-  <br><br>
-  <div class="row">
-    <div class="small-12 columns panel">
-      <h4>REQUIREMENT</h4><br>
-      <table>
-        <thead>
-          <tr>
-            <th width="100">Status</th>
-            <th width="150">Title</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-
-        <tbody>
+    <br><br>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>REQUIREMENT</h4><br>
+        <table>
+          <thead>
             <tr>
-              <td>
-                <% if @requirement.status == false %>
-                  <label class="alert label">Pending</label>
-                <% else %>
-                  <label class="success label">Approved</label>
-                <% end %>
-              </td>
-              <td><%= @requirement.title %></td>
-              <td><%= @requirement.description %></td>
+              <th width="100">Status</th>
+              <th width="150">Title</th>
+              <th>Description</th>
             </tr>
-              
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="small-12 columns panel">
-      <h4>CHILDS</h4><br>
-      <%= nested_requirements @requirement.subtree.arrange %>
-    </div>
-  </div>
+          </thead>
 
+          <tbody>
+              <tr>
+                <td>
+                  <% if @requirement.status == false %>
+                    <label class="alert label">Pending</label>
+                  <% else %>
+                    <label class="success label">Approved</label>
+                  <% end %>
+                </td>
+                <td><%= @requirement.title %></td>
+                <td><%= @requirement.description %></td>
+              </tr>
+                
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <div class="row panel">
+      <div class="small-4 columns">      
+        <h4><span class="orange">UML</span></h4><br>
+        <table>
+          <thead>
+            <tr>
+              <th width="70">Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+                <td>UML Title</td>
+                <td>Lorem ipsum sit dolor amat</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="small-4 columns">      
+        <h4><span class="purple">SYSTEM TEST</span></h4><br>
+        <table>
+          <thead>
+            <tr>
+              <th width="70">Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+                <td>TS XYZ</td>
+                <td>Lorem ipsum sit dolor amat</td>
+              </tr>
+          </tbody>
+        </table> 
+      </div>
+      <div class="small-4 columns ">
+        <h4><span class="water">VALIDATION TEST</span></h4><br>
+        <table>
+          <thead>
+            <tr>
+              <th width="70">Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+                <td>TV XYZ</td>
+                <td>Lorem ipsum sit dolor amat</td>
+              </tr>
+          </tbody>
+        </table> 
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="small-6 columns panel parents">
+        <h4>PARENTS</h4><br>
+        <% if !@requirement.ancestors.empty? %>
+        <%=   nested_requirements @requirement.ancestors.arrange %>
+        <% else %>    
+            <p>No parents :(</p>
+        <% end %>
+      </div>
+      <div class="small-6 columns panel childs">
+        <h4>CHILDS</h4><br>
+        <% if !@requirement.descendants.empty? %>
+        <%= nested_requirements @requirement.descendants.arrange %>
+        <% else %>    
+            <p>No childs :(</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
