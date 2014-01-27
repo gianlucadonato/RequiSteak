@@ -94,23 +94,41 @@
 
         <div class="medium-6 columns">
           <div class="row">
-              <div class="small-12 columns">  
-                <h4 class="right">PARENTS</h4>
-                <% if !@use_case.ancestors.empty? %>
-                <%=   nested_usecases @use_case.ancestors.arrange %>
-                <% else %>    
-                    <p>No parents :(</p>
-                <% end %>
+              <div class="small-12 columns">
+                <div class="row">
+                  <div class="small-12 columns">  
+                    <h4 class="right">PARENTS</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <% if !@use_case.ancestors.empty? %>
+                    <%=   nested_usecases @use_case.ancestors.arrange %>
+                    <% else %>    
+                        <span class="right">No parents :(</span>
+                    <% end %>
+                  </div>
+                </div>
               </div>
           </div>
+          <br><br>
           <div class="row">
               <div class="small-12 columns"> 
-                <h4 class="right">CHILDS</h4>
-                <% if !@use_case.ancestors.empty? %>
-                <%=   nested_usecases @use_case.descendants.arrange %>
-                <% else %>    
-                    <p>No parents :(</p>
-                <% end %>
+                
+                <div class="row">
+                  <div class="small-12 columns">
+                    <h4 class="right">CHILDS</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <% if !@use_case.ancestors.empty? %>
+                    <%=   nested_usecases @use_case.descendants.arrange %>
+                    <% else %>    
+                        <span class="right">No parents :(</span>
+                    <% end %>
+                  </div>
+                </div>
           </div>
         </div>
       </div>
