@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+		
+		<h1>New Validation Test</h1>
+
+		<%= render 'form' %>
+
+		<%= unless params[:parent_id].nil?
+					link_to '<-- Back', validation_test_path(params[:parent_id]) 
+				else
+					link_to '<-- Back',  validation_tests_path 
+				end
+		%>
+
+	</div>
+</div>

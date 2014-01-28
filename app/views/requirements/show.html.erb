@@ -8,7 +8,7 @@
         <ul class="left">
           <li class="has-form"><%= link_to 'Edit', edit_requirement_path(@requirement), class: "info button" %></li> 
           <li class="divider"></li>
-          <li class="has-form"><%= link_to 'Delete', edit_requirement_path(@requirement), class: "alert button" %></li>
+          <li class="has-form"><%= link_to 'Delete', @requirement, method: :delete, class: "alert button" %></li>
           <li class="divider"></li> 
         </ul>
 
@@ -26,7 +26,7 @@
           <li class="divider"></li>
           <li class="has-form"><%= link_to 'Add System Test', "#", class: "button purple" %></li>
           <li class="divider"></li> 
-          <li class="has-form"><%= link_to 'Add Validation', "#", class: "button water" %></li>
+          <li class="has-form"><%= link_to 'Add Validation Test', "#", class: "button water" %></li>
           <li class="divider"></li>  
         </ul>
 
@@ -103,7 +103,7 @@
         </table> 
       </div>
       <div class="small-4 columns ">
-        <h4><span class="water">VALIDATION</span></h4><br>
+        <h4><span class="water">VALIDATION TEST</span></h4><br>
         <table>
           <thead>
             <tr>

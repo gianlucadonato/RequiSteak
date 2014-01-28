@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127202428) do
+ActiveRecord::Schema.define(version: 20140128122609) do
 
   create_table "requirements", force: true do |t|
     t.string   "system"
-    t.string   "typology",                    null: false
-    t.string   "priority",                    null: false
-    t.string   "hierarchy",                   null: false
+    t.string   "typology",                           null: false
+    t.string   "priority",                           null: false
+    t.string   "hierarchy",                          null: false
     t.string   "title"
-    t.boolean  "status",      default: false
+    t.boolean  "status",             default: false
     t.text     "description"
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "validation_test_id"
+    t.integer  "system_test_id"
   end
 
   add_index "requirements", ["ancestry"], name: "index_requirements_on_ancestry", using: :btree
@@ -35,6 +37,14 @@ ActiveRecord::Schema.define(version: 20140127202428) do
 
   add_index "requirements_use_cases", ["requirement_id"], name: "index_requirements_use_cases_on_requirement_id", using: :btree
   add_index "requirements_use_cases", ["use_case_id"], name: "index_requirements_use_cases_on_use_case_id", using: :btree
+
+  create_table "system_tests", force: true do |t|
+    t.string   "title",       null: false
+    t.boolean  "status"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "use_cases", force: true do |t|
     t.string   "system",           null: false
@@ -75,5 +85,13 @@ ActiveRecord::Schema.define(version: 20140127202428) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "validation_tests", force: true do |t|
+    t.string   "title",       null: false
+    t.boolean  "status"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

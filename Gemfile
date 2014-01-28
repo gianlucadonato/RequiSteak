@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'foundation-rails'
 gem 'ancestry'
+gem 'simple_form'
 
 group :development do
   gem 'mysql2'

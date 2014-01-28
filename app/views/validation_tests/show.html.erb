@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="small-12 columns">
+
+  	<nav class="top-bar" data-topbar>
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form"><%= link_to 'Edit', edit_validation_test_path(@system_test), class: "info button" %></li> 
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Delete', @validation_test , method: :delete, class: "alert button" %></li>
+          <li class="divider"></li> 
+        </ul>
+	      <!-- Right Nav Section -->
+	        <ul class="right">
+	          <li class="has-form"><a href="#" data-reveal data-reveal-id="addREQ" class="button success">Add Requirements</a></li>
+	        </ul>
+      </section>
+    </nav>
+
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>VALIDATION TEST</h4><br>
+        <table>
+          <thead>
+            <tr>
+              <th width="100">Status</th>
+              <th width="150">Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <tr>
+                <td>
+                  <% if @validation_test.status == false %>
+                    <label class="alert label">Pending</label>
+                  <% else %>
+                    <label class="success label">Approved</label>
+                  <% end %>
+                </td>
+                <td><%= @validation_test.title %></td>
+                <td><%= @validation_test.description %></td>
+              </tr>
+                
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+
+		<%= link_to '<-- Back', validation_tests_path %>
+		
+	</div>
+</div>
+
+<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
+<div id="addREQ" class="reveal-modal" data-reveal>
+  <h3>ADD REQUIREMENTS</h3>
+
+		<%= simple_form_for @validation_test do |f| %>
+		  <%= f.association :requirements, as: :check_boxes, include_blank: false %>
+		  
+		  <%= f.submit class: "button" %>
+		<% end %>
+
+  <a class="close-reveal-modal">&#215;</a>        
+</div>
