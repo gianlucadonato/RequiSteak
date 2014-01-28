@@ -24,9 +24,9 @@
           <li class="divider"></li> 
           <li class="has-form"><a href="#" data-reveal data-reveal-id="addUML" class="button orange">Add Use Case</a></li>
           <li class="divider"></li>
-          <li class="has-form"><%= link_to 'Add System Test', "#", class: "button purple" %></li>
+          <li class="has-form"><%= link_to 'Add System Test', new_system_test_path(r_id: @requirement), class: "button purple" %></li>
           <li class="divider"></li> 
-          <li class="has-form"><%= link_to 'Add Validation Test', "#", class: "button water" %></li>
+          <li class="has-form"><%= link_to 'Add Validation Test', new_validation_test_path(r_id: @requirement), class: "button water" %></li>
           <li class="divider"></li>  
         </ul>
 
@@ -96,8 +96,8 @@
 
           <tbody>
               <tr>
-                <td>TS XYZ</td>
-                <td>Lorem ipsum sit dolor amat</td>
+                <td><%=  @requirement.system_test.title if !@requirement.system_test.nil? %></td>
+                <td><%=  @requirement.system_test.description if !@requirement.system_test.nil? %></td>
               </tr>
           </tbody>
         </table> 
@@ -114,8 +114,8 @@
 
           <tbody>
               <tr>
-                <td>TV XYZ</td>
-                <td>Lorem ipsum sit dolor amat</td>
+                <td><%=  @requirement.validation_test.title if !@requirement.validation_test.nil? %></td>
+                <td><%=  @requirement.validation_test.description if !@requirement.validation_test.nil? %></td>
               </tr>
           </tbody>
         </table> 

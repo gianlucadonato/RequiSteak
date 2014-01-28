@@ -21,18 +21,32 @@ class ValidationTestsController < ApplicationController
 
   # POST /validation_tests
   def create
-    @validation_test = ValidationTest.new(validation_test_params)
-
-    if @validation_test.save
-      redirect_to @validation_test, notice: 'Validation test was successfully created.'
+    if !params[:r_id].empty?
+      @req = Requirement.find_by_id(params[:r_id])
+      @validation_test = ValidationTest.new(validation_test_params)
+      if @validation_test.save
+        @req.validation_test = @validation_test
+        @req.save
+        redirect_to @req, notice: "Validation Test successfully added"
+      else
+        render action: 'new'
+      end
     else
-      render action: 'new'
+      @validation_test = ValidationTest.new(validation_test_params)
+      if @validation_test.save
+        redirect_to @validation_test, notice: 'Validation test was successfully created.'
+      else
+        render action: 'new'
+      end
     end
   end
 
   # PATCH/PUT /validation_tests/1
   def update
     if @validation_test.update(validation_test_params)
+
+      @validation_test.requirement_ids = params[:validation_test][:requirement_ids]
+      @validation_test.save
       redirect_to @validation_test, notice: 'Validation test was successfully updated.'
     else
       render action: 'edit'
@@ -53,6 +67,6 @@ class ValidationTestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def validation_test_params
-      params.require(:validation_test).permit(:title, :status, :description)
+      params.require(:validation_test).permit(:title, :status, :description, :r_id)
     end
 end

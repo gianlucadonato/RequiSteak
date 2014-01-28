@@ -21,18 +21,32 @@ class SystemTestsController < ApplicationController
 
   # POST /system_tests
   def create
-    @system_test = SystemTest.new(system_test_params)
-
-    if @system_test.save
-      redirect_to @system_test, notice: 'System test was successfully created.'
+    
+    if !params[:r_id].empty?
+      @req = Requirement.find_by_id(params[:r_id])
+      @system_test = SystemTest.new(system_test_params)
+      if @system_test.save
+        @req.system_test = @system_test
+        @req.save
+        redirect_to @req, notice: "System Test successfully added"
+      else
+        render action: 'new'
+      end
     else
-      render action: 'new'
+      @system_test = SystemTest.new(system_test_params)
+      if @system_test.save
+        redirect_to @system_test, notice: 'System test was successfully created.'
+      else
+        render action: 'new'
+      end
     end
   end
 
   # PATCH/PUT /system_tests/1
   def update
     if @system_test.update(system_test_params)
+      @system_test.requirement_ids = params[:system_test][:requirement_ids]
+      @system_test.save
       redirect_to @system_test, notice: 'System test was successfully updated.'
     else
       render action: 'edit'
@@ -53,6 +67,6 @@ class SystemTestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def system_test_params
-      params.require(:system_test).permit(:title, :status, :description)
+      params.require(:system_test).permit(:title, :status, :description, :r_id)
     end
 end
