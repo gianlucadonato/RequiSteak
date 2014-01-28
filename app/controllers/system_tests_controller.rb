@@ -13,6 +13,10 @@ class SystemTestsController < ApplicationController
   # GET /system_tests/new
   def new
     @system_test = SystemTest.new
+    if !params[:r_id].empty?
+      req = Requirement.find_by_id(params[:r_id])
+      @system_test.title = "TS" + req.title
+    end
   end
 
   # GET /system_tests/1/edit
