@@ -3,9 +3,9 @@ class UseCasesController < ApplicationController
 
   # GET /use_cases
   def index
-    @UCU = UseCase.where({system: "U"})
-    @UCS = UseCase.where({system: "S"})
-    @UCM = UseCase.where({system: "M"})
+    @UCU = UseCase.where({system: "U"}).sort!{ |a,b| confronta(a,b) }
+    @UCS = UseCase.where({system: "S"}).sort!{ |a,b| confronta(a,b) }
+    @UCM = UseCase.where({system: "M"}).sort!{ |a,b| confronta(a,b) }
   end
 
   # GET /use_cases/1
