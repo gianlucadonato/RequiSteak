@@ -57,7 +57,7 @@
           </thead>
 
           <tbody>
-            <% @UCF.each do |use_case| %>
+            <% @UCS.each do |use_case| %>
               <tr>
                 <td><%= link_to use_case.title, use_case_path(use_case) %></td>
                 <td><%= use_case.description %></td>
@@ -87,7 +87,7 @@
           </thead>
 
           <tbody>
-            <% @UCS.each do |use_case| %>
+            <% @UCM.each do |use_case| %>
               <tr>
                 <td><%= link_to use_case.title, use_case_path(use_case) %></td>
                 <td><%= use_case.description %></td>
