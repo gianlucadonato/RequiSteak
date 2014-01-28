@@ -103,7 +103,9 @@
                 <div class="row">
                   <div class="small-12 columns">
                     <% if !@use_case.ancestors.empty? %>
-                    <%=   nested_usecases @use_case.ancestors.arrange %>
+                    <%=   parents = @use_case.ancestors
+                          parents.sort!{ |a,b| confronta(a,b) }
+                          nested_usecases parents.arrange %>
                     <% else %>    
                         <span>No parents :(</span>
                     <% end %>
@@ -123,7 +125,9 @@
                 <div class="row">
                   <div class="small-12 columns">
                     <% if !@use_case.descendants.empty? %>
-                    <%=   nested_usecases @use_case.descendants.arrange %>
+                    <%=   childs = @use_case.descendants
+                          childs.sort!{ |a,b| confronta(a,b) }
+                          nested_usecases childs.arrange %>
                     <% else %>    
                         <span>No childs :(</span>
                     <% end %>
