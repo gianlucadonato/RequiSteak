@@ -96,7 +96,7 @@
 
           <tbody>
               <tr>
-                <td><%=  @requirement.system_test.title if !@requirement.system_test.nil? %></td>
+                <td><%=  link_to @requirement.system_test.title, system_test_path(@requirement.system_test) if !@requirement.system_test.nil? %></td>
                 <td><%=  @requirement.system_test.description if !@requirement.system_test.nil? %></td>
               </tr>
           </tbody>
@@ -114,7 +114,7 @@
 
           <tbody>
               <tr>
-                <td><%=  @requirement.validation_test.title if !@requirement.validation_test.nil? %></td>
+                <td><%=  link_to @requirement.validation_test.title, validation_test_path(@requirement.validation_test) if !@requirement.validation_test.nil? %></td>
                 <td><%=  @requirement.validation_test.description if !@requirement.validation_test.nil? %></td>
               </tr>
           </tbody>
