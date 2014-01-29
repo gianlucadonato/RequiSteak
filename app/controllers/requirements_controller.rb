@@ -170,8 +170,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
@@ -217,8 +218,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
@@ -264,8 +266,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
@@ -300,8 +303,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
@@ -316,8 +320,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
@@ -332,8 +337,9 @@ f << "
       f << " #{src.title} \\newline "
     end
     uc.each do |u|
-      u0 = u.title.split(' ')[0]
-      f << " #{u0} \\newline "
+      uc_t = u.title.split(' ')
+      uc_title = uc_t[0] + uc_t[1]
+      f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
 end
