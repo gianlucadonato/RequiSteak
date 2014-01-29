@@ -12,23 +12,28 @@
     <br>
     <div class="row">
       <div class="small-12 columns">
-        <table>
+        <table width="100%">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Status</th>
-              <th>Description</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th width="8%">Status</th>
+              <th width="12%">Title</th>
+              <th width="65%">Description</th>
+              <th width="5%"></th>
+              <th width="4%"></th>
+              <th width="6%"></th>
             </tr>
           </thead>
 
           <tbody>
             <% @system_tests.each do |system_test| %>
               <tr>
+                <td><% if system_test.status == false %>
+                      <label class="alert label">Pending</label>
+                    <% else %>
+                      <label class="success label">Approved</label>
+                    <% end %>
+                </td>
                 <td><%= system_test.title %></td>
-                <td><%= system_test.status %></td>
                 <td><%= system_test.description %></td>
                 <td><%= link_to 'Show', system_test %></td>
                 <td><%= link_to 'Edit', edit_system_test_path(system_test) %></td>
