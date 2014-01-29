@@ -13,6 +13,10 @@ class ValidationTestsController < ApplicationController
   # GET /validation_tests/new
   def new
     @validation_test = ValidationTest.new
+    if !params[:r_id].empty?
+      req = Requirement.find_by_id(params[:r_id])
+      @validation_test.title = "TV" + req.title
+    end
   end
 
   # GET /validation_tests/1/edit

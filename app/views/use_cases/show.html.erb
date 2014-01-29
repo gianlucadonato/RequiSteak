@@ -103,9 +103,7 @@
                 <div class="row">
                   <div class="small-12 columns">
                     <% if !@use_case.ancestors.empty? %>
-                    <%=   parents = @use_case.ancestors
-                          parents.sort!{ |a,b| a.hierarchy.split('.').map(&:to_i) <=> b.hierarchy.split('.').map(&:to_i) }
-                          nested_usecases parents.arrange %>
+                    <%=   nested_usecases @use_case.ancestors.arrange %>
                     <% else %>    
                         <span>No parents :(</span>
                     <% end %>
@@ -125,9 +123,7 @@
                 <div class="row">
                   <div class="small-12 columns">
                     <% if !@use_case.descendants.empty? %>
-                    <%=   childs = @use_case.descendants
-                          childs.sort!{ |a,b| a.hierarchy.split('.').map(&:to_i) <=> b.hierarchy.split('.').map(&:to_i) }
-                          nested_usecases childs.arrange %>
+                    <%=   nested_usecases @use_case.descendants.arrange %>
                     <% else %>    
                         <span>No childs :(</span>
                     <% end %>
