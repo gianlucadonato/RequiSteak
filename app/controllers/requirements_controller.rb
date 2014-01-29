@@ -13,6 +13,7 @@ class RequirementsController < ApplicationController
     @UCU = UseCase.where({system: "U"}).sort!{ |a,b| confronta(a,b) }
     @UCS = UseCase.where({system: "S"}).sort!{ |a,b| confronta(a,b) }
     @UCM = UseCase.where({system: "M"}).sort!{ |a,b| confronta(a,b) }
+    @sources = Source.all
     # Calcolo il prefisso da passare con GET alla new 
     unless @requirement.system.nil?
       @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority 
@@ -79,6 +80,7 @@ class RequirementsController < ApplicationController
         @requirement.title = "R" + params[:requirement][:typology] + params[:requirement][:priority] + "\ " + params[:requirement][:hierarchy]
       end
       @requirement.use_case_ids = params[:requirement][:use_case_ids] unless params[:requirement][:use_case_ids].blank?
+      @requirement.source_ids = params[:requirement][:source_ids] unless params[:requirement][:source_ids].blank?
       @requirement.save
       redirect_to @requirement, notice: 'Requirement was successfully updated.'
     else

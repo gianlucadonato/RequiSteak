@@ -42,6 +42,7 @@
               <th width="100">Status</th>
               <th width="150">Title</th>
               <th>Description</th>
+              <th>Fonti</th>
             </tr>
           </thead>
 
@@ -56,6 +57,12 @@
                 </td>
                 <td><%= @requirement.title %></td>
                 <td><%= @requirement.description %></td>
+                <td><% if !@requirement.sources.empty? 
+                          @requirement.sources.each do |f| %>
+                            <%= "#{f.title}; " %>
+                      <%  end 
+                        end %>
+                 </td>
               </tr>
                 
           </tbody>
@@ -172,22 +179,40 @@
       </div> 
     </div>
     <div class="medium-4 columns">
-      <div class="panel">  
-        <label><strong>UCM - AMBITO MAAS</strong></label>
-        <p>
-            <%= f.collection_check_boxes(:use_case_ids, @UCM, :id, :title ) do |b|
-                  b.label { b.check_box + "\ " + b.text } 
-                end 
-            %>
-        </p>
-      </div> 
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="panel">  
+            <label><strong>UCM - AMBITO MAAS</strong></label>
+            <p>
+                <%= f.collection_check_boxes(:use_case_ids, @UCM, :id, :title ) do |b|
+                      b.label { b.check_box + "\ " + b.text } 
+                    end 
+                %>
+            </p>
+          </div> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="panel"> 
+              <label><strong>FONTI</strong></label>
+              <p>
+                  <%= f.collection_check_boxes(:source_ids, @sources, :id, :title ) do |b|
+                        b.label { b.check_box + "\ " + b.text } 
+                      end 
+                  %>
+              </p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <%= f.hidden_field :system %>
-    <%= f.hidden_field :typology %>
-    <%= f.hidden_field :hierarchy %>
-    <%= f.hidden_field :priority %>
   </div>
+    
+  <%= f.hidden_field :system %>
+  <%= f.hidden_field :typology %>
+  <%= f.hidden_field :hierarchy %>
+  <%= f.hidden_field :priority %>
+
   <div class="row">
     <div class="small-4 small-centered columns">
       <%= f.submit class: "button" %>
