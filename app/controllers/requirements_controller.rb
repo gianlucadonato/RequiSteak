@@ -43,7 +43,11 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/1/edit
   def edit
-    @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority
+    if !@requirement.system.nil? 
+      @prefix = "R" + @requirement.system + @requirement.typology + @requirement.priority
+    else
+      @prefix = "R" + @requirement.typology + @requirement.priority
+    end
     @hierarchy = @requirement.hierarchy
   end
 
