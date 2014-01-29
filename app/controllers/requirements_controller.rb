@@ -92,7 +92,8 @@ class RequirementsController < ApplicationController
     uc = UseCase.where.not(title: ['UCU 0 - Operazioni ad alto livello - Utente autenticato', 
                                    'UCU 0 - Operazioni ad alto livello - Utente non autenticato', 
                                    'UCM 0 - Operazioni ad alto livello - Utente MaaS autenticato',
-                                   'UCM 0 - Operazioni ad alto livello - Utente MaaS non autenticato'])
+                                   'UCM 0 - Operazioni ad alto livello - Utente MaaS non autenticato',
+                                   'UCS 0 - Operazioni ad alto livello'])
     ucu = uc.where({system: "U"}).sort!{ |a,b| confronta(a,b) }
     ucs = uc.where({system: "S"}).sort!{ |a,b| confronta(a,b) }
     ucm = uc.where({system: "M"}).sort!{ |a,b| confronta(a,b) }
@@ -171,7 +172,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " + uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
@@ -219,7 +220,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " +  uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
@@ -267,7 +268,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " +  uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
@@ -304,7 +305,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " + uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
@@ -321,7 +322,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " + uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    
@@ -338,7 +339,7 @@ f << "
     end
     uc.each do |u|
       uc_t = u.title.split(' ')
-      uc_title = uc_t[0] + uc_t[1]
+      uc_title = uc_t[0] + "\ " + uc_t[1]
       f << " #{uc_title} \\newline "
     end
     f << " \\\\ \\hline"    

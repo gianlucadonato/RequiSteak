@@ -1,0 +1,200 @@
+\section{Casi d'uso}
+I casi d'uso seguenti emergono da un'attenta analisi degli \textit{Analisti} del gruppo \GroupName{} rivolta al capitolato e da un'approfondita discussione con il proponente \Proponente{}. Gran parte dei casi d'uso sono stati dedotti grazie all'esperienza derivata dall'utilizzo di \glossario{ActiveAdmin}, un progetto analogo a \ProjectName{} basato su \glossario{Ruby on Rails}.\
+Ogni caso d'uso è identificato univocamente e in modo gerarchico tramite una codifica nella forma:
+
+\begin{center}
+
+\textit{UC[codice dell'ambito][codice univoco del padre],[codice progressivo del figlio]}
+
+\end{center} 
+
+dove il \textbf{codice dell'ambito} può assumere i seguenti valori:
+
+\begin{itemize}
+
+  \item \textbf{U} - ambito utente, che comprende sia l'utente normale che l'\textit{admin} di una applicazione generata da \ProjectName{};
+  \item \textbf{S} - ambito sviluppatore.
+  \item \textbf{M} - ambito utente \glossario{MaaS} (MongoDB as an admin Service).
+
+\end{itemize}
+Per i tre ambiti(Utente,Sviluppatore,\glossario{MaaS}) il corrispondente diagramma delle "Operazioni ad alto livello" è stato suddiviso per tipologia di utente, mantenendo per comodità la nomenclatura che ci sarebbe stata se non avessimo effettuato la suddivisione.
+Nei diagrammi dei casi d'uso, il sistema dei livelli di astrazione inferiore si riferisce in modo ricorsivo al sistema del caso d'uso del padre. 
+Per comodità di lettura viene utilizzato il nome del caso d'uso in analisi. 
+
+
+\subsection{Ambito Utente}
+\subsubsection{UCU 0 - Operazioni ad alto livello - Utente non autenticato}    
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[width=12cm]{UML/UCU 0 - Operazioni ad alto livello - Utente non autenticato.png}
+      \caption{UCU 0 - Operazioni ad alto livello - Utente non autenticato}
+      \end{center} 
+    \end{figure}    
+    
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCU 0 - Operazioni ad alto livello - Utente non autenticato}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'Utente non autenticato può autenticarsi inserendo le credenziali nell'apposito form, può registrarsi all'applicazione se tale funzione è predisposta e può recuperare l'eventuale password d'accesso. \\ 
+          
+          \textbf{Precondizioni}  & L'applicazione MaaP è funzionante e pronta all'utilizzo. Il sistema predispone all'utente non autenticato la pagina principale fornendo le funzionalità di autenticazione, registrazione e recupero password.\\ 
+          
+          \textbf{Postcondizioni} & L'applicazione ha ricevuto le informazioni sulle operazioni che l'utente vuole eseguire. \\ 
+          \textbf{Flusso Principale} & 1. Utente non autenticato esegue il login (UCU1); \newline 2. Utente non autenticato può recuperare la password (UCU4); \newline 3. Utente non autenticato può richiedere la registrazione (UCU5); \newline \\
+           \textbf{Estensioni} & 1.1 L'utente visualizza un messaggio di errore causato dall'inserimento di credenziali errate per il login (UCU2); \newline 3.1 L'utente a seguito del fallimento della registrazione, visualizza un messaggio di errore (UCU6). \\
+      \end{longtable}
+      \egroup
+\end{center}
+
+\subsubsection{UCU 1 - Login}    
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[width=12cm]{UML/UCU 1 - Login.png}
+      \caption{UCU 1 - Login}
+      \end{center} 
+    \end{figure}    
+    
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCU 1 - Login}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'utente non autenticato intende accedere all'applicazione, per farlo deve inserire le proprie credenziali composte da una email ed una password. \\ 
+          
+          \textbf{Precondizioni}  & L'applicazione predispone la pagina di autenticazione all'utente non autenticato fornendo un apposito form per l'inserimento delle credenziali.\\ 
+          
+          \textbf{Postcondizioni} & Il sistema ha autenticato l'utente e lo ha rediretto alla pagina Dashboard. \\ 
+          \textbf{Flusso Principale} & 1. L'utente inserisce l'email (UC1.1); \newline 2. L'utente inserisce la password (UC1.2). \newline \\
+           \textbf{Scenari Alternativi} & 1. L'utente non effettua l'autenticazione. \\
+      \end{longtable}
+      \egroup
+\end{center}
+
+\subsubsection{UCU 2 - Visualizzazione messaggio errore per credenziali errate} 
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCU 2 - Visualizzazione messaggio errore per credenziali errate}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'utente visualizza un messaggio di errore dato dall'inserimento di credenziali errate. \\ 
+          
+          \textbf{Precondizioni}  & L'applicazione ha verificato le credenziali inserite dall'utente.\\ 
+          
+          \textbf{Postcondizioni} & L'applicazione predispone la visualizzazione di un messaggio di errore e non autentica l'utente al sistema. \\ 
+          \textbf{Flusso Principale} & 1. L'utente non autenticato a seguito del tentativo di effettuare il login visualizza un messaggio di errore dato dal fallimento dell'operazione (UCU2). \\
+          
+      \end{longtable}
+      \egroup
+\end{center}
+
+\subsubsection{UCU 4 - Recupero password}    
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[width=12cm]{UML/UCU 4 - Recupero password.png}
+      \caption{UCU 4 - Recupero password}
+      \end{center} 
+    \end{figure}    
+    
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCU 4 - Recupero password}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'utente intende recuperare la password d'accesso all'applicazione. \\ 
+          
+          \textbf{Precondizioni}  & L'applicazione predispone e mostra all'utente non autenticato la possibilità di recupero password.\\ 
+          
+          \textbf{Postcondizioni} & L'applicazione ha effettuato le operazioni necessarie per il recupero password richiesta dall'utente non autenticato. \\ 
+          \textbf{Flusso Principale} & 1. L'utente richiede il reset della propria password d'accesso all'applicazione (UCU4.1); 2. L'utente, il quale ha richiesto reset della password, attraverso un link contenuto nell'email inviata dal sistema, accede alla pagina per il reset della password (UCU4.2). \\
+          
+      \end{longtable}
+      \egroup
+\end{center}
+
+\subsubsection{UCU 4.1 - Richiesta reset password}    
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[width=12cm]{UML/UCU 4.1 - Richiesta reset password.png}
+      \caption{UCU 4.1 - Richiesta reset password}
+      \end{center} 
+    \end{figure}    
+    
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCU 4.1 - Richiesta reset password}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'utente intende richiedere il reset della propria password d'accesso all'applicazione, per poterlo fare dovrà inserire un indirizzo email nel quale verrà inviata un email contenente il link dal quale potrà accedere alla pagina per effettuare il reset della propria passwor \\ 
+          
+          \textbf{Precondizioni}  & Il sistema predispone all'utente non autenticato una pagina con rispettivo modulo di inserimento dell'email per portare a termine la procedura di reset della password.\\ 
+          
+          \textbf{Postcondizioni} & Il sistema ha inviato correttamente l'email contente il link per completare la procedura relativa al reset della password utente. \\ 
+          \textbf{Flusso Principale} & 1. L'utente inserisce una email su cui verrà inviata l'email per completare l'operazione di reset della password (UCU4.1.1). \\
+          
+      \end{longtable}
+      \egroup
+\end{center}
+\subsection{Ambito Sviluppatore}
+\subsubsection{UCS 0 - Operazioni ad alto livello - Utente MaaS non autenticato} 
+    \begin{figure}[H]
+      \begin{center}
+      \includegraphics[width=12cm]{UML/UCS 0 - Operazioni ad alto livello - Utente MaaS non autenticato.png}
+      \caption{UCS 0 - Operazioni ad alto livello - Utente MaaS non autenticato}
+      \end{center} 
+    \end{figure}  
+    
+      %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}     
+      \begin{longtable}{  p{3.5cm} | p{8cm} } 
+            
+      \hline
+      \multicolumn{2}{ | c | }{ \cellcolor[gray]{0.9} \textbf{UCS 0 - Operazioni ad alto livello - Utente MaaS non autenticato}} \\ 
+      \hline
+      
+      \textbf{Attori Primari} & Utente MaaS non autenticato \\ 
+          \textbf{Scopo e Descrizione} & L'utente \glossario{MaaS} non autenticato può registrarsi al servizio \glossario{MaaS} o effettuare il login. \\ 
+          
+          \textbf{Precondizioni}  & \glossario{MaaS} è funzionante ed attende che l'utente non autenticato interagisca.\\ 
+          
+          \textbf{Postcondizioni} & Il servizio \glossario{MaaS} ha acquisito le informazioni necessarie per svolgere le azioni che l'utente \glossario{MaaS} non autenticato ha richiesto. \\
+          \textbf{Flusso Principale} & 1. L'utente \glossario{MaaS} non autenticato può registrarsi al servizio (UCM1); \newline
+2. L'utente \glossario{MaaS} non autenticato può effettuare il login (UCM4). \\
+           \textbf{Esclusioni} & 1.1 L'utente non autenticato visualizza un messaggio di errore dovuto all'esistenza delle credenziali inserite per registrarsi al servizio (UCM3); \newline
+2.1 L'utente visualizza un messaggio di errore dopo aver inserito dati non corretti nell'operazione di login (UC \\
+      \end{longtable}
+      \egroup
+\end{center}
+\subsection{Ambito Utente MaaS}

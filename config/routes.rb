@@ -15,7 +15,7 @@ Requisteak::Application.routes.draw do
   root 'home#index'
 
   get '/export_requirements'    => 'requirements#export'
-  #get '/export_use_cases'    => 'use_cases#export'
+  get '/export_use_cases'    => 'use_cases#export'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
