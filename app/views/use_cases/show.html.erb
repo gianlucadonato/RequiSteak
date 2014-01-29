@@ -8,7 +8,7 @@
         <ul class="left">
           <li class="has-form"><%= link_to 'Edit', edit_use_case_path(@use_case), class: "info button" %></li> 
           <li class="divider"></li>
-          <li class="has-form"><%= link_to 'Delete', edit_use_case_path(@use_case), class: "alert button" %></li>
+          <li class="has-form"><%= link_to 'Delete', @use_case, method: :delete, class: "alert button" %></li>
           <li class="divider"></li> 
         </ul>
 
