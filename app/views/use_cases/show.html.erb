@@ -131,10 +131,35 @@
                 </div>
           </div>
         </div>
-      </div>
+        <br>
+        <div class="row">
+          <div class="small-12 columns"> 
+            <div class="row">
+              <div class="small-12 columns">
+                <h4>ASSOCIATED REQUIREMENTS</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns">
+                <% if !@use_case.requirements.empty? %>
+                <% @use_case.requirements.each do |req| %>
+                    <table width="100%">
+                      <tr>
+                        <td width="100"><%= link_to req.title, requirement_path(req) %></td>
+                        <td><%= req.description %></td>
+                      </tr>
+                    </table>
+                <% end %>
+                <% else %>    
+                    <span>No requirements.</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <br>
+  </div>
   
   </div>
 </div>
