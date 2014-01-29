@@ -14,6 +14,9 @@ Requisteak::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/export_requirements'    => 'requirements#export'
+  #get '/export_use_cases'    => 'use_cases#export'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
