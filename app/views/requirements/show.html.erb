@@ -59,7 +59,8 @@
                 <td><%= @requirement.description %></td>
                 <td><% if !@requirement.sources.empty? 
                           @requirement.sources.each do |f| %>
-                            <%= "#{f.title}; " %>
+                            <%= "#{f.title}" %>
+                            <br>
                       <%  end 
                         end %>
                  </td>
