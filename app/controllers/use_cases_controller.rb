@@ -210,7 +210,7 @@ f<<"\\subsection{Ambito Utente MaaS}"
 @UCM.each do |d|
 f << "
 \\subsubsection{#{d.title}} "
-  if d.uml_path != ""  
+  if d.graph != ""  
   f <<"
     \\begin{figure}[H]
       \\begin{center}
