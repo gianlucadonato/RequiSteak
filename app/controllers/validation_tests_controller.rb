@@ -13,7 +13,7 @@ class ValidationTestsController < ApplicationController
   # GET /validation_tests/new
   def new
     @validation_test = ValidationTest.new
-    if !params[:r_id].empty?
+    if !params[:r_id].nil?
       req = Requirement.find_by_id(params[:r_id])
       @validation_test.title = "TV" + req.title
     end
@@ -25,7 +25,7 @@ class ValidationTestsController < ApplicationController
 
   # POST /validation_tests
   def create
-    if !params[:r_id].empty?
+    if !params[:r_id].nil?
       @req = Requirement.find_by_id(params[:r_id])
       @validation_test = ValidationTest.new(validation_test_params)
       if @validation_test.save
