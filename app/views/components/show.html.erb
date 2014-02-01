@@ -81,7 +81,7 @@
         <h4>INNER CLASSES</h4><br>
         <% if !@component.units.empty? %>
           <% @component.units.each do |unit| %>
-            <%=  nested_units unit.descendants.arrange %>
+            <%=  nested_units unit.subtree.arrange %>
           <% end %>
         <% else %>
           <p>No Inner Classes.</p>
