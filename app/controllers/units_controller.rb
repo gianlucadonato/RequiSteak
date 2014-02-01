@@ -9,15 +9,24 @@ class UnitsController < ApplicationController
   # GET /units/1
   def show
     @units = Unit.all
+    @components = Component.all
+    if !@unit.component_id.nil?
+      @component = Component.find_by_id(@unit.component_id)
+    end
   end
 
   # GET /units/new
   def new
-    unless params[:parent_id].nil?
+    unless params[:parent_id].nil? 
       @unit = Unit.new(parent_id: params[:parent_id])
       @unit.title = Unit.find_by_id(params[:parent_id]).title + "::?"
     else
-      @unit = Unit.new()
+      if !params[:component_id].nil?
+        @unit = Unit.new(component_id: params[:component_id])
+        @unit.title = Component.find_by_id(params[:component_id]).title + "::?"
+      else
+        @unit = Unit.new()
+      end
       @unit.ancestry = 0
     end
   end
@@ -29,7 +38,6 @@ class UnitsController < ApplicationController
   # POST /units
   def create
     @unit = Unit.new(unit_params)
-
     if @unit.save
       redirect_to @unit, notice: 'Unit was successfully created.'
     else

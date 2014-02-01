@@ -1,5 +1,6 @@
 class Component < ActiveRecord::Base
 	has_ancestry
+	has_many :units
 	has_many :packages, class_name: "Component", foreign_key: "package_id"
 	belongs_to :package, class_name: "Component"
 
