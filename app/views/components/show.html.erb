@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="small-12 columns">
+
+    <nav class="top-bar" data-topbar>
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form"><%= link_to 'Edit', edit_component_path(@component), class: "info button" %></li> 
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Delete', @component , method: :delete, class: "alert button" %></li>
+          <li class="divider"></li> 
+        </ul>
+        <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+            <%= link_to 'Add Child', new_component_path(parent_id: @component), class: "success button" %>
+          </li>
+          <li class="divider"></li> 
+            <li class="has-form"><a href="#" class="button red">Add Class</a></li>
+          <li class="divider"></li> 
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Add Pkg Interaction</a></li>
+          </ul>
+      </section>
+    </nav>
+    <br><br>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>COMPONENT</h4><br><br>
+        <div class="row">
+          <div class="small-6 small-centered columns">
+            <div class="row">
+                <h5>
+                  <% @component.ancestors.each do |p| %>
+                      <%= link_to(p.get_name, component_path(p)) + "::" %> 
+                  <% end %>
+                  <%= @component.get_name %>
+                </h5>
+            </div>
+            <div class="row"> 
+                <%= @component.graph.html_safe%>
+            </div>
+            <br>
+            <div class="row">
+              <div class="small-12 columns show_wrapper">  
+                <p>
+                  <label><strong>DESCRIZIONE</strong></label>
+                  <span><%= @component.description %></span>
+                </p>
+                <% if !@component.use.empty? %>
+                <p>
+                  <label><strong>UTILIZZO</strong></label>
+                  <span><%= @component.use %></span>
+                </p>
+                <% end %>
+                <% if !@component.descendants.empty?  %>
+                  <label><strong>PACKAGE CONTENUTI</strong></label>
+                  <ul>
+                    <% @component.descendants.each do |pkg| %>
+                      <li><%= link_to pkg.title, component_path(pkg) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if !@component.packages.empty?  %>
+                  <label><strong>INTERAZIONI CON ALTRE COMPONENTI</strong></label>
+                  <ul>
+                    <% @component.packages.each do |pkg| %>
+                      <li><%= link_to pkg.title, component_path(pkg) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>  
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
+<div id="addPackage" class="reveal-modal" data-reveal>
+  <h3>SET PACKAGE INTERACTION</h3>
+
+  <div class="row">
+    <%= form_for @component do |f| %>
+    <div class="medium-12 columns">
+      <div class="panel">  
+        <label><strong>PACKAGES</strong></label>
+        <p>
+            <%= f.collection_check_boxes(:package_ids, @packages, :id, :title ) do |b|
+                  b.label { b.check_box + "\ " + b.text } 
+                end 
+            %>
+        </p>
+      </div> 
+    </div>
+
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      <%= f.submit class: "button" %>
+    </div>
+  </div>
+<% end %>
+  <a class="close-reveal-modal">&#215;</a>        
+</div>

@@ -46,7 +46,21 @@
       </div>
     </div>
     <br>
-
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>ASSOCIATED REQUIREMENTS</h4><br>
+        <% if !@system_test.requirements.empty? %>
+          <% @system_test.requirements.each do |req| %>
+            <div class="panel">
+              <label><strong><%= link_to req.title, req %></strong></label>
+              <span><%= req.description %></span>
+            </div>
+          <% end %>
+        <% else %>
+            <label><strong>No requirements.</strong></label>
+        <% end %>
+      </div>
+    </div>
 		<%= link_to '<--Back', system_tests_path %>
 	</div>
 </div>

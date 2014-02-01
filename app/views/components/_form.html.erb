@@ -1,0 +1,21 @@
+<%= simple_form_for(@component) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.hidden_field :parent_id %>
+  <%= f.hidden_field :ancestry %>
+  
+  <div class="form-inputs">
+    <label><strong>TITLE</strong></label>
+    <%= f.input :title, label: false %>
+    <label><strong>DESCRIPTION</strong></label>
+    <%= f.input :description, label: false %>
+    <label><strong>USE</strong></label>
+    <%= f.input :use, label: false %>
+    <label><strong>GRAPH</strong></label>
+    <%= f.input :graph, label: false %>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit, class: "button" %>
+  </div>
+<% end %>

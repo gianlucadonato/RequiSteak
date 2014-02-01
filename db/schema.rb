@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129021249) do
+ActiveRecord::Schema.define(version: 20140131221151) do
+
+  create_table "components", force: true do |t|
+    t.string   "title",       null: false
+    t.text     "description"
+    t.text     "use"
+    t.text     "graph"
+    t.integer  "package_id"
+    t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "components", ["ancestry"], name: "index_components_on_ancestry", using: :btree
 
   create_table "requirements", force: true do |t|
     t.string   "system"

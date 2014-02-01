@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+		<h1>New Component</h1>
+
+		<%= render 'form' %>
+
+		<%= unless params[:parent_id].nil?
+					link_to '<-- Back', component_path(params[:parent_id]) 
+				else
+					link_to '<-- Back',  components_path 
+				end
+		%>
+
+	</div>
+</div>

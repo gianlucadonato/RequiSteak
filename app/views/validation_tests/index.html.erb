@@ -33,7 +33,7 @@
                       <label class="success label">Approved</label>
                     <% end %>
                 </td>
-                <td><%= validation_test.title %></td>
+                <td><%= link_to validation_test.title, validation_test_path(validation_test) %></td>
                 <td><%= validation_test.description %></td>
                 <td><%= link_to 'Show', validation_test %></td>
                 <td><%= link_to 'Edit', edit_validation_test_path(validation_test) %></td>

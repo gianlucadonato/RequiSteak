@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h1>Listing Components</h1>
+      </div>
+      <div class="small-6 columns">      
+        <%= link_to 'New Component', new_component_path, class: "button right" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Ancestry</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @components.each do |component| %>
+              <tr>
+                <td><%= link_to component.title, component_path(component) %></td>
+                <td><%= component.description %></td>
+                <td><%= component.ancestry %></td>
+                <td><%= link_to 'Show', component %></td>
+                <td><%= link_to 'Edit', edit_component_path(component) %></td>
+                <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
