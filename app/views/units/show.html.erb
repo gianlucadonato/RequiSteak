@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="small-12 columns">
+
+    <nav class="top-bar" data-topbar>
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form"><%= link_to 'Edit', edit_unit_path(@unit), class: "info button" %></li> 
+          <li class="divider"></li>
+          <li class="has-form"><%= link_to 'Delete', @unit , method: :delete, class: "alert button" %></li>
+          <li class="divider"></li> 
+        </ul>
+        <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="has-form">
+            <%= link_to 'Add Child', new_unit_path(parent_id: @unit), class: "success button" %>
+          </li>
+          <li class="divider"></li> 
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Add Class Interaction</a></li>
+          </ul>
+      </section>
+    </nav>
+    <br><br>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>CLASS</h4><br><br>
+        <div class="row">
+          <div class="small-6 small-centered columns">
+            <div class="row">
+                <h5>
+                  <% @unit.ancestors.each do |p| %>
+                      <%= link_to(p.get_name, component_path(p)) + "::" %> 
+                  <% end %>
+                  <%= @unit.get_name %>
+                </h5>
+            </div>
+            <br>
+            <div class="row">
+              <div class="small-12 columns show_wrapper">  
+                <p>
+                  <label><strong>DESCRIZIONE</strong></label>
+                  <span><%= @unit.description %></span>
+                </p>
+                <% if !@unit.use.empty? %>
+                <p>
+                  <label><strong>UTILIZZO</strong></label>
+                  <span><%= @unit.use %></span>
+                </p>
+                <% end %>
+                <% if !@unit.ancestors.empty?  %>
+                  <label><strong>CLASSI EREDITATE</strong></label>
+                  <ul>
+                    <% @unit.ancestors.each do |pkg| %>
+                      <li><%= link_to pkg.title, unit_path(pkg) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if !@unit.descendants.empty?  %>
+                  <label><strong>CLASSI FIGLIE</strong></label>
+                  <ul>
+                    <% @unit.descendants.each do |pkg| %>
+                      <li><%= link_to pkg.title, unit_path(pkg) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if !@unit.units.empty?  %>
+                  <label><strong>RELAZIONI CON ALTRE CLASSI</strong></label>
+                  <ul>
+                    <% @unit.units.each do |pkg| %>
+                      <li><%= link_to pkg.title, unit_path(pkg) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>  
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
+<div id="addPackage" class="reveal-modal" data-reveal>
+  <h3>SET CLASS RELATIONS</h3>
+
+  <div class="row">
+    <%= form_for @unit do |f| %>
+    <div class="medium-12 columns">
+      <div class="panel">  
+        <label><strong>CLASSES</strong></label>
+        <p>
+            <%= f.collection_check_boxes(:unit_ids, @units, :id, :title ) do |b|
+                  b.label { b.check_box + "\ " + b.text } 
+                end 
+            %>
+        </p>
+      </div> 
+    </div>
+
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      <%= f.submit class: "button" %>
+    </div>
+  </div>
+<% end %>
+  <a class="close-reveal-modal">&#215;</a>        
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131221151) do
+ActiveRecord::Schema.define(version: 20140201173308) do
 
   create_table "components", force: true do |t|
     t.string   "title",       null: false
@@ -69,6 +69,19 @@ ActiveRecord::Schema.define(version: 20140131221151) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "units", force: true do |t|
+    t.string   "title",        null: false
+    t.text     "description"
+    t.text     "use"
+    t.integer  "class_id"
+    t.integer  "component_id"
+    t.string   "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "units", ["ancestry"], name: "index_units_on_ancestry", using: :btree
 
   create_table "use_cases", force: true do |t|
     t.string   "system",           null: false

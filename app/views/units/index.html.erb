@@ -3,10 +3,10 @@
 
     <div class="row">
       <div class="small-6 columns">
-        <h1>Listing Components</h1>
+        <h1>Listing Classes</h1>
       </div>
       <div class="small-6 columns">      
-        <%= link_to 'New Component', new_component_path, class: "button right" %>
+        <%= link_to 'New Class', new_unit_path, class: "button right" %>
       </div>
     </div>
     <br>
@@ -24,13 +24,13 @@
           </thead>
 
           <tbody>
-            <% @components.each do |component| %>
+            <% @units.each do |unit| %>
               <tr>
-                <td><%= link_to component.title, component_path(component) %></td>
-                <td><%= component.description %></td>
-                <td><%= link_to 'Show', component %></td>
-                <td><%= link_to 'Edit', edit_component_path(component) %></td>
-                <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to unit.title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>

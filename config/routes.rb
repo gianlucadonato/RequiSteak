@@ -1,4 +1,6 @@
 Requisteak::Application.routes.draw do
+  resources :units
+
   resources :components
 
   resources :validation_tests
