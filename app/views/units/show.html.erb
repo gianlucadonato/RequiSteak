@@ -14,7 +14,7 @@
           <ul class="right">
             <li class="divider"></li>
             <li class="has-form">
-            <%= link_to 'Add Child', new_unit_path(parent_id: @unit), class: "success button" %>
+            <%= link_to 'Add Child', new_unit_path(parent_id: @unit, component_id: @unit.component_id), class: "success button" %>
           </li>
           <li class="divider"></li> 
             <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button red">Add Class Relation</a></li>

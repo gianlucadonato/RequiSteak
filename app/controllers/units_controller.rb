@@ -17,16 +17,17 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    unless params[:parent_id].nil? 
-      @unit = Unit.new(parent_id: params[:parent_id])
-      @unit.title = Unit.find_by_id(params[:parent_id]).title + "::?"
-    else
-      if !params[:component_id].nil?
+    unless params[:component_id].nil? 
+      if !params[:parent_id].nil?
+        @unit = Unit.new(parent_id: params[:parent_id], component_id: params[:component_id])
+        @unit.title = Unit.find_by_id(params[:parent_id]).title + "::?"
+      else
         @unit = Unit.new(component_id: params[:component_id])
         @unit.title = Component.find_by_id(params[:component_id]).title + "::?"
-      else
-        @unit = Unit.new()
+        @unit.ancestry = 0
       end
+    else
+      @unit = Unit.new()
       @unit.ancestry = 0
     end
   end
