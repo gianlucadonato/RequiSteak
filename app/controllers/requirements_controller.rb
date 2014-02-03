@@ -1,4 +1,5 @@
 class RequirementsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
   before_action :get_ordered_data , only: [:index, :show, :export]
   

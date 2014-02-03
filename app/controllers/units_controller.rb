@@ -1,4 +1,5 @@
 class UnitsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
 
   # GET /units

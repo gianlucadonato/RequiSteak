@@ -1,4 +1,5 @@
 class ValidationTestsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_validation_test, only: [:show, :edit, :update, :destroy]
 
   # GET /validation_tests

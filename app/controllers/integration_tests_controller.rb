@@ -1,4 +1,5 @@
 class IntegrationTestsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_integration_test, only: [:show, :edit, :update, :destroy]
 
   # GET /integration_tests

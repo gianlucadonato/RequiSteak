@@ -1,4 +1,5 @@
 class UseCasesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_use_case, only: [:show, :edit, :update, :destroy]
   before_action :get_ordered_data, only: [:index, :export]
   # GET /use_cases
