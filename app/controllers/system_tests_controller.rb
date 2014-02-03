@@ -26,7 +26,7 @@ class SystemTestsController < ApplicationController
 
   # POST /system_tests
   def create   
-    if !params[:r_id].nil?
+    if !params[:r_id].empty?
       @req = Requirement.find_by_id(params[:r_id])
       @system_test = SystemTest.new(system_test_params)
       if @system_test.save
