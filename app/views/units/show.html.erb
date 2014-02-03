@@ -91,25 +91,35 @@
   <h3>SET CLASS RELATIONS</h3>
 
   <div class="row">
-    <%= form_for @unit do |f| %>
     <div class="medium-12 columns">
-      <div class="panel">  
-        <label><strong>CLASSES</strong></label>
-        <p>
-            <%= f.collection_check_boxes(:unit_ids, @units, :id, :title ) do |b|
-                  b.label { b.check_box + "\ " + b.text } 
-                end 
-            %>
-        </p>
-      </div> 
+    <%= form_for @unit do |f| %>
+      <div class="row">
+        <div class="panel small-12 medium-6 columns">  
+          <label><strong>FRONT-END</strong></label>
+          <p>
+              <%= f.collection_check_boxes(:unit_ids, @frontend, :id, :title ) do |b|
+                    b.label { b.check_box + "\ " + b.text } 
+                  end 
+              %>
+          </p>
+        </div>
+        <div class="panel small-12 medium-6 columns">  
+          <label><strong>BACK-END</strong></label>
+          <p>
+              <%= f.collection_check_boxes(:unit_ids, @backend, :id, :title ) do |b|
+                    b.label { b.check_box + "\ " + b.text } 
+                  end 
+              %>
+          </p>
+        </div>  
+      </div>
     </div>
-
-  <div class="row">
-    <div class="small-4 small-centered columns">
-      <%= f.submit class: "button" %>
+    <div class="row">
+      <div class="small-4 small-centered columns">
+        <%= f.submit class: "button" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
   <a class="close-reveal-modal">&#215;</a>        
 </div>
 

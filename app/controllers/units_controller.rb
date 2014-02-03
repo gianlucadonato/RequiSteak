@@ -14,6 +14,15 @@ class UnitsController < ApplicationController
     if !@unit.component_id.nil?
       @component = Component.find_by_id(@unit.component_id)
     end
+    @frontend = [] unless @frontend
+    @backend = [] unless @backend
+    @units.each do |u|
+      if( u.title.split('::')[0] == "Front-end")
+        @frontend << u
+      else
+        @backend << u
+      end
+    end
   end
 
   # GET /units/new
