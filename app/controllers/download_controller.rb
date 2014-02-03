@@ -113,7 +113,7 @@ end #end back_comp.each
 	end #end export_backend
 
 	def export_frontend
-file = "front-packages.tex"
+file = "frontend-packages.tex"
     File.open(file, "wb+"){ |f|
       f << "\\subsection{Packages}"
      	front_comp = []
