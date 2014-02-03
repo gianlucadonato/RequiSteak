@@ -8,7 +8,7 @@ class DownloadController < ApplicationController
 file = "backend-packages.tex"
     File.open(file, "wb+"){ |f|
       f << "\\subsection{Packages}"
-     
+     	comp = []
       backend = Component.find_by_title("Back-end");
       if !backend.nil?
         comp << backend
@@ -114,5 +114,4 @@ end #end comp.each
 
 	def export_frontend
 	end #end export_frontend
-
 end
