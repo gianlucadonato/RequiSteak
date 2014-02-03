@@ -5,20 +5,20 @@
       <section class="top-bar-section">
         <!-- Left Nav Section -->
         <ul class="left">
-          <li class="has-form"><%= link_to 'Edit', edit_system_test_path(@system_test), class: "info button" %></li> 
+          <li class="has-form"><%= link_to 'Edit', edit_integration_test_path(@integration_test), class: "info button" %></li> 
           <li class="divider"></li>
-          <li class="has-form"><%= link_to 'Delete', @system_test , method: :delete, class: "alert button" %></li>
+          <li class="has-form"><%= link_to 'Delete', @integration_test , method: :delete, class: "alert button" %></li>
           <li class="divider"></li> 
         </ul>
         <ul class="right">
-	          <li class="has-form"><a href="#" data-reveal data-reveal-id="addREQ" class="button success">Add Requirements</a></li>
+	          <li class="has-form"><a href="#" data-reveal data-reveal-id="addCOMP" class="button success">Add Component</a></li>
 	        </ul>
       </section>
     </nav>
 
     <div class="row">
       <div class="small-12 columns panel">
-        <h4>SYSTEM TEST</h4><br>
+        <h4>INTEGRATION TEST</h4><br>
         <table width="100%">
           <thead>
             <tr>
@@ -31,14 +31,14 @@
           <tbody>
               <tr>
                 <td>
-                  <% if @system_test.status == false %>
+                  <% if @integration_test.status == false %>
                     <label class="alert label">Pending</label>
                   <% else %>
                     <label class="success label">Approved</label>
                   <% end %>
                 </td>
-                <td><%= @system_test.title %></td>
-                <td><%= @system_test.description %></td>
+                <td><%= @integration_test.title %></td>
+                <td><%= @integration_test.description %></td>
               </tr>
                 
           </tbody>
@@ -48,29 +48,29 @@
     <br>
     <div class="row">
       <div class="small-12 columns panel">
-        <h4>ASSOCIATED REQUIREMENTS</h4><br>
-        <% if !@system_test.requirements.empty? %>
-          <% @system_test.requirements.each do |req| %>
+        <h4>ASSOCIATED COMPONENTS</h4><br>
+        <% if !@integration_test.components.empty? %>
+          <% @integration_test.components.each do |comp| %>
             <div class="panel">
-              <label><strong><%= link_to req.title, req %></strong></label>
-              <span><%= req.description %></span>
+              <label><strong><%= link_to comp.title, comp %></strong></label>
+              <span><%= comp.description %></span>
             </div>
           <% end %>
         <% else %>
-            <label><strong>No requirements.</strong></label>
+            <label><strong>No components.</strong></label>
         <% end %>
       </div>
     </div>
-		<%= link_to '<--Back', system_tests_path %>
+		<%= link_to '<--Back', integration_tests_path %>
 	</div>
 </div>
 
-<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
-<div id="addREQ" class="reveal-modal" data-reveal>
-  <h3>ADD REQUIREMENTS</h3>
+<!-- MODAL WINDOW FOR IT<->COMPONENTS ASSOCIATIONS -->
+<div id="addCOMP" class="reveal-modal" data-reveal>
+  <h3>ADD COMPONENTS</h3>
 
-		<%= simple_form_for @system_test do |f| %>
-		  <%= f.association :requirements, as: :check_boxes, include_blank: false %>
+		<%= simple_form_for @integration_test do |f| %>
+		  <%= f.association :components, as: :check_boxes, include_blank: false %>
 		  
 		  <%= f.submit class: "button" %>
 		<% end %>

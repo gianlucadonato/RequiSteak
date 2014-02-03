@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201173308) do
+ActiveRecord::Schema.define(version: 20140202235241) do
 
   create_table "components", force: true do |t|
-    t.string   "title",       null: false
+    t.string   "title",               null: false
     t.text     "description"
     t.text     "use"
     t.text     "graph"
@@ -22,9 +22,18 @@ ActiveRecord::Schema.define(version: 20140201173308) do
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "integration_test_id"
   end
 
   add_index "components", ["ancestry"], name: "index_components_on_ancestry", using: :btree
+
+  create_table "integration_tests", force: true do |t|
+    t.string   "title",       null: false
+    t.boolean  "status"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "requirements", force: true do |t|
     t.string   "system"

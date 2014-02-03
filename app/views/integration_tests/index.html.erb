@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h1>Listing Integration Test</h1>
+      </div>
+      <div class="small-6 columns">      
+        <%= link_to 'New Integration Test', new_integration_test_path, class: "button right" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+        <table width="100%">
+          <thead>
+            <tr>
+              <th width="8%">Status</th>
+              <th width="12%">Title</th>
+              <th width="65%">Description</th>
+              <th width="5%"></th>
+              <th width="4%"></th>
+              <th width="6%"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @integration_tests.each do |integration_test| %>
+              <tr>
+                <td><% if integration_test.status == false %>
+                      <label class="alert label">Pending</label>
+                    <% else %>
+                      <label class="success label">Approved</label>
+                    <% end %>
+                </td>
+                <td><%= link_to integration_test.title, integration_test_path(integration_test) %></td>
+                <td><%= integration_test.description %></td>
+                <td><%= link_to 'Show', integration_test %></td>
+                <td><%= link_to 'Edit', edit_integration_test_path(integration_test) %></td>
+                <td><%= link_to 'Destroy', integration_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

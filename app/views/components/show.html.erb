@@ -19,7 +19,9 @@
           <li class="divider"></li> 
             <li class="has-form"><%= link_to 'Add Class', new_unit_path(component_id: @component), class: "red button" %></li>
           <li class="divider"></li> 
-            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Add Pkg Interaction</a></li>
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Set Package</a></li>
+          <li class="divider"></li>
+            <li class="has-form"><%= link_to 'Add Integration Test', new_integration_test_path(comp_id: @component), class: "button velvet" %></li>
           </ul>
       </section>
     </nav>
@@ -28,14 +30,16 @@
       <div class="small-12 columns panel">
         <h4>COMPONENT</h4><br><br>
         <div class="row">
-          <div class="small-6 small-centered columns">
+          <div class="small-12 medium-6 medium-centered columns">
             <div class="row">
-                <h4>
-                  <% @component.ancestors.each do |p| %>
-                      <%= link_to(p.get_name, component_path(p)) + "::" %> 
-                  <% end %>
-                  <%= @component.get_name %>
-                </h4>
+                <div class="small-12 columns">
+                  <h4>
+                    <% @component.ancestors.each do |p| %>
+                        <%= link_to(p.get_name, component_path(p)) + "::" %> 
+                    <% end %>
+                    <%= @component.get_name %>
+                  </h4>
+                </div>
             </div>
             <div class="row"> 
                 <%= @component.graph.html_safe%>
@@ -85,6 +89,19 @@
           <% end %>
         <% else %>
           <p>No Inner Classes.</p>
+        <% end %>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>INTEGRATION TEST</h4><br>
+        <% if !@component.integration_test.nil? %>
+            <div class="panel">
+              <label><strong><%= link_to @component.integration_test.title, @component.integration_test %></strong></label>
+              <span><%= @component.integration_test.description %></span>
+            </div>
+        <% else %>
+          <p>No Integration Test associated.</p>
         <% end %>
       </div>      
     </div>

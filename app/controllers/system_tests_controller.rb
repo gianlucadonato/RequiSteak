@@ -15,7 +15,7 @@ class SystemTestsController < ApplicationController
     @system_test = SystemTest.new
     if !params[:r_id].nil?
       req = Requirement.find_by_id(params[:r_id])
-      @system_test.title = "TS" + req.title
+      @system_test.title = "TS-" + req.title
     end
   end
 
@@ -24,8 +24,7 @@ class SystemTestsController < ApplicationController
   end
 
   # POST /system_tests
-  def create
-    
+  def create   
     if !params[:r_id].nil?
       @req = Requirement.find_by_id(params[:r_id])
       @system_test = SystemTest.new(system_test_params)
