@@ -33,11 +33,11 @@ back_comp.each do |comp|
     \\item[] #{comp.description}
     \\end{itemize} "
 
-  if !comp.descendants.empty?
+  if !comp.children.empty?
   f << "
     \\subparagraph{Package contenuti} 
     \\begin{itemize}"
-    comp.descendants.each do |pkg|  
+    comp.children.each do |pkg|  
       f << "
         \\item #{pkg.title}" 
     end
@@ -141,11 +141,11 @@ front_comp.each do |comp|
     \\item[] #{comp.description}
     \\end{itemize} "
 
-  if !comp.descendants.empty?
+  if !comp.children.empty?
   f << "
     \\subparagraph{Package contenuti} 
     \\begin{itemize}"
-    comp.descendants.each do |pkg|  
+    comp.children.each do |pkg|  
       f << "
         \\item #{pkg.title}" 
     end

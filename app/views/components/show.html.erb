@@ -57,10 +57,10 @@
                   <span><%= @component.use %></span>
                 </p>
                 <% end %>
-                <% if !@component.descendants.empty?  %>
+                <% if !@component.children.empty?  %>
                   <label><strong>PACKAGE CONTENUTI</strong></label>
                   <ul>
-                    <% @component.descendants.each do |pkg| %>
+                    <% @component.children.each do |pkg| %>
                       <li><%= link_to pkg.title, component_path(pkg) %></li>
                     <% end %>
                   </ul>
