@@ -15,11 +15,11 @@
 <!-- Right Nav Section -->
 <ul class="right">
 	<li><a href="/">Home</a></li>
-
 	<% if user_signed_in? %>
 	  <li class="has-dropdown">
 	    <%= link_to current_user.email, "#" %>
 	    <ul class="dropdown">
+  			<li><%= link_to 'Download LaTeX', downloads_path %></li>
 	      <li class="active"><%= link_to "Edit profile", edit_user_registration_path %></li>
 	      <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 	    </ul>

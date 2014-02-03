@@ -16,7 +16,7 @@ class ValidationTestsController < ApplicationController
     @validation_test = ValidationTest.new
     if !params[:r_id].nil?
       req = Requirement.find_by_id(params[:r_id])
-      @validation_test.title = "TV" + req.title
+      @validation_test.title = "TV-" + req.title
     end
   end
 
