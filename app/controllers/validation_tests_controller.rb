@@ -27,7 +27,6 @@ class ValidationTestsController < ApplicationController
   # POST /validation_tests
   def create
     if !params[:r_id].empty?
-      throw err
       @req = Requirement.find_by_id(params[:r_id])
       @validation_test = ValidationTest.new(validation_test_params)
       if @validation_test.save
