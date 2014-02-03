@@ -25,7 +25,24 @@ class IntegrationTestsController < ApplicationController
 
   # POST /integration_tests
   def create
-
+    if !params[:comp_id].nil?
+      @comp = Component.find_by_id(params[:comp_id])
+      @integration_test = IntegrationTest.new(integration_test_params)
+      if @integration_test.save
+        @comp.integration_test = @integration_test
+        @comp.save
+        redirect_to @comp, notice: "Integration Test successfully added"
+      else
+        render action: 'new'
+      end
+    else
+      @integration_test = IntegrationTest.new(integration_test_params)
+      if @integration_test.save
+        redirect_to @integration_test, notice: 'Integration test was successfully created.'
+      else
+        render action: 'new'
+      end
+    end
   end
 
   # PATCH/PUT /integration_tests/1
@@ -53,6 +70,6 @@ class IntegrationTestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def integration_test_params
-      params.require(:integration_test).permit(:title, :status, :description)
+      params.require(:integration_test).permit(:title, :status, :description, :comp_id)
     end
 end
