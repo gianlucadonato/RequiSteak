@@ -20,12 +20,11 @@ Requisteak::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get '/downloads'             => 'download#index'
-  get '/downloads/back-end'    => 'download#export_backend', as: 'downloads_backend'
-  get '/downloads/front-end'   => 'download#export_frontend', as: 'downloads_frontend'
-
-  get '/export_requirements'   => 'requirements#export'
-  get '/export_use_cases'      => 'use_cases#export'
+  get '/downloads'                => 'download#index'
+  get '/downloads/use_cases'      => 'download#export_use_cases', as: 'downloads_use_cases'
+  get '/downloads/requirements'   => 'download#export_requirements', as: 'downloads_requirements'
+  get '/downloads/back-end'       => 'download#export_backend', as: 'downloads_backend'
+  get '/downloads/front-end'      => 'download#export_frontend', as: 'downloads_frontend'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

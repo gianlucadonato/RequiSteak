@@ -1,1 +1,141 @@
-Hello
+\section{Requisiti }
+I requisiti funzionali, prestazionali, di qualità e di vincolo individuati sono riportati nelle seguenti tabelle. Ogni requisito è identificato da un codice univoco.
+Viene inoltre indicato se si tratta di un requisito fondamentale, desiderabile o facoltativo, una sua descrizione e il caso d'uso da cui è stato individuato. 
+
+Ogni requisito è identificato da un codice, che segue il seguente formalismo:
+\begin{center}
+    \code{R\{X\}\{Y\}\{Z\} \{Gerarchia\}}
+\end{center}
+
+Dove:
+\begin{itemize}
+ \item \textbf{X} corrisponde al sistema di riferimento e può assumere i seguenti valori:
+    \begin{itemize}
+     \item[] \textbf{A} = Applicazione \glossario{Maap};
+     \item[] \textbf{F} = \glossario{Framework MaaP};
+     \item[] \textbf{S} = \glossario{MaaS}.
+    \end{itemize}
+
+ \item \textbf{Y} corrisponde alla tipologia del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+     \item[] \textbf{1} = Funzionale;
+     \item[] \textbf{2} = Prestazionale;
+     \item[] \textbf{3} = Di Qualità;
+     \item[] \textbf{4} = Vincolo.
+    \end{itemize}
+
+ \item \textbf{Z} corrisponde alla priorità del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+     \item[] \textbf{O} = Obbligatorio
+     \item[] \textbf{D} = Desiderabile
+     \item[] \textbf{F} = Facoltativo o Opzionale
+    \end{itemize}
+
+ \item \textbf{Gerarchia} identifica la relazione gerarchica che c'è tra i requisiti di uno stesso tipo. C'è quindi una struttura gerarchica per ogni tipologia di requisito.
+\end{itemize}
+
+\subsection{Requisiti funzionali }
+
+    %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}
+      \begin{longtable}{ | l | p{2cm} | p{5cm} | p{1.7cm} |}
+    
+      \cellcolor[gray]{0.9} \textbf{Requisito} & \cellcolor[gray]{0.9} \textbf{Tipologia} 
+      & \cellcolor[gray]{0.9} \textbf{Descrizione} & \cellcolor[gray]{0.9} \textbf{Fonti} \\ \hline
+      
+        RA1O 1 & Funzionale \newline  Obbligatorio  & Il sistema permette all'utente non autenticato di autenticarsi tramite la visualizzazione di una pagina web, la quale conterrà al suo interno i campi di testo necessari.  &  UCS 0 \newline  UCU 4 \newline  UCU 4.1 \newline  \\ \hline      
+        RA1O 1.1 & Funzionale \newline  Obbligatorio  & Il sistema prevede l'inserimento dell'indirizzo email per la verifica delle credenziali in un apposito campo di testo. &  \\ \hline      
+        RA1O 1.2 & Funzionale \newline  Obbligatorio  & Il sistema prevede l'inserimento di password per la verifica delle credenziali in un apposito campo di testo. &  UCU 4.1 \newline  \\ \hline      
+        RA1O 1.3 & Funzionale \newline  Obbligatorio  & Il sistema, tramite un database indipendente, ovvero separato da quello che contiene la Collection, provvede a verificare l'autenticità  di un utente tramite la verifica di email e password. &  \\ \hline      
+        RA1O 1.3.1 & Funzionale \newline  Obbligatorio  & Il sistema mette a disposizione la visualizzazione di una pagina di errore in caso di fallimento dell'autenticazione da parte dell'utente. &  \\ \hline      
+        RA1O 1.3.2 & Funzionale \newline  Obbligatorio  & Il sistema, nel caso in cui l'autenticazione da parte dell'utente abbia avuto successo, reindirizza automaticamente l'utente sulla dashboard dell'applicazione. &  \\ \hline      
+        RA1O 2.1.5.9 & Funzionale \newline  Obbligatorio  & prova &  \\ \hline      
+        RA1O 4.2 & Funzionale \newline  Obbligatorio  & prova &  \\ \hline      
+        RA1O 5.1 & Funzionale \newline  Obbligatorio  & prova &  \\ \hline      
+        RA1O 5.10 & Funzionale \newline  Obbligatorio  & prova &  \\ \hline
+      \end{longtable}
+      \egroup
+      \end{center}  
+\clearpage
+
+\subsection{Requisiti di qualità }
+
+    %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}
+      \begin{longtable}{ | l | p{2cm} | p{5cm} | p{1.7cm} |}
+    
+      \cellcolor[gray]{0.9} \textbf{Requisito} & \cellcolor[gray]{0.9} \textbf{Tipologia} 
+      & \cellcolor[gray]{0.9} \textbf{Descrizione} & \cellcolor[gray]{0.9} \textbf{Fonti} \\ \hline
+      
+        R3O 1 & Qualità \newline  Obbligatorio  & Devono essere prodotti e rilasciati manuali d'uso ed ogni altra documentazione tecnica necessaria per l’utilizzo del prodotto. &  \\ \hline
+      \end{longtable}
+      \egroup
+      \end{center}  
+\clearpage
+
+\subsection{Requisiti di vincolo }
+
+    %Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}
+      \begin{longtable}{ | l | p{2cm} | p{5cm} | p{1.7cm} |}
+    
+      \cellcolor[gray]{0.9} \textbf{Requisito} & \cellcolor[gray]{0.9} \textbf{Tipologia} 
+      & \cellcolor[gray]{0.9} \textbf{Descrizione} & \cellcolor[gray]{0.9} \textbf{Fonti} \\ \hline
+      
+        RA4O 1 & Vincolo \newline  Obbligatorio  & L’implementazione della componente server deve essere realizzata utilizzando Node.js. &  \\ \hline      
+        R4O 1 & Vincolo \newline  Obbligatorio  & Deve essere utilizzato Express per la realizzazione dell’infrastruttura della web application. &  Capitolato \newline  Interno \newline  Verbale-2013-12-05 \newline  Verbale-2013-12-18 \newline  UCU 0 \newline  \\ \hline
+      \end{longtable}
+      \egroup
+      \end{center}  
+\clearpage
+\section{Tracciamento Requisiti}
+\subsection{Tracciamento requisiti-fonti}
+%Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}
+      \begin{longtable}{ | p{5cm} | p{5cm} |}
+    
+      \cellcolor[gray]{0.9} \textbf{Requisiti} & \cellcolor[gray]{0.9} \textbf{Fonti} \\ \hline       
+        RA1O 1 &  UCS 0 \newline  UCU 4 \newline  UCU 4.1 \newline  \\ \hline      
+        RA1O 1.1 &  \\ \hline      
+        RA1O 1.2 &  UCU 4.1 \newline  \\ \hline      
+        RA1O 1.3 &  \\ \hline      
+        RA1O 1.3.1 &  \\ \hline      
+        RA1O 1.3.2 &  \\ \hline      
+        RA1O 2.1.5.9 &  \\ \hline      
+        RA1O 4.2 &  \\ \hline      
+        RA1O 5.1 &  \\ \hline      
+        RA1O 5.10 &  \\ \hline      
+        R3O 1 &  \\ \hline      
+        RA4O 1 &  \\ \hline      
+        R4O 1 &  Capitolato \newline  Interno \newline  Verbale-2013-12-05 \newline  Verbale-2013-12-18 \newline  UCU 0 \newline  \\ \hline     
+      \end{longtable}
+      \egroup
+      \end{center}  
+\clearpage
+
+\subsection{Tracciamento fonti-requisiti}
+%Tabella 
+      \begin{center}
+      \bgroup
+      \def\arraystretch{1.8}
+      \begin{longtable}{ | p{5cm} | p{5cm} |}
+    
+      \cellcolor[gray]{0.9} \textbf{Fonti} & \cellcolor[gray]{0.9} \textbf{Requisiti} \\ \hline       
+            UCU 1 - Login &  \\ \hline      
+            UCU 2 - Visualizzazione messaggio errore per credenziali errate &  \\ \hline      
+            UCU 4 - Recupero password &  RA1O 1 \newline  \\ \hline      
+            UCU 4.1 - Richiesta reset password &  RA1O 1 \newline  RA1O 1.2 \newline  \\ \hline      
+            UCS 0 - Operazioni ad alto livello - Utente MaaS non autenticato &  RA1O 1 \newline  \\ \hline     
+      \end{longtable}
+      \egroup
+      \end{center}  
+\clearpage
+
