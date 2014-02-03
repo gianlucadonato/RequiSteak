@@ -1,10 +1,10 @@
 class ComponentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_component, only: [:show, :edit, :update, :destroy]
+  before_action :get_data, only: [:index, :show]
 
   # GET /components
   def index
-    @components = Component.all
   end
 
   # GET /components/1
@@ -59,6 +59,24 @@ class ComponentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_component
       @component = Component.find(params[:id])
+    end
+
+    def get_data
+      @components = Component.all
+      @frontend = [] unless @frontend
+      @backend = [] unless @backend
+      @other = [] unless @other
+      @components.each do |u|
+        if( u.title.split('::')[0] == "Front-end")
+          @frontend << u
+        else
+          if( u.title.split('::')[0] == "Back-end")
+            @backend << u
+          else
+            @other << u
+          end
+        end
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

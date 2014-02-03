@@ -12,6 +12,7 @@
     <br>
     <div class="row">
       <div class="small-12 columns">
+      <label><strong>FRONT-END</strong></label>
         <table width="100%">
           <thead>
             <tr>
@@ -24,7 +25,7 @@
           </thead>
 
           <tbody>
-            <% @units.each do |unit| %>
+            <% @frontend.each do |unit| %>
               <tr>
                 <td><%= link_to unit.title, unit_path(unit) %></td>
                 <td><%= unit.description %></td>
@@ -37,5 +38,65 @@
         </table>
       </div>
     </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+      <label><strong>BACK-END</strong></label>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @backend.each do |unit| %>
+              <tr>
+                <td><%= link_to unit.title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <% if !@other.empty? %>
+    <div class="row">
+      <div class="small-12 columns">
+      <label><strong>OTHER CLASSES</strong></label>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @other.each do |unit| %>
+              <tr>
+                <td><%= link_to unit.title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

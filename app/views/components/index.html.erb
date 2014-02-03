@@ -12,6 +12,7 @@
     <br>
     <div class="row">
       <div class="small-12 columns">
+        <label><strong>FRONT_END</strong></label>
         <table width="100%">
           <thead>
             <tr>
@@ -24,7 +25,7 @@
           </thead>
 
           <tbody>
-            <% @components.each do |component| %>
+            <% @frontend.each do |component| %>
               <tr>
                 <td><%= link_to component.title, component_path(component) %></td>
                 <td><%= component.description %></td>
@@ -37,5 +38,65 @@
         </table>
       </div>
     </div>
+    <br>
+        <div class="row">
+      <div class="small-12 columns">
+        <label><strong>BACK_END</strong></label>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @backend.each do |component| %>
+              <tr>
+                <td><%= link_to component.title, component_path(component) %></td>
+                <td><%= component.description %></td>
+                <td><%= link_to 'Show', component %></td>
+                <td><%= link_to 'Edit', edit_component_path(component) %></td>
+                <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <% if !@other.empty? %>  
+      <div class="row">
+        <div class="small-12 columns">
+          <label><strong>OTHER COMPONENTS</strong></label>
+          <table width="100%">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @other.each do |component| %>
+                <tr>
+                  <td><%= link_to component.title, component_path(component) %></td>
+                  <td><%= component.description %></td>
+                  <td><%= link_to 'Show', component %></td>
+                  <td><%= link_to 'Edit', edit_component_path(component) %></td>
+                  <td><%= link_to 'Destroy', component, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

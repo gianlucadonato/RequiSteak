@@ -1,27 +1,17 @@
 class UnitsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :get_data, only: [:index, :show]
 
   # GET /units
   def index
-    @units = Unit.all
   end
 
   # GET /units/1
   def show
-    @units = Unit.all
     @components = Component.all
     if !@unit.component_id.nil?
       @component = Component.find_by_id(@unit.component_id)
-    end
-    @frontend = [] unless @frontend
-    @backend = [] unless @backend
-    @units.each do |u|
-      if( u.title.split('::')[0] == "Front-end")
-        @frontend << u
-      else
-        @backend << u
-      end
     end
   end
 
@@ -77,6 +67,24 @@ class UnitsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
       @unit = Unit.find(params[:id])
+    end
+
+    def get_data
+      @units = Unit.all
+      @frontend = [] unless @frontend
+      @backend = [] unless @backend
+      @other = [] unless @other
+      @units.each do |u|
+        if( u.title.split('::')[0] == "Front-end")
+          @frontend << u
+        else
+          if( u.title.split('::')[0] == "Back-end")
+            @backend << u
+          else
+            @other << u
+          end
+        end
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
