@@ -2,7 +2,8 @@
   <%= f.error_notification %>
 
   <%= f.hidden_field :parent_id %>
-  
+  <%= f.hidden_field :ancestry %>
+
   <div class="form-inputs">
     <label><strong>TITLE</strong></label>
     <%= f.input :title, label: false %>
@@ -12,8 +13,6 @@
     <%= f.input :use, label: false %>
     <label><strong>GRAPH</strong></label>
     <%= f.input :graph, label: false %>
-    <label><strong>ANCESTRY</strong></label>
-    <%= f.input :ancestry, label: false %>
   </div>
   <br>
   <div class="form-actions">
