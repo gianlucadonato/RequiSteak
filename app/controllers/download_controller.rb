@@ -789,7 +789,7 @@ f << "
     File.open(file, "wb+"){ |f| 
 
 f << "
-\\section{Tracciamento Test di sistema-requisiti}
+\\section{Tracciamento Test di Sistema-Requisiti}
 
   \\begin{center}
   \\def\\arraystretch{1.5}
@@ -830,14 +830,14 @@ f << "
     File.open(file, "wb+"){ |f| 
 
 f << "
-\\section{Tracciamento Test di sistema-requisiti}
+\\section{Tracciamento Test di Validazione-Requisiti}
 
   \\begin{center}
   \\def\\arraystretch{1.5}
   \\bgroup
     \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
     \\hline 
-     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+     \\textbf{Test di Validazione} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
       
       validation_test.each do |vt|
       f << "
