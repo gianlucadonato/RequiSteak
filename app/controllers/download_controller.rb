@@ -771,8 +771,12 @@ f << "
       system_test.each do |st|
       f << "
         #{st.title} & 
-        #{st.description} & 
-        #{st.status} & "
+        #{st.description} & "
+        if st.status == false
+          f << "N.I &"
+        else
+          f << "Approved &"
+        end
         if !st.requirements.empty?
           st.requirements.each do |r|
           f << "       
@@ -808,8 +812,12 @@ f << "
       validation_test.each do |vt|
       f << "
         #{vt.title} & 
-        #{vt.description} & 
-        #{vt.status} & "
+        #{vt.description} & " 
+        if vt.status == false
+          f << "N.I &"
+        else
+          f << "Approved &"
+        end
         if !vt.requirements.empty?
           vt.requirements.each do |r|
           f << "       
