@@ -815,6 +815,7 @@ f << "
       f << " \\\\ \\hline "
       end
 f << "
+    \\caption{Tracciamento Test di Sistema - Requisiti}
     \\end{longtable}
    \\egroup
 \\end{center}"
@@ -854,6 +855,7 @@ f << "
       f << " \\\\ \\hline "
       end
 f << "
+    \\caption{Tracciamento Test di Validazione - Requisiti}
     \\end{longtable}
    \\egroup
 \\end{center}"
