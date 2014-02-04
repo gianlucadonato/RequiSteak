@@ -752,4 +752,78 @@ end
       }
     send_file(file)
   end #end export_requirements
+
+  def export_ts_req
+    system_test = SystemTest.all.sort!{ |a,b| confronta_test(a,b) }
+    file = "capitolo-test-di-sistema-requisiti.tex"
+    File.open(file, "wb+"){ |f| 
+
+f << "
+\\section{Tracciamento Test di sistema-requisiti}
+
+  \\begin{center}
+  \\def\\arraystretch{1.5}
+  \\bgroup
+    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
+    \\hline 
+     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+      
+      system_test.each do |st|
+      f << "
+        #{st.title} & 
+        #{st.description} & 
+        #{st.status} & "
+        if !st.requirements.empty?
+          st.requirements.each do |r|
+          f << "       
+            #{r.title} \\newline " 
+          end
+        end
+      f << " \\\\ \\hline "
+      end
+f << "
+    \\end{longtable}
+   \\egroup
+\\end{center}"
+
+    }
+    send_file(file)
+  end #end export_ts_req
+
+  def export_tv_req
+    validation_test = ValidationTest.all.sort!{ |a,b| confronta_test(a,b) }
+    file = "capitolo-test-di-sistema-requisiti.tex"
+    File.open(file, "wb+"){ |f| 
+
+f << "
+\\section{Tracciamento Test di sistema-requisiti}
+
+  \\begin{center}
+  \\def\\arraystretch{1.5}
+  \\bgroup
+    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
+    \\hline 
+     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+      
+      validation_test.each do |vt|
+      f << "
+        #{vt.title} & 
+        #{vt.description} & 
+        #{vt.status} & "
+        if !vt.requirements.empty?
+          vt.requirements.each do |r|
+          f << "       
+            #{r.title} \\newline " 
+          end
+        end
+      f << " \\\\ \\hline "
+      end
+f << "
+    \\end{longtable}
+   \\egroup
+\\end{center}"
+
+    }
+    send_file(file)
+  end #end export_ts_req
 end

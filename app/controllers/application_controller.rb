@@ -7,4 +7,7 @@ class ApplicationController < ActionController::Base
     return a.hierarchy.split('.').map(&:to_i) <=> b.hierarchy.split('.').map(&:to_i)
   end
 
+  def confronta_test(a,b)
+  	return a.title.split(' ')[1].split('.').map(&:to_i) <=> b.title.split(' ')[1].split('.').map(&:to_i)
+  end
 end

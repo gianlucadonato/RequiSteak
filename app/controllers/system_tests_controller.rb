@@ -4,7 +4,7 @@ class SystemTestsController < ApplicationController
 
   # GET /system_tests
   def index
-    @system_tests = SystemTest.all
+    @system_tests = SystemTest.all.sort!{ |a,b| confronta_test(a,b) }
   end
 
   # GET /system_tests/1
