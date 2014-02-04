@@ -757,7 +757,7 @@ f << "
   \\bgroup
     \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
     \\hline 
-     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+     \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Sistema} \\\\ \\hline"   
       
       @funzionali.each do |req|
       f << "
@@ -782,7 +782,7 @@ f << "
   \\bgroup
     \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
     \\hline 
-     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+     \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Validazione} \\\\ \\hline"   
       
       @funzionali.each do |req|
       f << "
