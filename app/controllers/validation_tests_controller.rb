@@ -50,7 +50,7 @@ class ValidationTestsController < ApplicationController
   def update
     if @validation_test.update(validation_test_params)
 
-      @validation_test.requirement_ids = params[:validation_test][:requirement_ids]
+      @validation_test.requirement_ids = params[:validation_test][:requirement_ids] unless params[:validation_test][:requirement_ids].blank?
       @validation_test.save
       redirect_to @validation_test, notice: 'Validation test was successfully updated.'
     else

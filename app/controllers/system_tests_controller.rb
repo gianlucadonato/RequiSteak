@@ -49,7 +49,7 @@ class SystemTestsController < ApplicationController
   # PATCH/PUT /system_tests/1
   def update
     if @system_test.update(system_test_params)
-      @system_test.requirement_ids = params[:system_test][:requirement_ids]
+      @system_test.requirement_ids = params[:system_test][:requirement_ids] unless params[:system_test][:requirement_ids].blank?
       @system_test.save
       redirect_to @system_test, notice: 'System test was successfully updated.'
     else
