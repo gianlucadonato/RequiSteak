@@ -755,7 +755,7 @@ f << "
   \\begin{center}
   \\def\\arraystretch{1.5}
   \\bgroup
-    \\begin{longtable}{| p{2.5cm} | p{5cm} | p{2.5cm} | p{3cm} | }
+    \\begin{longtable}{| p{2cm} | p{6cm} | p{2.5cm} | p{2.5cm} | }
     \\hline 
      \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Sistema} & \\textbf{Test di Validazione} \\\\ \\hline"   
       
