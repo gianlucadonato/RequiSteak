@@ -120,7 +120,7 @@ end #end back_comp.each
 	def export_frontend
 file = "frontend-packages.tex"
     File.open(file, "wb+"){ |f|
-      f << "\\subsection{Descrizione componenti Front-end}"
+
      	front_comp = []
       frontend = Component.find_by_title("Front-end");
       if !frontend.nil?
@@ -136,7 +136,7 @@ front_comp.each do |comp|
 
     \\begin{figure}[H] 
       \\begin{center} 
-        %\\includegraphics[scale=1]{packages/NomePackage.png}  
+        \\includegraphics[scale=1]{packages/#{comp.title}.png}  
         \\caption{Componente #{comp.title}}
       \\end{center}  
     \\end{figure} 
