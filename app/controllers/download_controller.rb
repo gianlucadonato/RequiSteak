@@ -750,7 +750,7 @@ end
 
 
 f << "
-\\subsection{Tracciamento Requisiti - Test di Sistema}
+\\subsection{Tracciamento Requisiti - Test di Sistema e Validazione}
 
   \\begin{center}
   \\def\\arraystretch{1.5}
