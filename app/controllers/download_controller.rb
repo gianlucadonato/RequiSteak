@@ -527,6 +527,7 @@ f << "
 end
 
     f << "
+      \\caption{Requisiti funzionali}
       \\end{longtable}
       \\egroup
       \\end{center}  
@@ -575,6 +576,7 @@ f << "
 end
 
     f << "
+      \\caption{Requisiti di qualità}
       \\end{longtable}
       \\egroup
       \\end{center}  
@@ -623,6 +625,7 @@ f << "
 end
 
     f << "
+      \\caption{Requisiti di vincolo}
       \\end{longtable}
       \\egroup
       \\end{center}  
@@ -693,7 +696,8 @@ f << "
     f << " \\\\ \\hline"    
 end
 
-    f << "     
+    f << "  
+      \\caption{Tracciamento requisiti-fonti}    
       \\end{longtable}
       \\egroup
       \\end{center}  
@@ -742,7 +746,8 @@ end
         f << " \\\\ \\hline"  
       end
 
-      f << "     
+      f << "  
+      \\caption{Tracciamento fonti-requisiti}   
       \\end{longtable}
       \\egroup
       \\end{center}  
@@ -774,6 +779,7 @@ f << "
         f << " \\\\ \\hline "
       end
 f << "
+    \\caption{Tracciamento Requisiti - Test di Sistema e Validazione}
     \\end{longtable}
    \\egroup
 \\end{center}
