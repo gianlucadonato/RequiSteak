@@ -8,7 +8,7 @@ class DownloadController < ApplicationController
 	def export_backend
 file = "backend-packages.tex"
     File.open(file, "wb+"){ |f|
-      f << "\\subsection{Packages}"
+      f << "\\subsection{Descrizione componenti Back-end}"
      	back_comp = []
       backend = Component.find_by_title("Back-end");
       if !backend.nil?
@@ -118,7 +118,7 @@ end #end back_comp.each
 	def export_frontend
 file = "frontend-packages.tex"
     File.open(file, "wb+"){ |f|
-      f << "\\subsection{Packages}"
+      f << "\\subsection{Descrizione componenti Front-end}"
      	front_comp = []
       frontend = Component.find_by_title("Front-end");
       if !frontend.nil?
