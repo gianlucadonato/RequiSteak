@@ -20,15 +20,17 @@ file = "backend-packages.tex"
 back_comp.each do |comp|      
   f << "
   \\subsubsection{#{comp.title}}
-  \\paragraph{Informazioni sul package} 
-
+  \\paragraph{Informazioni sul package} "
+if !comp.path.nil?
+f << "
     \\begin{figure}[H] 
       \\begin{center} 
         \\includegraphics[scale=1]{packages/#{comp.title}.png}  
         \\caption{Componente #{comp.title}}
       \\end{center}  
-    \\end{figure} 
-
+    \\end{figure} "
+end
+f << "
   \\subparagraph{Descrizione} 
     \\begin{itemize}
     \\item[] #{comp.description}
