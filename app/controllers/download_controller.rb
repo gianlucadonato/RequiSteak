@@ -789,7 +789,6 @@ f << "
     File.open(file, "wb+"){ |f| 
 
 f << "
-\\section{Tracciamento Test di Sistema-Requisiti}
 
   \\begin{center}
   \\def\\arraystretch{1.5}
@@ -803,7 +802,7 @@ f << "
         #{st.title} & 
         #{st.description} & "
         if st.status == false
-          f << "N.I &"
+          f << "N.E &"
         else
           f << "Approved &"
         end
@@ -830,8 +829,6 @@ f << "
     File.open(file, "wb+"){ |f| 
 
 f << "
-\\section{Tracciamento Test di Validazione-Requisiti}
-
   \\begin{center}
   \\def\\arraystretch{1.5}
   \\bgroup
@@ -844,7 +841,7 @@ f << "
         #{vt.title} & 
         #{vt.description} & " 
         if vt.status == false
-          f << "N.I &"
+          f << "N.E &"
         else
           f << "Approved &"
         end
