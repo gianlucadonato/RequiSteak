@@ -755,41 +755,21 @@ f << "
   \\begin{center}
   \\def\\arraystretch{1.5}
   \\bgroup
-    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
+    \\begin{longtable}{| p{2.5cm} | p{5cm} | p{2.5cm} | p{3cm} | }
     \\hline 
-     \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Sistema} \\\\ \\hline"   
+     \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Sistema} & \\textbf{Test di Validazione} \\\\ \\hline"   
       
       @funzionali.each do |req|
       f << "
         #{req.title} & 
         #{req.description} & "
         if !req.system_test.nil?
-          f << "#{req.system_test.title} "
+          f << "#{req.system_test.title} &"
+        else
+          f << " & "
         end
-        f << " \\\\ \\hline "
-      end
-f << "
-    \\end{longtable}
-   \\egroup
-\\end{center}
-\\clearpage"
-
-f << "
-\\subsection{Tracciamento Requisiti - Test di Validazione}
-
-  \\begin{center}
-  \\def\\arraystretch{1.5}
-  \\bgroup
-    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
-    \\hline 
-     \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Validazione} \\\\ \\hline"   
-      
-      @funzionali.each do |req|
-      f << "
-        #{req.title} & 
-        #{req.description} & "
         if !req.validation_test.nil?
-          f << "#{req.validation_test.title} "
+          f << "#{req.validation_test.title}"
         end
         f << " \\\\ \\hline "
       end
@@ -797,6 +777,7 @@ f << "
     \\end{longtable}
    \\egroup
 \\end{center}
+\\clearpage
 "
       }
     send_file(file)
