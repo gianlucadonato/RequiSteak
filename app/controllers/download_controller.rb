@@ -746,8 +746,57 @@ end
       \\end{longtable}
       \\egroup
       \\end{center}  
-\\clearpage
+\\clearpage"
 
+
+f << "
+\\subsection{Tracciamento Requisiti - Test di Sistema}
+
+  \\begin{center}
+  \\def\\arraystretch{1.5}
+  \\bgroup
+    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
+    \\hline 
+     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+      
+      @funzionali.each do |req|
+      f << "
+        #{req.title} & 
+        #{req.description} & "
+        if !req.system_test.nil?
+          f << "#{req.system_test.title} "
+        end
+        f << " \\\\ \\hline "
+      end
+f << "
+    \\end{longtable}
+   \\egroup
+\\end{center}
+\\clearpage"
+
+f << "
+\\subsection{Tracciamento Requisiti - Test di Validazione}
+
+  \\begin{center}
+  \\def\\arraystretch{1.5}
+  \\bgroup
+    \\begin{longtable}{| p{3cm} | p{6cm} | p{1.5cm} | p{2cm} | }
+    \\hline 
+     \\textbf{Test Sistema} & \\textbf{Descrizione} & \\textbf{Stato} & \\textbf{Requisito} \\\\ \\hline"   
+      
+      @funzionali.each do |req|
+      f << "
+        #{req.title} & 
+        #{req.description} & "
+        if !req.validation_test.nil?
+          f << "#{req.validation_test.title} "
+        end
+        f << " \\\\ \\hline "
+      end
+f << "
+    \\end{longtable}
+   \\egroup
+\\end{center}
 "
       }
     send_file(file)
@@ -796,7 +845,7 @@ f << "
 
   def export_tv_req
     validation_test = ValidationTest.all.sort!{ |a,b| confronta_test(a,b) }
-    file = "capitolo-test-di-sistema-requisiti.tex"
+    file = "capitolo-test-di-validazione-requisiti.tex"
     File.open(file, "wb+"){ |f| 
 
 f << "
