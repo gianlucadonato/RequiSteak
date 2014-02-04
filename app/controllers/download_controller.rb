@@ -794,7 +794,6 @@ f << "
     file = "capitolo-test-di-sistema-requisiti.tex"
     File.open(file, "wb+"){ |f| 
   
-end
 f << "
 
   \\begin{center}
