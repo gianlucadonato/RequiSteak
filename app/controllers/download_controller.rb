@@ -8,7 +8,7 @@ class DownloadController < ApplicationController
 	def export_backend
 file = "backend-packages.tex"
     File.open(file, "wb+"){ |f|
-      f << "\\subsection{Descrizione componenti Back-end}"
+
      	back_comp = []
       backend = Component.find_by_title("Back-end");
       if !backend.nil?
@@ -24,7 +24,7 @@ back_comp.each do |comp|
 
     \\begin{figure}[H] 
       \\begin{center} 
-        %\\includegraphics[scale=1]{packages/NomePackage.png}  
+        \\includegraphics[scale=1]{packages/#{comp.title}.png}  
         \\caption{Componente #{comp.title}}
       \\end{center}  
     \\end{figure} 
@@ -793,7 +793,8 @@ f << "
     system_test = SystemTest.all.sort!{ |a,b| confronta_test(a,b) }
     file = "capitolo-test-di-sistema-requisiti.tex"
     File.open(file, "wb+"){ |f| 
-
+  
+end
 f << "
 
   \\begin{center}
@@ -808,7 +809,7 @@ f << "
         #{st.title} & 
         #{st.description} & "
         if st.status == false
-          f << "N.E &"
+          f << "N.E &"  
         else
           f << "Approved &"
         end
@@ -870,3 +871,4 @@ f << "
     send_file(file)
   end #end export_ts_req
 end
+
