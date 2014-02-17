@@ -15,7 +15,9 @@
 
     <div class="row">
       <div class="small-12 columns panel">
-        <h4>DATA FIELD </h4><br>
+        <h4>DATA FIELD:  
+        <i><strong><%= @data_field.format_name %></strong></i>  
+        </h4><br>
         <table width="100%">
           <tbody>
               <tr>
@@ -43,6 +45,6 @@
       </div>
     </div>
     <br>
-    <%= link_to '<--Back', data_fields_path %>
+    <%= link_to '<--Back', unit_path(@data_field.unit) %>
   </div>
 </div>

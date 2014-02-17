@@ -20,7 +20,7 @@
           <tbody>
               <tr>
                 <td width="150px"><strong>Name</strong></td>
-                <td><%= @parameter.name %></td>
+                <td><strong><%= @parameter.name %></strong></td>
               </tr>
               <tr>
                 <td width="150px"><strong>Type</strong></td>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <br>
-    <%= link_to '<--Back', parameters_path %>
+    <%= link_to '<--Back', unit_method_path(@parameter.unit_method) %>
   </div>
 </div>
 
