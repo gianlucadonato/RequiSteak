@@ -11,14 +11,16 @@
           <li class="divider"></li> 
         </ul>
         <ul class="right">
-          <li class="has-form"><a href="#" data-reveal data-reveal-id="addParameters" class="button success">Add Parameters</a></li>
+          <li class="has-form"><%= link_to 'Add Parameters', new_parameter_path(unit_method_id: @unit_method), class: "success button" %></li>
         </ul>
       </section>
     </nav>
 
     <div class="row">
       <div class="small-12 columns panel">
-        <h4>METHOD </h4><br>
+        <h4>METHOD:  
+          <i><strong><%= @unit_method.format_name %></strong></i>  
+        </h4><br>
         <table width="100%">
           <tbody>
               <tr>
@@ -44,6 +46,16 @@
               <tr>
                 <td width="150px"><strong>Used by class:</strong></td>
                 <td> <%= link_to @unit_method.unit.title, @unit_method.unit %></td>
+              </tr>
+              <tr>
+                <td width="150px"><strong>Parameters:</strong></td>
+                <td>
+                  <ul> 
+                    <% @unit_method.parameters.each do |p| %>
+                      <li><%= link_to p.name, p %></li> 
+                    <% end %>
+                  </ul>
+                </td>
               </tr>
           </tbody>
         </table>

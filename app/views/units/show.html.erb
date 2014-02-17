@@ -111,7 +111,11 @@
                 <div><%= link_to df.format_name, df %></div>
               <% end %>
             </div>
-            <div class="class-methods"></div>
+            <div class="class-methods">
+              <% @unit.unit_methods.each do |um| %>
+                <div><%= link_to um.format_name, um %></div>
+              <% end %>
+            </div>
           </div>
         </div>
 

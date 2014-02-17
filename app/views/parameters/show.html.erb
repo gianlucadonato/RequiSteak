@@ -5,9 +5,9 @@
       <section class="top-bar-section">
         <!-- Left Nav Section -->
         <ul class="left">
-          <li class="has-form"><%= link_to 'Edit', edit_data_field_path(@data_field), class: "info button" %></li> 
+          <li class="has-form"><%= link_to 'Edit', edit_parameter_path(@parameter), class: "info button" %></li> 
           <li class="divider"></li>
-          <li class="has-form"><%= link_to 'Delete', @data_field , method: :delete, class: "alert button" %></li>
+          <li class="has-form"><%= link_to 'Delete', @parameter , method: :delete, class: "alert button" %></li>
           <li class="divider"></li> 
         </ul>
       </section>
@@ -15,34 +15,31 @@
 
     <div class="row">
       <div class="small-12 columns panel">
-        <h4>DATA FIELD </h4><br>
+        <h4>PARAMETER </h4><br>
         <table width="100%">
           <tbody>
               <tr>
                 <td width="150px"><strong>Name</strong></td>
-                <td><%= @data_field.name %></td>
-              </tr>
-              <tr>
-                <td width="150px"><strong>Visibility</strong></td>
-                <td><%= @data_field.visibility %></td>
+                <td><%= @parameter.name %></td>
               </tr>
               <tr>
                 <td width="150px"><strong>Type</strong></td>
-                <td><%= @data_field.data_type %></td>
+                <td><%= @parameter.parameter_type %></td>
               </tr>
               <tr>
                 <td width="150px"><strong>Description</strong></td>
-                <td> <%= @data_field.description %></td>
+                <td> <%= @parameter.description %></td>
               </tr>
               <tr>
-                <td width="150px"><strong>Used by class:</strong></td>
-                <td> <%= link_to @data_field.unit.title, @data_field.unit %></td>
+                <td width="150px"><strong>Used by method:</strong></td>
+                <td> <%= link_to @parameter.unit_method.name, @parameter.unit_method %></td>
               </tr>
           </tbody>
         </table>
       </div>
     </div>
     <br>
-    <%= link_to '<--Back', data_fields_path %>
+    <%= link_to '<--Back', parameters_path %>
   </div>
 </div>
+

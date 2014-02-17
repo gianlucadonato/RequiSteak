@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217160214) do
+ActiveRecord::Schema.define(version: 20140217170433) do
 
   create_table "components", force: true do |t|
     t.string   "title",               null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20140217160214) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "parameters", force: true do |t|
+    t.string   "name"
+    t.string   "parameter_type"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_method_id"
   end
 
   create_table "requirements", force: true do |t|
@@ -90,9 +99,9 @@ ActiveRecord::Schema.define(version: 20140217160214) do
   end
 
   create_table "unit_methods", force: true do |t|
-    t.string   "name"
-    t.string   "visibility"
-    t.boolean  "isQuery"
+    t.string   "name",                           null: false
+    t.string   "visibility",  default: "public"
+    t.boolean  "isQuery",     default: false
     t.string   "return_type"
     t.text     "description"
     t.datetime "created_at"

@@ -1,0 +1,14 @@
+<%= simple_form_for(@parameter) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :parameter_type, placeholder: "Es. void, bool, int, ecc." %>
+    <%= f.input :description %>
+    <%= f.hidden_field :unit_method_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "button" %>
+  </div>
+<% end %>
