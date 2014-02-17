@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h1>Listing Methods</h1>
+      </div>
+      <div class="small-6 columns">      
+        <%= link_to 'New Data Field', new_unit_method_path, class: "button right" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-12 columns">
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th width="5%"></th>
+              <th width="4%"></th>
+              <th width="6%"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @unit_methods.each do |unit_method| %>
+              <tr>
+                <td><%= unit_method.name %></td>
+                <td><%= link_to 'Show', unit_method %></td>
+                <td><%= link_to 'Edit', edit_unit_method_path(unit_method) %></td>
+                <td><%= link_to 'Destroy', unit_method, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

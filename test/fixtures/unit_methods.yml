@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  visibility: MyString
+  isQuery: false
+  return_type: MyString
+  description: MyText
+
+two:
+  name: MyString
+  visibility: MyString
+  isQuery: false
+  return_type: MyString
+  description: MyText

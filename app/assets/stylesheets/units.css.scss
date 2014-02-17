@@ -1,3 +1,30 @@
 // Place all the styles related to the units controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.class-header {
+	border-top: 6px solid #000;
+	border-left: 6px solid #000;
+	border-right: 6px solid #000;
+	border-bottom: 0;
+	width: 480px;
+	min-height: 70px;
+	padding: 20px;
+}
+.class-data {
+	border-top: 6px solid #000;
+	border-left: 6px solid #000;
+	border-right: 6px solid #000;
+	border-bottom: 0;
+	width: 480px;
+	min-height: 40px;
+	div {
+		padding: 10px;
+	}
+}
+.class-methods {
+	border: 6px solid #000;
+	width: 480px;
+	min-height: 40px;
+}

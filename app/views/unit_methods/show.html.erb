@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unit_method.name %>
+</p>
+
+<p>
+  <strong>Visibility:</strong>
+  <%= @unit_method.visibility %>
+</p>
+
+<p>
+  <strong>Isquery:</strong>
+  <%= @unit_method.isQuery %>
+</p>
+
+<p>
+  <strong>Return type:</strong>
+  <%= @unit_method.return_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @unit_method.description %>
+</p>
+
+<%= link_to 'Edit', edit_unit_method_path(@unit_method) %> |
+<%= link_to 'Back', unit_methods_path %>

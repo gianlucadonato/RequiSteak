@@ -1,0 +1,15 @@
+<%= simple_form_for(@data_field) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :visibility, collection: ["public", "protected", "private"] %>
+    <%= f.input :data_type, placeholder: "Es. void, bool, int, ecc." %>
+    <%= f.input :description %>
+    <%= f.hidden_field :unit_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "button" %>
+  </div>
+<% end %>

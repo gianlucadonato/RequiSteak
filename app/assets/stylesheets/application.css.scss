@@ -42,3 +42,10 @@ html, body {
 	display: inline;
 	cursor: default;
 }
+
+/*==== UTILITY CLASS ====*/
+.center {
+	margin: 0 auto;
+	display: block;
+	overflow: hidden;
+}

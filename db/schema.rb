@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140202235241) do
+ActiveRecord::Schema.define(version: 20140217151938) do
 
   create_table "components", force: true do |t|
     t.string   "title",               null: false
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20140202235241) do
   end
 
   add_index "components", ["ancestry"], name: "index_components_on_ancestry", using: :btree
+
+  create_table "data_fields", force: true do |t|
+    t.string   "name",                           null: false
+    t.string   "visibility",  default: "public"
+    t.string   "data_type"
+    t.text     "description"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "integration_tests", force: true do |t|
     t.string   "title",       null: false
@@ -79,8 +89,18 @@ ActiveRecord::Schema.define(version: 20140202235241) do
     t.datetime "updated_at"
   end
 
+  create_table "unit_methods", force: true do |t|
+    t.string   "name"
+    t.string   "visibility"
+    t.boolean  "isQuery"
+    t.string   "return_type"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "units", force: true do |t|
-    t.string   "title",        null: false
+    t.string   "title",                          null: false
     t.text     "description"
     t.text     "use"
     t.integer  "class_id"
@@ -88,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140202235241) do
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "typology",     default: "class"
   end
 
   add_index "units", ["ancestry"], name: "index_units_on_ancestry", using: :btree

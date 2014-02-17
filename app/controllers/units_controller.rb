@@ -89,6 +89,6 @@ class UnitsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def unit_params
-      params.require(:unit).permit(:title, :description, :use, :component_id, :ancestry)
+      params.require(:unit).permit(:title, :description, :use, :typology, :component_id, :ancestry)
     end
 end

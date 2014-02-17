@@ -10,6 +10,8 @@
     <%= f.input :title, label: false %>
     <label><strong>DESCRIPTION</strong></label>
     <%= f.input :description, label: false %>
+    <label><strong>TYPOLOGY</strong></label>
+    <%= f.input :typology, label: false, collection: ["class", "abstract class", "interface"] %>
     <label><strong>USE</strong></label>
     <%= f.input :use, label: false %>
   </div>

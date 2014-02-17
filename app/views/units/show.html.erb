@@ -12,14 +12,18 @@
         </ul>
         <!-- Right Nav Section -->
           <ul class="right">
+            <li class="divider"></li> 
+              <li class="has-form">
+                <%= link_to 'Add Data Field', new_data_field_path(unit_id: @unit), class: "orange button" %>
+              </li>
             <li class="divider"></li>
             <li class="has-form">
-            <%= link_to 'Add Child', new_unit_path(parent_id: @unit, component_id: @unit.component_id), class: "success button" %>
-          </li>
-          <li class="divider"></li> 
-            <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button red">Add Class Relation</a></li>
-          <li class="divider"></li> 
-            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Set Package</a></li>
+              <%= link_to 'Add Child', new_unit_path(parent_id: @unit, component_id: @unit.component_id), class: "success button" %>
+            </li>
+            <li class="divider"></li> 
+              <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button red">Add Class Relation</a></li>
+            <li class="divider"></li> 
+              <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Set Package</a></li>
           </ul>
       </section>
     </nav>
@@ -46,6 +50,10 @@
                 <p>
                   <label><strong>DESCRIZIONE</strong></label>
                   <span><%= @unit.description %></span>
+                </p>
+                <p>
+                  <label><strong>TIPOLOGIA</strong></label>
+                  <span><%= @unit.typology %></span>
                 </p>
                 <% if !@unit.use.empty? %>
                 <p>
@@ -81,6 +89,28 @@
             </div>  
           </div>
         </div>
+        <br><br>
+        <h4>REPRESENTATION:</h4><br><br>
+        <div class="row">
+          <div class="small-6 small-centered columns">
+            <div class="class-header">              
+              <% if @unit.typology == "abstract class" %>
+                <div><strong><i><%= @unit.get_name %></i><strong></div>                  
+              <% elsif @unit.typology == "interface" %>
+                  <div><strong><< interface >> <%= @unit.get_name %></strong></div>
+              <% else %>
+                <div><strong><%= @unit.get_name %></strong></div>
+              <% end %>
+            </div>
+            <div class="class-data">
+              <% @unit.data_fields.each do |df| %>
+                <div><%= link_to df.format_name, df %></div>
+              <% end %>
+            </div>
+            <div class="class-methods"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

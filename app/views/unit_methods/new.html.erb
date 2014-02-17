@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+		
+		<h1>New Unit Method</h1>
+
+		<%= render 'form' %>
+
+		<%= unless params[:parent_id].nil?
+					link_to '<-- Back', unit_method_path(params[:parent_id]) 
+				else
+					link_to '<-- Back',  unit_methods_path 
+				end
+		%>
+
+	</div>
+</div>
