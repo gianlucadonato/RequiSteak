@@ -14,7 +14,11 @@
           <ul class="right">
             <li class="divider"></li> 
               <li class="has-form">
-                <%= link_to 'Add Data Field', new_data_field_path(unit_id: @unit), class: "orange button" %>
+                <%= link_to 'Add Data Field', new_data_field_path(unit_id: @unit), class: "gray button" %>
+              </li>
+            <li class="divider"></li>
+              <li class="has-form">
+                <%= link_to 'Add Method', new_unit_method_path(unit_id: @unit), class: "orange button" %>
               </li>
             <li class="divider"></li>
             <li class="has-form">

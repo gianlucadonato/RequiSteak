@@ -4,7 +4,9 @@ class Unit < ActiveRecord::Base
 	belongs_to :component
 	belongs_to :unit, class_name: "Unit"
 	has_many :units, class_name: "Unit", foreign_key: "class_id"
+	
 	has_many :data_fields
+	has_many :unit_methods
 
 	validates :title, presence: true
 

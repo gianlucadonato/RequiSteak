@@ -5,12 +5,7 @@
 
 		<%= render 'form' %>
 
-		<%= unless params[:parent_id].nil?
-					link_to '<-- Back', data_field_path(params[:parent_id]) 
-				else
-					link_to '<-- Back',  data_fields_path 
-				end
-		%>
+		<%= link_to '<-- Back',  data_fields_path %>
 
 	</div>
 </div>

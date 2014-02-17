@@ -1,16 +1,11 @@
 <div class="row">
   <div class="small-12 small-centered columns">
 		
-		<h1>New Unit Method</h1>
+		<h1>New Method</h1>
 
 		<%= render 'form' %>
 
-		<%= unless params[:parent_id].nil?
-					link_to '<-- Back', unit_method_path(params[:parent_id]) 
-				else
-					link_to '<-- Back',  unit_methods_path 
-				end
-		%>
+		<%= link_to '<-- Back',  unit_methods_path %>
 
 	</div>
 </div>

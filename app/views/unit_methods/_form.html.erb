@@ -3,13 +3,14 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :visibility %>
+    <%= f.input :visibility, collection: ["public", "protected", "private"] %>
     <%= f.input :isQuery %>
-    <%= f.input :return_type %>
+    <%= f.input :return_type, placeholder: "Es. void, bool, int, ecc." %>
     <%= f.input :description %>
+    <%= f.hidden_field :unit_id %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "button" %>
   </div>
 <% end %>

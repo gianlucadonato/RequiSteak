@@ -12,7 +12,7 @@ class UnitMethodsController < ApplicationController
 
   # GET /unit_methods/new
   def new
-    @unit_method = UnitMethod.new
+    @unit_method = UnitMethod.new(unit_id: params[:unit_id])
   end
 
   # GET /unit_methods/1/edit
@@ -53,6 +53,6 @@ class UnitMethodsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def unit_method_params
-      params.require(:unit_method).permit(:name, :visibility, :isQuery, :return_type, :description)
+      params.require(:unit_method).permit(:name, :visibility, :isQuery, :return_type, :description, :unit_id)
     end
 end
