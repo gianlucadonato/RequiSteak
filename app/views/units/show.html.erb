@@ -26,7 +26,11 @@
             </li>
             <li class="divider"></li> 
               <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button red">Add Class Relation</a></li>
-            <li class="divider"></li> 
+            <li class="divider"></li>
+              <li class="has-form">
+                <%= link_to 'Add Unit Test', new_unit_test_path(class_id: @unit), class: "success button" %>
+              </li>
+            <li class="divider"></li>  
               <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Set Package</a></li>
           </ul>
       </section>
@@ -118,7 +122,22 @@
             </div>
           </div>
         </div>
+        <br><br><br>
+        <div class="row">
+          <div class="small-12 columns">
+            <h4>UNIT TEST</h4><br>
+            <% if @unit.unit_test %>
 
+                <div class="panel">
+                  <label><strong><%= link_to @unit.unit_test.title, @unit.unit_test %></strong></label>
+                  <span><%= @unit.unit_test.description %></span>
+                </div>
+ 
+            <% else %>
+                <label><strong>No Unit Test associated.</strong></label>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

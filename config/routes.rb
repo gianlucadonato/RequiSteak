@@ -1,4 +1,6 @@
 Requisteak::Application.routes.draw do
+  resources :unit_tests
+
   resources :parameters
 
   resources :unit_methods

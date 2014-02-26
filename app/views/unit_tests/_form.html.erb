@@ -1,0 +1,36 @@
+<%= form_for(@unit_test) do |f| %>
+  <% if @unit_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@unit_test.errors.count, "error") %> prohibited this unit test from being saved:</h2>
+
+      <ul>
+      <% @unit_test.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+
+  <%= hidden_field_tag :class_id, "#{params[:class_id]}" %><br>
+  <div class="row">
+    <div class="small-12 columns">
+      <label><strong>STATUS</strong></label>
+      <br>
+      <%= radio_button("unit_test", "status", "false")%><label class="alert label">Pending</label>
+      <%= radio_button("unit_test", "status", "true")%><label class="success label">Approved</label>  
+    </div>
+  </div>
+  <br>
+  <div class="field">
+    <label><strong>TITLE</strong></label>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <label><strong>DESCRIPTION</strong></label>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>

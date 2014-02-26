@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217170433) do
+ActiveRecord::Schema.define(version: 20140226145411) do
 
   create_table "components", force: true do |t|
     t.string   "title",               null: false
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 20140217170433) do
     t.integer  "unit_id"
   end
 
+  create_table "unit_tests", force: true do |t|
+    t.string   "title"
+    t.boolean  "status"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "units", force: true do |t|
     t.string   "title",                          null: false
     t.text     "description"
@@ -119,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140217170433) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "typology",     default: "class"
+    t.integer  "unit_test_id"
   end
 
   add_index "units", ["ancestry"], name: "index_units_on_ancestry", using: :btree

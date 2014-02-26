@@ -8,6 +8,8 @@ class Unit < ActiveRecord::Base
 	has_many :data_fields
 	has_many :unit_methods
 
+	belongs_to :unit_test
+
 	validates :title, presence: true
 
 	def get_name
