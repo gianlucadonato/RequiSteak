@@ -51,6 +51,10 @@
                   <label><strong>DESCRIZIONE</strong></label>
                   <span><%= @component.description %></span>
                 </p>
+                <p>
+                  <label><strong>PARENT</strong></label>
+                  <span><%= @component.parent_id %></span>
+                </p>
                 <% if !@component.use.empty? %>
                 <p>
                   <label><strong>UTILIZZO</strong></label>
@@ -114,23 +118,25 @@
 
   <div class="row">
     <%= form_for @component do |f| %>
-    <div class="medium-12 columns">
-      <div class="panel">  
-        <label><strong>PACKAGES</strong></label>
-        <p>
-            <%= f.collection_check_boxes(:package_ids, @packages, :id, :title ) do |b|
-                  b.label { b.check_box + "\ " + b.text } 
-                end 
-            %>
-        </p>
-      </div> 
-    </div>
+      <div class="medium-12 columns">
+        <div class="panel">  
+          <label><strong>PACKAGES</strong></label>
+          <p>
+              <%= f.collection_check_boxes(:package_ids, @packages, :id, :title ) do |b|
+                    b.label { b.check_box + "\ " + b.text } 
+                  end 
+              %>
+          </p>
+        </div> 
+      </div>
 
-  <div class="row">
-    <div class="small-4 small-centered columns">
-      <%= f.submit class: "button" %>
-    </div>
+      <div class="row">
+        <div class="small-4 small-centered columns">
+          <%= f.submit class: "button" %>
+        </div>
+      </div>
+    <% end %>
+    <a class="close-reveal-modal">&#215;</a>        
   </div>
-<% end %>
-  <a class="close-reveal-modal">&#215;</a>        
+  
 </div>

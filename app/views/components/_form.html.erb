@@ -1,7 +1,6 @@
 <%= simple_form_for(@component) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.hidden_field :parent_id %>
   <%= f.hidden_field :ancestry %>
 
   <div class="form-inputs">
@@ -21,6 +20,11 @@
     <%= f.input :use, label: false %>
     <label><strong>GRAPH</strong></label>
     <%= f.input :graph, label: false %>
+    
+    <% if params[:parent_id].nil? %>
+      <label><strong>PARENT</strong></label>    
+      <%= f.collection_select(:parent_id, Component.all, :id, :full_title) %>
+    <% end %>
   </div>
   <br>
   <div class="form-actions">

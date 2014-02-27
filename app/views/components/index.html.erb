@@ -27,7 +27,7 @@
           <tbody>
             <% @frontend.each do |component| %>
               <tr>
-                <td><%= link_to component.title, component_path(component) %></td>
+                <td><%= link_to component.full_title, component_path(component) %></td>
                 <td><%= component.description %></td>
                 <td><%= link_to 'Show', component %></td>
                 <td><%= link_to 'Edit', edit_component_path(component) %></td>
@@ -56,7 +56,7 @@
           <tbody>
             <% @backend.each do |component| %>
               <tr>
-                <td><%= link_to component.title, component_path(component) %></td>
+                <td><%= link_to component.full_title, component_path(component) %></td>
                 <td><%= component.description %></td>
                 <td><%= link_to 'Show', component %></td>
                 <td><%= link_to 'Edit', edit_component_path(component) %></td>

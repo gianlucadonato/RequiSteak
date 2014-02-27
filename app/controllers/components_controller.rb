@@ -20,7 +20,6 @@ class ComponentsController < ApplicationController
     else
       @component = Component.new()
       @prefix = "Root::";
-      @component.ancestry = 0
     end
   end
 
@@ -35,6 +34,7 @@ class ComponentsController < ApplicationController
 
   # POST /components
   def create
+
     @component = Component.new(component_params)
 
     if @component.save
@@ -87,6 +87,6 @@ class ComponentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def component_params
-      params.require(:component).permit(:title, :description, :use, :graph, :package_id, :ancestry)
+      params.require(:component).permit(:title, :description, :use, :graph, :package_id, :ancestry, :parent_id)
     end
 end
