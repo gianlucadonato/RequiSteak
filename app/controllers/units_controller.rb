@@ -17,23 +17,30 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
+    @edit = false
     unless params[:component_id].nil? 
       if !params[:parent_id].nil?
         @unit = Unit.new(parent_id: params[:parent_id], component_id: params[:component_id])
-        @unit.title = Unit.find_by_id(params[:parent_id]).title + "::?"
+        @prefix = @unit.component.full_title + "::"
       else
         @unit = Unit.new(component_id: params[:component_id])
-        @unit.title = Component.find_by_id(params[:component_id]).title + "::?"
-        @unit.ancestry = 0
+        @prefix = @unit.component.full_title + "::"
       end
     else
       @unit = Unit.new()
+      @prefix = "Root::"
       @unit.ancestry = 0
     end
   end
 
   # GET /units/1/edit
   def edit
+    @edit = true
+    if @unit.component
+      @prefix = @unit.component.full_title + "::"
+    else
+      @prefix = "Root::"
+    end 
   end
 
   # POST /units
@@ -75,10 +82,10 @@ class UnitsController < ApplicationController
       @backend = [] unless @backend
       @other = [] unless @other
       @units.each do |u|
-        if( u.title.split('::')[0] == "Front-end")
+        if u.full_title.start_with?("Front")
           @frontend << u
         else
-          if( u.title.split('::')[0] == "Back-end")
+          if u.full_title.start_with?("Back")
             @backend << u
           else
             @other << u
@@ -89,6 +96,6 @@ class UnitsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def unit_params
-      params.require(:unit).permit(:title, :description, :use, :typology, :component_id, :ancestry)
+      params.require(:unit).permit(:title, :description, :use, :typology, :component_id, :ancestry, :parent_id)
     end
 end

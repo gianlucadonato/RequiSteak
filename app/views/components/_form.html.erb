@@ -14,17 +14,17 @@
         <%= f.input :title, label: false %>
       </div>
     </div>
+    
+    <% if @edit %>
+      <label><strong>PARENT</strong></label>    
+      <%= f.collection_select(:parent_id, Component.all, :id, :full_title) %>
+    <% end %>
     <label><strong>DESCRIPTION</strong></label>
     <%= f.input :description, label: false %>
     <label><strong>USE</strong></label>
     <%= f.input :use, label: false %>
     <label><strong>GRAPH</strong></label>
     <%= f.input :graph, label: false %>
-    
-    <% if params[:parent_id].nil? %>
-      <label><strong>PARENT</strong></label>    
-      <%= f.collection_select(:parent_id, Component.all, :id, :full_title) %>
-    <% end %>
   </div>
   <br>
   <div class="form-actions">

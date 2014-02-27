@@ -9,29 +9,31 @@
           <li class="divider"></li>
           <li class="has-form"><%= link_to 'Delete', @unit , method: :delete, class: "alert button" %></li>
           <li class="divider"></li> 
+          <li class="divider"></li>
+          <li class="divider"></li> 
+          <li class="has-form">
+            <%= link_to 'Add Unit Test', new_unit_test_path(class_id: @unit), class: "gray button" %>
+          </li>
+          <li class="divider"></li> 
+          <li class="has-form">
+            <%= link_to 'Add Data Field', new_data_field_path(unit_id: @unit), class: "orange button" %>
+          </li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <%= link_to 'Add Method', new_unit_method_path(unit_id: @unit), class: "blue button" %>
+          </li>
+          <li class="divider"></li>
         </ul>
         <!-- Right Nav Section -->
           <ul class="right">
-            <li class="divider"></li> 
-              <li class="has-form">
-                <%= link_to 'Add Data Field', new_data_field_path(unit_id: @unit), class: "gray button" %>
-              </li>
-            <li class="divider"></li>
-              <li class="has-form">
-                <%= link_to 'Add Method', new_unit_method_path(unit_id: @unit), class: "orange button" %>
-              </li>
             <li class="divider"></li>
             <li class="has-form">
               <%= link_to 'Add Class Child', new_unit_path(parent_id: @unit, component_id: @unit.component_id), class: "success button" %>
             </li>
             <li class="divider"></li> 
-              <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button red">Add Class Relation</a></li>
-            <li class="divider"></li>
-              <li class="has-form">
-                <%= link_to 'Add Unit Test', new_unit_test_path(class_id: @unit), class: "info button" %>
-              </li>
-            <li class="divider"></li>  
-              <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button blue">Set Package</a></li>
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addClassRelation" class="button info">Add Class Relation</a></li>
+            <li class="divider"></li> 
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addPackage" class="button red">Set Package</a></li>
           </ul>
       </section>
     </nav>
@@ -44,12 +46,12 @@
             <div class="row">
                 <h5>
                   <% if @unit.component %>
-                    <%= link_to(@component.title, component_path(@component)) + "::"  %>
+                    <%= link_to(@component.full_title, component_path(@component), class: "pkg-link") + "::"  %>
                   <% end %>
-                  <% @unit.ancestors.each do |p| %>
-                      <%= link_to(p.get_name, unit_path(p)) + "::" %> 
+                  <% @unit.ancestors.each do |parent| %>
+                      <%= link_to(parent.title, unit_path(parent)) + "::" %> 
                   <% end %>
-                  <%= @unit.get_name %>
+                  <%= @unit.title %>
                 </h5>
             </div>
             <br>
@@ -103,11 +105,11 @@
           <div class="small-6 small-centered columns">
             <div class="class-header">              
               <% if @unit.typology == "abstract class" %>
-                <div><strong><i><%= @unit.get_name %></i><strong></div>                  
+                <div><strong><i><%= @unit.title %></i><strong></div>                  
               <% elsif @unit.typology == "interface" %>
-                  <div><strong><< interface >> <%= @unit.get_name %></strong></div>
+                  <div><strong><< interface >> <%= @unit.title %></strong></div>
               <% else %>
-                <div><strong><%= @unit.get_name %></strong></div>
+                <div><strong><%= @unit.title %></strong></div>
               <% end %>
             </div>
             <div class="class-data">
@@ -144,7 +146,7 @@
 </div>
 
 <!-- MODAL WINDOW FOR Class<->Class ASSOCIATIONS -->
-<div id="addClass" class="reveal-modal" data-reveal>
+<div id="addClassRelation" class="reveal-modal" data-reveal>
   <h3>SET CLASS RELATIONS</h3>
 
   <div class="row">
@@ -171,7 +173,8 @@
         </div>  
       </div>
     </div>
-  </div>  
+  </div>
+
   <div class="row">
     <div class="small-4 small-centered columns">
       <%= f.submit class: "button" %>
@@ -185,7 +188,12 @@
 <!-- MODAL WINDOW FOR Class<->Package ASSOCIATIONS -->
 <div id="addPackage" class="reveal-modal" data-reveal>
   <h3>ADD PACKAGE</h3>
-
+  <% if @unit.ancestors.present? %>
+    <div data-alert class="alert-box red">
+      <span>ATTENZIONE!! Stai impostando un package ad una sottoclasse. Assicurati che la gerarchia sia coerente con le modifiche apportate.
+      </span>
+    </div>
+  <% end %>
   <div class="row">
     <%= form_for @unit do |f| %>
     <div class="medium-12 columns">
@@ -201,8 +209,12 @@
     </div>
 
   <div class="row">
-    <div class="small-4 small-centered columns">
-      <%= f.submit class: "button" %>
+    <div class="small-3 small-centered columns">
+      <% if @unit.ancestors.present? %>
+        <%= f.submit class: "button disabled" %>
+      <% else %>
+        <%= f.submit class: "button" %>
+      <% end %>
     </div>
   </div>
 <% end %>

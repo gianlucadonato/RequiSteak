@@ -13,6 +13,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'ancestry'
 gem 'simple_form'
+gem 'ransack'
 
 group :development do
   gem 'mysql2'

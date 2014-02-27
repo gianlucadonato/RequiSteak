@@ -20,15 +20,21 @@ class ComponentsController < ApplicationController
     else
       @component = Component.new()
       @prefix = "Root::";
+      @component.ancestry = 0
     end
+    @edit = false
   end
 
   # GET /components/1/edit
   def edit
+    @edit = true
     @prefix = ""
-    component = Component.find_by_id(params[:id])
-    component.ancestors.each do |parent|
-      @prefix += parent.title + "::"
+    if @component.ancestors.present?
+      @component.ancestors.each do |parent|
+        @prefix += parent.title + "::"
+      end
+    else
+      @prefix = "Root::"
     end
   end
 
@@ -73,10 +79,10 @@ class ComponentsController < ApplicationController
       @backend = [] unless @backend
       @other = [] unless @other
       @components.each do |u|
-        if( u.full_title.split('::')[0] == "Front-end")
+        if u.full_title.start_with?("Front")
           @frontend << u
         else
-          if( u.full_title.split('::')[0] == "Back-end")
+          if u.full_title.start_with?("Back")
             @backend << u
           else
             @other << u

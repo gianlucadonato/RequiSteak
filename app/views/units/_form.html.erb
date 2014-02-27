@@ -1,13 +1,27 @@
 <%= simple_form_for(@unit) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.hidden_field :parent_id %>
   <%= f.hidden_field :component_id %>
   <%= f.hidden_field :ancestry %>
   
   <div class="form-inputs">
-    <label><strong>TITLE</strong></label>
-    <%= f.input :title, label: false %>
+    
+    <div class="row collapse">
+      <div class="small-4 columns">
+        <label><strong>PREFIX</strong></label>
+        <span class="prefix"><%= @prefix %></span>
+      </div>
+      <div class="small-8 columns">
+        <label><strong>TITLE</strong></label>
+        <%= f.input :title, label: false %>
+      </div>
+    </div>
+    
+    <% if @edit %>
+      <label><strong>PARENT</strong></label>    
+      <%= f.collection_select(:parent_id, Unit.all, :id, :full_title) %>
+    <% end %>
+
     <label><strong>DESCRIPTION</strong></label>
     <%= f.input :description, label: false %>
     <label><strong>TYPOLOGY</strong></label>
