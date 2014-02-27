@@ -156,7 +156,7 @@
         <div class="panel small-12 medium-6 columns">  
           <label><strong>FRONT-END</strong></label>
           <p>
-              <%= f.collection_check_boxes(:unit_ids, @frontend, :id, :title ) do |b|
+              <%= f.collection_check_boxes(:unit_ids, @frontend, :id, :full_title ) do |b|
                     b.label { b.check_box + "\ " + b.text } 
                   end 
               %>
@@ -165,7 +165,7 @@
         <div class="panel small-12 medium-6 columns">  
           <label><strong>BACK-END</strong></label>
           <p>
-              <%= f.collection_check_boxes(:unit_ids, @backend, :id, :title ) do |b|
+              <%= f.collection_check_boxes(:unit_ids, @backend, :id, :full_title ) do |b|
                     b.label { b.check_box + "\ " + b.text } 
                   end 
               %>
@@ -200,7 +200,7 @@
       <div class="panel">  
         <label><strong>COMPONENTS</strong></label>
         <p>
-            <%= f.collection_radio_buttons(:component_id, @components, :id, :title ) do |b|
+            <%= f.collection_radio_buttons(:component_id, @components, :id, :full_title ) do |b|
                   b.label { b.radio_button + "\ " + b.text } 
                 end 
             %>
