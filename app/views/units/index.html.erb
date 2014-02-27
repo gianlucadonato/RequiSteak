@@ -25,7 +25,43 @@
           </thead>
 
           <tbody>
+            <tr class="table-separator">
+              <td><strong>Controllers:</strong></td>
+            </tr>
+            <% front_services = []
+               front_models = []
+            %>
             <% @frontend.each do |unit| %>
+              <% if unit.full_title.include?("Controller") %>
+                <tr>
+                  <td><%= link_to unit.full_title, unit_path(unit) %></td>
+                  <td><%= unit.description %></td>
+                  <td><%= link_to 'Show', unit %></td>
+                  <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                  <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% elsif unit.full_title.include?("Service") %>
+                  <% front_services << unit %>
+              <% else %>
+                  <% front_models << unit %>
+              <% end %>
+            <% end %>
+            <tr class="table-separator">
+              <td><strong>Models:</strong></td>
+            </tr>
+            <% front_models.each do |unit| %>
+              <tr>
+                <td><%= link_to unit.full_title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            <tr class="table-separator">
+              <td><strong>Services:</strong></td>
+            </tr>
+            <% front_services.each do |unit| %>
               <tr>
                 <td><%= link_to unit.full_title, unit_path(unit) %></td>
                 <td><%= unit.description %></td>
@@ -54,7 +90,43 @@
           </thead>
 
           <tbody>
+            <tr class="table-separator">
+              <td><strong>Controllers:</strong></td>
+            </tr>
+            <% back_models = []
+               back_view = []
+            %>
             <% @backend.each do |unit| %>
+              <% if unit.full_title.include?("Controller") %>
+                <tr>
+                  <td><%= link_to unit.full_title, unit_path(unit) %></td>
+                  <td><%= unit.description %></td>
+                  <td><%= link_to 'Show', unit %></td>
+                  <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                  <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% elsif unit.full_title.include?("Model") %>
+                  <% back_models << unit %>
+              <% else %>
+                  <% back_view << unit %>
+              <% end %>
+            <% end %>
+            <tr class="table-separator">
+              <td><strong>Models:</strong></td>
+            </tr>
+            <% back_models.each do |unit| %>
+              <tr>
+                <td><%= link_to unit.full_title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            <tr class="table-separator">
+              <td><strong>View:</strong></td>
+            </tr>
+            <% back_view.each do |unit| %>
               <tr>
                 <td><%= link_to unit.full_title, unit_path(unit) %></td>
                 <td><%= unit.description %></td>
