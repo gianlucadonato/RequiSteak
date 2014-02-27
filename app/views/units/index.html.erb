@@ -95,6 +95,7 @@
             </tr>
             <% back_models = []
                back_view = []
+               back_other = []
             %>
             <% @backend.each do |unit| %>
               <% if unit.full_title.include?("Controller") %>
@@ -107,8 +108,10 @@
                 </tr>
               <% elsif unit.full_title.include?("Model") %>
                   <% back_models << unit %>
-              <% else %>
+              <% elsif unit.full_title.include?("View") %>
                   <% back_view << unit %>
+              <% else %>
+                  <% back_other << unit %>
               <% end %>
             <% end %>
             <tr class="table-separator">
@@ -127,6 +130,18 @@
               <td><strong>View:</strong></td>
             </tr>
             <% back_view.each do |unit| %>
+              <tr>
+                <td><%= link_to unit.full_title, unit_path(unit) %></td>
+                <td><%= unit.description %></td>
+                <td><%= link_to 'Show', unit %></td>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            <tr class="table-separator">
+              <td><strong>Other:</strong></td>
+            </tr>
+            <% back_other.each do |unit| %>
               <tr>
                 <td><%= link_to unit.full_title, unit_path(unit) %></td>
                 <td><%= unit.description %></td>
