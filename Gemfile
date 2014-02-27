@@ -17,6 +17,7 @@ gem 'simple_form'
 group :development do
   gem 'mysql2'
 	gem 'rails_layout'
+	gem 'jazz_hands'
 end
 
 group :production do

@@ -43,8 +43,8 @@
           <div class="small-6 small-centered columns">
             <div class="row">
                 <h5>
-                  <% if !@unit.component_id.nil? %>
-                    <%= link_to(@unit.component.title, component_path(@unit.component)) + "::"  %>
+                  <% if @unit.component %>
+                    <%= link_to(@component.title, component_path(@component)) + "::"  %>
                   <% end %>
                   <% @unit.ancestors.each do |p| %>
                       <%= link_to(p.get_name, unit_path(p)) + "::" %> 
