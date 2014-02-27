@@ -26,6 +26,11 @@ class ComponentsController < ApplicationController
 
   # GET /components/1/edit
   def edit
+    @prefix = ""
+    component = Component.find_by_id(params[:id])
+    component.ancestors.each do |parent|
+      @prefix += parent.title + "::"
+    end
   end
 
   # POST /components
