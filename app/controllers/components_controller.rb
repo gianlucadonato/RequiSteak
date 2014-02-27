@@ -22,12 +22,10 @@ class ComponentsController < ApplicationController
       @prefix = "Root::";
       @component.ancestry = 0
     end
-    @edit = false
   end
 
   # GET /components/1/edit
   def edit
-    @edit = true
     @prefix = ""
     if @component.ancestors.present?
       @component.ancestors.each do |parent|

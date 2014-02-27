@@ -17,7 +17,6 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    @edit = false
     unless params[:component_id].nil? 
       if !params[:parent_id].nil?
         @unit = Unit.new(parent_id: params[:parent_id], component_id: params[:component_id])
@@ -35,7 +34,6 @@ class UnitsController < ApplicationController
 
   # GET /units/1/edit
   def edit
-    @edit = true
     if @unit.component
       @prefix = @unit.component.full_title + "::"
     else
