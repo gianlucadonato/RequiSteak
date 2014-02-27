@@ -34,10 +34,10 @@
             <div class="row">
                 <div class="small-12 columns">
                   <h4>
-                    <% @component.ancestors.each do |p| %>
-                        <%= link_to(p.get_name, component_path(p)) + "::" %> 
+                    <% @component.ancestors.each do |parent| %>
+                      <%= link_to(parent.title, parent) + "::" %> 
                     <% end %>
-                    <%= @component.get_name %>
+                    <%= @component.title %>
                   </h4>
                 </div>
             </div>

@@ -5,8 +5,16 @@
   <%= f.hidden_field :ancestry %>
 
   <div class="form-inputs">
-    <label><strong>TITLE</strong></label>
-    <%= f.input :title, label: false %>
+    <div class="row collapse">
+      <div class="small-4 columns">
+        <label><strong>PREFIX</strong></label>
+        <span class="prefix"><%= @prefix %></span>
+      </div>
+      <div class="small-8 columns">
+        <label><strong>TITLE</strong></label>
+        <%= f.input :title, label: false %>
+      </div>
+    </div>
     <label><strong>DESCRIPTION</strong></label>
     <%= f.input :description, label: false %>
     <label><strong>USE</strong></label>

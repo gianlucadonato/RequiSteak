@@ -16,9 +16,10 @@ class ComponentsController < ApplicationController
   def new
     unless params[:parent_id].nil?
       @component = Component.new(parent_id: params[:parent_id])
-      @component.title = Component.find_by_id(params[:parent_id]).title + "::?"
+      @prefix = Component.find_by_id(params[:parent_id]).full_title
     else
       @component = Component.new()
+      @prefix = "Root::";
       @component.ancestry = 0
     end
   end

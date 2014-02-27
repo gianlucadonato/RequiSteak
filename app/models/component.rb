@@ -7,9 +7,12 @@ class Component < ActiveRecord::Base
 
 	validates :title, presence: true
 
-	def get_name
-		a = title.split('::') 
-    b = a.count
-    return a[b-1]
+	def full_title
+		full_name = "";
+		ancestors.each do |parent|
+			full_name += parent.title + "::"
+		end
+		full_name += title
+		return full_name
 	end
 end
