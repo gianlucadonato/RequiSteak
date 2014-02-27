@@ -73,10 +73,10 @@ class ComponentsController < ApplicationController
       @backend = [] unless @backend
       @other = [] unless @other
       @components.each do |u|
-        if( u.title.split('::')[0] == "Front-end")
+        if( u.full_title.split('::')[0] == "Front-end")
           @frontend << u
         else
-          if( u.title.split('::')[0] == "Back-end")
+          if( u.full_title.split('::')[0] == "Back-end")
             @backend << u
           else
             @other << u
