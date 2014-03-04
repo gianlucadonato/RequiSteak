@@ -25,7 +25,7 @@ if !comp.graph.nil?
 f << "
     \\begin{figure}[H] 
       \\begin{center} 
-        \\includegraphics[width=\\textwidth]{packages/#{comp.title}.png}  
+        \\includegraphics[width=\\textwidth]{uml/package/#{comp.title}.png}  
         \\caption{Componente #{comp.title}}
       \\end{center}  
     \\end{figure} "
@@ -137,7 +137,7 @@ front_comp.each do |comp|
   f << "
     \\begin{figure}[H] 
       \\begin{center} 
-        \\includegraphics[width=\\textwidth]{packages/#{comp.title}.png}  
+        \\includegraphics[width=\\textwidth]{uml/package/#{comp.title}.png}  
         \\caption{Componente #{comp.title}}
       \\end{center}  
     \\end{figure} "
