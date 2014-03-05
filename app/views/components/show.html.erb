@@ -118,7 +118,7 @@
         <div class="panel">  
           <label><strong>PACKAGES</strong></label>
           <p>
-              <%= f.collection_check_boxes(:package_ids, @packages, :id, :title ) do |b|
+              <%= f.collection_check_boxes(:package_ids, @packages, :id, :full_title ) do |b|
                     b.label { b.check_box + "\ " + b.text } 
                   end 
               %>

@@ -26,7 +26,7 @@ f << "
     \\begin{figure}[H] 
       \\begin{center} 
         \\includegraphics[width=\\textwidth]{uml/package/#{comp.full_title}.png}  
-       \\caption{Componente #{comp.title}}
+        \\caption{Componente #{comp.title}}
       \\end{center}  
     \\end{figure} "
 end
