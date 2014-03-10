@@ -104,7 +104,7 @@ class DownloadController < ApplicationController
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 						u.ancestors.each do |p|
-							f << "\\item{#{p.full_title}}" << "\n"
+							f << "\\item[$\\cdot$] \\class{#{p.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -115,7 +115,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.descendants.each do |c|
-							f << "\\item{#{c.full_title}}" << "\n"
+							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -126,7 +126,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.units.each do |c|
-							f << "\\item{#{c.full_title}}" << "\n"
+							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -141,7 +141,7 @@ class DownloadController < ApplicationController
 					f << "\\begin{itemize}" << "\n"
 
 					u.data_fields.each do |datafield|
-						f << "\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}" << "\n"
+						f << "\\item[] \\attribute{#{datafield.format_name}} \\\\ #{datafield.description}" << "\n"
 					end
 					f << "\\end{itemize}" << "\n"
 				else
@@ -156,12 +156,12 @@ class DownloadController < ApplicationController
 					f << "\\begin{itemize}" << "\n"
 
 					u.unit_methods.each do |method|
-						f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
+						f << "\\item[] \\method{#{method.format_name}} \\\\ #{method.description}" << "\n"
 						
 						if !method.parameters.empty?
 							f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
 							method.parameters.each do |parameter|
-								f << "\\item[$\\circ$] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
+								f << "\\item[$\\circ$] \\parameter{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
 							end
 							f << "\\end{itemize}" << "\n"
 						end
