@@ -161,7 +161,7 @@ class DownloadController < ApplicationController
 						if !method.parameters.empty?
 							f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
 							method.parameters.each do |parameter|
-								f << "\\item[\\cdot] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
+								f << "\\item[$\\circ$] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
 							end
 							f << "\\end{itemize}" << "\n"
 						end
