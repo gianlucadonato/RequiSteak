@@ -97,7 +97,7 @@ class DownloadController < ApplicationController
 				f << "" << "\n"
 				f << "\\paragraph*{Relazioni con altre classi}" << "\n"
 				
-				if !u.ancestors.empty? or !u.descendants.empty? or !u.units.empty? do
+				if !u.ancestors.empty? or !u.descendants.empty? or !u.units.empty?
 					f << "\\begin{itemize}" << "\n"
 					
 					if !u.ancestors.empty?
@@ -168,7 +168,7 @@ class DownloadController < ApplicationController
 				else
 					f << "Assenti" << "\n"
 				end
-			end#end back_comp.each
+			end #end back_comp.each
 		end
 	end
 
