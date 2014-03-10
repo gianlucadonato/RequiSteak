@@ -94,7 +94,7 @@ components.each do |comp|
 			if !u.descendants.empty?  
 				f << "\\textbf{Estensioni}" << "\n"
 				f << "\\begin{itemize}" << "\n"
-				
+
 				u.descendants.each do |c|
 					f << "\\item{#{c.full_title}}" << "\n"
 				end
@@ -115,7 +115,7 @@ components.each do |comp|
 
 			f << "\\textbf{Attributi}" << "\n"
 			
-			if u.data_fields
+			if !u.data_fields.empty?
 				f << "\\begin{itemize}" << "\n"
 
 				u.data_fields.each do |datafield|
@@ -128,7 +128,7 @@ components.each do |comp|
 
 			f << "\\textbf{Metodi}" << "\n"
 
-			if u.unit_methods
+			if !u.unit_methods.empty?
 				f << "\\begin{itemize}" << "\n"
 
 				u.unit_methods.each do |method|
