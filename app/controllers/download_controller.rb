@@ -180,11 +180,11 @@ class DownloadController < ApplicationController
 
 
 #============= EXPORT COMPONENTS =============#
-	def export_backend()
+	def export_backend_specs()
 		return export_classes("Back-end", "backend-packages.tex")
 	end
 
-	def export_frontend()
+	def export_frontend_specs()
 		return export_classes("Front-end", "frontend-packages.tex")
 	end
 	
@@ -864,6 +864,9 @@ f << "
 		send_file(file)
 	end #end export_requirements
 
+
+
+#============= EXPORT SYSTEM-TESTS <-> REQUIREMENTS =============#
 	def export_ts_req
 		system_test = SystemTest.all.sort!{ |a,b| confronta_test(a,b) }
 		file = "capitolo-test-di-sistema-requisiti.tex"
@@ -889,8 +892,11 @@ f << "
 				end
 				if !st.requirements.empty?
 					st.requirements.each do |r|
-					f << "       
-						#{r.title} \\newline " 
+					f << " #{r.title}"
+						if r.status == true
+							f << "* "
+						end
+					f << " \\newline " 
 					end
 				end
 			f << " \\\\ \\hline "
@@ -905,6 +911,9 @@ f << "
 		send_file(file)
 	end #end export_ts_req
 
+
+
+#============= EXPORT VALIDATION-TESTS <-> REQUIREMENTS =============#
 	def export_tv_req
 		validation_test = ValidationTest.all.sort!{ |a,b| confronta_test(a,b) }
 		file = "capitolo-test-di-validazione-requisiti.tex"
@@ -929,8 +938,11 @@ f << "
 				end
 				if !vt.requirements.empty?
 					vt.requirements.each do |r|
-					f << "       
-						#{r.title} \\newline " 
+					f << " #{r.title}"
+						if r.status == true
+							f << "* "
+						end
+					f << "\\newline " 
 					end
 				end
 			f << " \\\\ \\hline "
