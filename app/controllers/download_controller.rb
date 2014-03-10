@@ -31,132 +31,130 @@ class DownloadController < ApplicationController
 				units << comp.units
 			end
 
-units.each do |u|
-	comp.units.each do |u| 
-		f << "" << "\n"
-		f << "\\subsection{#{u.title}}" << "\n"
-		
-		# Diagramma
-		f << "" << "\n"
-		
-		f << "\\begin{table}[ht]" << "\n"
-		f << "\\begin{center}" << "\n"
-		f << "\\bgroup" << "\n"
-		f << "\\setlength{\\arrayrulewidth}{0.6mm}" << "\n"
-		f << "\\def\\arraystretch{1}" << "\n"
-		f << "\\begin{tabular}{ | p{12cm} | }" << "\n"
-		f << "\\hline" << "\n"
-		f << "\\centerline{\\textbf{#{u.title}}}" << "\n"
-		f << "\\\\ \\hline" << "\n"
-		
-		if u.data_fields.empty?
-			f << " \\\\ " << "\n"
-		else
-			u.data_fields.each do |datafield|
-				f << "\\code{#{datafield.format_name}} \\\\" << "\n"
-			end
-		end
-
-		f << "\\hline" << "\n"
-		
-		if u.unit_methods.empty?
-			f << " \\\\ " << "\n"
-		else
-			u.unit_methods.each do |method|
-				f << "\\code{#{method.format_name}} \\\\" << "\n"
-			end
-		end
-
-		f << "\\hline" << "\n"
-		f << "\\end{tabular}" << "\n"
-		f << "\\egroup" << "\n"
-		f << "\\caption{Classe #{u.title}}" << "\n"
-		f << "\\end{center}" << "\n"
-		f << "\\end{table}" << "\n"
-
-		# Descrizione
-		f << "" << "\n"
-		f << "\\subsubsection*{Descrizione}" << "\n"
-		f << "\\begin{itemize}" << "\n"
-		f << "\\item[] #{u.description}" << "\n"
-		f << "\\end{itemize}" << "\n"     
-		
-		f << "" << "\n"
-		f << "\\subsubsection*{Utilizzo}" << "\n"
-		f << "\\begin{itemize}" << "\n"
-		f << "\\item[] #{u.use}" << "\n"
-		f << "\\end{itemize}" << "\n"
-		
-		f << "" << "\n"
-		if !u.ancestors.empty?
-			f << "\\subsubsection*{Classi Estese}" << "\n"
-			f << "\\begin{itemize}" << "\n"
-			u.ancestors.each do |p|
-				f << "\\item{#{p.full_title}}" << "\n"
-			end
-			f << "\\end{itemize}" << "\n"
-		end
-		
-		f << "" << "\n"
-		if !u.descendants.empty?  
-			f << "\\subsubsection*{Estensioni}" << "\n"
-			f << "\\begin{itemize}" << "\n"
-
-			u.descendants.each do |c|
-				f << "\\item{#{c.full_title}}" << "\n"
-			end
-			f << "\\end{itemize}" << "\n"
-		end
-
-		f << "" << "\n"
-		if !u.units.empty?  
-			f << "\\subsubsection*{Relazioni con altre classi}" << "\n"
-			f << "\\begin{itemize}" << "\n"
-
-			u.units.each do |c|
-				f << "\\item{#{c.full_title}}" << "\n"
-			end
-			f << "\\end{itemize}" << "\n"
-		end
-
-		# Descrizione attributi
-		f << "" << "\n"
-		f << "\\subsubsection*{Attributi}" << "\n"
-		
-		if !u.data_fields.empty?
-			f << "\\begin{itemize}" << "\n"
-
-			u.data_fields.each do |datafield|
-				f << "\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}" << "\n"
-			end
-			f << "\\end{itemize}" << "\n"
-		else
-			f << "Assenti" << "\n"
-		end
-
-		# Descrizione metodi
-		f << "" << "\n"
-		f << "\\subsubsection*{Metodi}" << "\n"
-
-		if !u.unit_methods.empty?
-			f << "\\begin{itemize}" << "\n"
-
-			u.unit_methods.each do |method|
-				f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
-				f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
-				f << "\\item[] \\textbf{Parametri:}" << "\n"
-
-				method.parameters.each do |parameter|
-					f << "\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}" << "\n"
+			units.each do |u|
+				f << "" << "\n"
+				f << "\\subsection{#{u.title}}" << "\n"
+				
+				# Diagramma
+				f << "" << "\n"
+				
+				f << "\\begin{table}[ht]" << "\n"
+				f << "\\begin{center}" << "\n"
+				f << "\\bgroup" << "\n"
+				f << "\\setlength{\\arrayrulewidth}{0.6mm}" << "\n"
+				f << "\\def\\arraystretch{1}" << "\n"
+				f << "\\begin{tabular}{ | p{12cm} | }" << "\n"
+				f << "\\hline" << "\n"
+				f << "\\centerline{\\textbf{#{u.title}}}" << "\n"
+				f << "\\\\ \\hline" << "\n"
+				
+				if u.data_fields.empty?
+					f << " \\\\ " << "\n"
+				else
+					u.data_fields.each do |datafield|
+						f << "\\code{#{datafield.format_name}} \\\\" << "\n"
+					end
 				end
+
+				f << "\\hline" << "\n"
+				
+				if u.unit_methods.empty?
+					f << " \\\\ " << "\n"
+				else
+					u.unit_methods.each do |method|
+						f << "\\code{#{method.format_name}} \\\\" << "\n"
+					end
+				end
+
+				f << "\\hline" << "\n"
+				f << "\\end{tabular}" << "\n"
+				f << "\\egroup" << "\n"
+				f << "\\caption{Classe #{u.title}}" << "\n"
+				f << "\\end{center}" << "\n"
+				f << "\\end{table}" << "\n"
+
+				# Descrizione
+				f << "" << "\n"
+				f << "\\subsubsection*{Descrizione}" << "\n"
+				f << "\\begin{itemize}" << "\n"
+				f << "\\item[] #{u.description}" << "\n"
+				f << "\\end{itemize}" << "\n"     
+				
+				f << "" << "\n"
+				f << "\\subsubsection*{Utilizzo}" << "\n"
+				f << "\\begin{itemize}" << "\n"
+				f << "\\item[] #{u.use}" << "\n"
 				f << "\\end{itemize}" << "\n"
-			end
-			f << "\\end{itemize}" << "\n"
-		else
-			f << "Assenti" << "\n"
-		end
-	end
-end #end back_comp.each
+				
+				f << "" << "\n"
+				if !u.ancestors.empty?
+					f << "\\subsubsection*{Classi Estese}" << "\n"
+					f << "\\begin{itemize}" << "\n"
+					u.ancestors.each do |p|
+						f << "\\item{#{p.full_title}}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				end
+				
+				f << "" << "\n"
+				if !u.descendants.empty?  
+					f << "\\subsubsection*{Estensioni}" << "\n"
+					f << "\\begin{itemize}" << "\n"
+
+					u.descendants.each do |c|
+						f << "\\item{#{c.full_title}}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				end
+
+				f << "" << "\n"
+				if !u.units.empty?  
+					f << "\\subsubsection*{Relazioni con altre classi}" << "\n"
+					f << "\\begin{itemize}" << "\n"
+
+					u.units.each do |c|
+						f << "\\item{#{c.full_title}}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				end
+
+				# Descrizione attributi
+				f << "" << "\n"
+				f << "\\subsubsection*{Attributi}" << "\n"
+				
+				if !u.data_fields.empty?
+					f << "\\begin{itemize}" << "\n"
+
+					u.data_fields.each do |datafield|
+						f << "\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				else
+					f << "Assenti" << "\n"
+				end
+
+				# Descrizione metodi
+				f << "" << "\n"
+				f << "\\subsubsection*{Metodi}" << "\n"
+
+				if !u.unit_methods.empty?
+					f << "\\begin{itemize}" << "\n"
+
+					u.unit_methods.each do |method|
+						f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
+						f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
+						f << "\\item[] \\textbf{Parametri:}" << "\n"
+
+						method.parameters.each do |parameter|
+							f << "\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}" << "\n"
+						end
+						f << "\\end{itemize}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				else
+					f << "Assenti" << "\n"
+				end
+			end#end back_comp.each
 		}
 		send_file(file)
 	end #end export_backend
