@@ -34,10 +34,11 @@ class DownloadController < ApplicationController
 			end
 
 	components.each do |comp|
-		f << "" << "\n"
-		f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
-
+		
 		if !comp.units.empty?
+			
+			f << "" << "\n"
+			f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
 
 			comp.units.each do |u|
 				f << "" << "\n"
