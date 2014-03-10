@@ -96,40 +96,42 @@ class DownloadController < ApplicationController
 				
 				f << "" << "\n"
 				f << "\\paragraph*{Relazioni con altre classi}" << "\n"
-				f << "% Se non c'è almeno una relazione è un errore, vanno messe in Requisteak" << "\n"
-				f << "\\begin{itemize}" << "\n"
 				
-				if !u.ancestors.empty?
-					f << "\\item[] Estende la classe:" << "\n"
+				if !u.ancestors.empty? or !u.descendants.empty? or !u.units.empty? do
 					f << "\\begin{itemize}" << "\n"
-					u.ancestors.each do |p|
-						f << "\\item{#{p.full_title}}" << "\n"
+					
+					if !u.ancestors.empty?
+						f << "\\item[] Estende la classe:" << "\n"
+						f << "\\begin{itemize}" << "\n"
+						u.ancestors.each do |p|
+							f << "\\item{#{p.full_title}}" << "\n"
+						end
+						f << "\\end{itemize}" << "\n"
+					end
+					
+					f << "" << "\n"	
+					if !u.descendants.empty?  
+						f << "\\item[] È estesa dalle classi:" << "\n"
+						f << "\\begin{itemize}" << "\n"
+
+						u.descendants.each do |c|
+							f << "\\item{#{c.full_title}}" << "\n"
+						end
+						f << "\\end{itemize}" << "\n"
+					end
+
+					f << "" << "\n"
+					if !u.units.empty?  
+						f << "\\item[] Utilizza le classi:" << "\n"
+						f << "\\begin{itemize}" << "\n"
+
+						u.units.each do |c|
+							f << "\\item{#{c.full_title}}" << "\n"
+						end
+						f << "\\end{itemize}" << "\n"
 					end
 					f << "\\end{itemize}" << "\n"
 				end
-				
-				f << "" << "\n"	
-				if !u.descendants.empty?  
-					f << "\\item[] È estesa dalle classi:" << "\n"
-					f << "\\begin{itemize}" << "\n"
-
-					u.descendants.each do |c|
-						f << "\\item{#{c.full_title}}" << "\n"
-					end
-					f << "\\end{itemize}" << "\n"
-				end
-
-				f << "" << "\n"
-				if !u.units.empty?  
-					f << "\\item[] Utilizza le classi:" << "\n"
-					f << "\\begin{itemize}" << "\n"
-
-					u.units.each do |c|
-						f << "\\item{#{c.full_title}}" << "\n"
-					end
-					f << "\\end{itemize}" << "\n"
-				end
-				f << "\\end{itemize}" << "\n"
 				
 				# Descrizione attributi
 				f << "" << "\n"
