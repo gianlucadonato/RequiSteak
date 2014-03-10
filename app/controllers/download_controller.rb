@@ -4,16 +4,16 @@ class DownloadController < ApplicationController
 	def index
 	end
 
-#============= EXPORT CLASSES =============#
-	def export_backend_classes()
-		return export_classes("Back-end", "backend-classes.tex")
+#============= EXPORT COMPONENTS DEFINITION =============#
+	def export_backend_definition()
+		return export_definition("Back-end", "backend-definition.tex")
 	end
 
-	def export_frontend_classes()
-		return export_classes("Front-end", "frontend-classes.tex")
+	def export_frontend_definition()
+		return export_definition("Front-end", "frontend-definition.tex")
 	end
 
-	def export_classes(main_component_title, file)
+	def export_definition(main_component_title, file)
 		File.open(file, "wb+"){ |f|
 
 		 	components = []
