@@ -49,7 +49,7 @@ components.each do |comp|
 					\\centerline{\\textbf{#{u.title}}}
 		\\\\ \\hline "
 			
-			u.datafield.each do |datafield|
+			u.data_fields.each do |datafield|
 				f << "
 					\\code{#{datafield.format_name}} \\\\ "
 			end
@@ -57,7 +57,7 @@ components.each do |comp|
 			f << "
 				\\hline"
 			
-			u.methods.each do |method|
+			u.unit_methods.each do |method|
 				f << "
 					\\code{#{method.format_name}} \\\\ "
 			end
@@ -121,7 +121,7 @@ components.each do |comp|
 			 \\textbf{Attributi} 
 	\\begin{itemize}"
 			
-			u.datafield.each do |datafield|
+			u.data_fields.each do |datafield|
 				f << "
 					\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}"
 			end
@@ -132,7 +132,7 @@ components.each do |comp|
 		\\textbf{Metodi} 
 	\\begin{itemize}"
 			
-			u.methods.each do |method|
+			u.unit_methods.each do |method|
 				f << "
 					\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}
 						\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}
