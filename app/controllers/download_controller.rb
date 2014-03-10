@@ -73,82 +73,78 @@ components.each do |comp|
 
 			# Descrizione
 
-			f << " \\textbf{\\\\ \\\\ Descrizione} 
-					\\begin{itemize}
-						\\item[] #{u.description}
-					\\end{itemize}      
-				\\textbf{Utilizzo}  
-					\\begin{itemize}
-						\\item[] #{u.use}
-					\\end{itemize}" 
-				if !u.ancestors.empty?
-				f << "
-					\\textbf{Classi Estese}
-					\\begin{itemize}"
-						u.ancestors.each do |p|
-							f << "
-								\\item{#{p.full_title}}"
-						end
-				f << "
-					\\end{itemize}"
-				end
-				if !u.descendants.empty?  
-				f << "
-					\\textbf{Estensioni}
-					\\begin{itemize}"
-						u.descendants.each do |c|
-							f << "
-							\\item{#{c.full_title}}"
-						end
-				f << "
-					\\end{itemize}"
-				end
-				if !u.units.empty?  
-				f << "
-					\\textbf{Relazioni con altre classi}
-					\\begin{itemize}"
-						u.units.each do |c|
-							f << "
-							\\item{#{c.full_title}}"
-						end
-				f << "
-					\\end{itemize}"
-				end
+			f << "\\textbf{\\\\ \\\\ Descrizione}" << "\n"
+			f << "\\begin{itemize}" << "\n"
+			f << "\\item[] #{u.description}" << "\n"
+			f << "\\end{itemize} " << "\n"     
+			f << "\\textbf{Utilizzo}" << "\n"
+			f << "\\begin{itemize}" << "\n"
+			f << "\\item[] #{u.use}" << "\n"
+			f << "\\end{itemize}" << "\n"
 
-			 # Descrizione metodi e attributi
-
-			 f << "
-			 \\textbf{Attributi} 
-	\\begin{itemize}"
-			
-			u.data_fields.each do |datafield|
-				f << "
-					\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}"
+			if !u.ancestors.empty?
+				f << "\\textbf{Classi Estese}" << "\n"
+				f << "\\begin{itemize}" << "\n"
+				u.ancestors.each do |p|
+					f << "\\item{#{p.full_title}}" << "\n"
+				end
+				f << "\\end{itemize}" << "\n"
 			end
 
-			f << "
-		\\end{itemize}
-		
-		\\textbf{Metodi} 
-	\\begin{itemize}"
-			
-			u.unit_methods.each do |method|
-				f << "
-					\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}
-						\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}
-						\\item[] \\textbf{Parametri:}"
-			
-				method.parameters.each do |parameter|
-					f << "
-						\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}	"
+			if !u.descendants.empty?  
+				f << "\\textbf{Estensioni}" << "\n"
+				f << "\\begin{itemize}" << "\n"
+				
+				u.descendants.each do |c|
+					f << "\\item{#{c.full_title}}" << "\n"
 				end
-				f << "
-				\\end{itemize}"
+				f << "\\end{itemize}" << "\n"
 			end
 
-			f << "
-		\\end{itemize}"
+			if !u.units.empty?  
+				f << "\\textbf{Relazioni con altre classi}" << "\n"
+				f << "\\begin{itemize}" << "\n"
 
+				u.units.each do |c|
+					f << "\\item{#{c.full_title}}" << "\n"
+				end
+				f << "\\end{itemize}" << "\n"
+			end
+
+			# Descrizione metodi e attributi
+
+			f << "\\textbf{Attributi}" << "\n"
+			
+			if u.data_fields
+				f << "\\begin{itemize}" << "\n"
+
+				u.data_fields.each do |datafield|
+					f << "\\item[] \\textbf{\\code{#{datafield.format_name}}} \\\\ #{datafield.description}" << "\n"
+				end
+				f << "\\end{itemize}" << "\n"
+			else
+				f << "Assenti" << "\n"
+			end
+
+			f << "\\textbf{Metodi}" << "\n"
+
+			if u.unit_methods
+				f << "\\begin{itemize}" << "\n"
+
+				u.unit_methods.each do |method|
+					f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
+					f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
+					f << "\\item[] \\textbf{Parametri:}" << "\n"
+
+					method.parameters.each do |parameter|
+						f << "\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}" << "\n"
+					end
+					f << "\\end{itemize}" << "\n"
+				end
+				f << "\\end{itemize}" << "\n"
+			else
+				f << "Assenti" << "\n"
+			end
 		end
 	end
 end #end back_comp.each
