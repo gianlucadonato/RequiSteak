@@ -927,7 +927,7 @@ f << "
 				if !st.requirements.empty?
 					st.requirements.each do |r|
 					f << " #{r.title}"
-						if r.status == true
+						if r.status == false
 							f << "* "
 						end
 					f << " \\newline " 
@@ -973,7 +973,7 @@ f << "
 				if !vt.requirements.empty?
 					vt.requirements.each do |r|
 					f << " #{r.title}"
-						if r.status == true
+						if r.status == false
 							f << "* "
 						end
 					f << "\\newline " 
