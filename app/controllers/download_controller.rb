@@ -157,12 +157,14 @@ class DownloadController < ApplicationController
 
 					u.unit_methods.each do |method|
 						f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
-						f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
-
-						method.parameters.each do |parameter|
-							f << "\\item[\\cdot] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
+						
+						if !method.parameters.empty?
+							f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
+							method.parameters.each do |parameter|
+								f << "\\item[\\cdot] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
+							end
+							f << "\\end{itemize}" << "\n"
 						end
-						f << "\\end{itemize}" << "\n"
 					end
 					f << "\\end{itemize}" << "\n"
 				else
