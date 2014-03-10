@@ -860,6 +860,40 @@ f << "
 \\end{center}
 \\clearpage
 "
+
+f << "
+\\subsection{Tracciamento Requisiti Accettati - Test di Sistema e Validazione}
+
+	\\begin{center}
+	\\def\\arraystretch{1.5}
+	\\bgroup
+		\\begin{longtable}{| p{2cm} | p{6cm} | p{2.5cm} | p{2.5cm} | }
+		\\hline 
+		 \\textbf{Requisito} & \\textbf{Descrizione} & \\textbf{Test di Sistema} & \\textbf{Test di Validazione} \\\\ \\hline"   
+			
+			@funzionali.each do |req|
+				if req.status == true
+				f << "
+					#{req.title} & 
+					#{req.description} & "
+					if !req.system_test.nil?
+						f << "#{req.system_test.title} &"
+					else
+						f << " & "
+					end
+					if !req.validation_test.nil?
+						f << "#{req.validation_test.title}"
+					end
+					f << " \\\\ \\hline "
+				end
+			end
+f << "
+		\\caption{Tracciamento Requisiti - Test di Sistema e Validazione}
+		\\end{longtable}
+	 \\egroup
+\\end{center}
+\\clearpage
+"
 			}
 		send_file(file)
 	end #end export_requirements
