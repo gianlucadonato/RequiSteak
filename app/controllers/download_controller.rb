@@ -16,15 +16,17 @@ class DownloadController < ApplicationController
 	def export_classes(main_component_title, file)
 		File.open(file, "wb+"){ |f|
 
-		 	back_comp = []
-			backend = Component.find_by_title(main_component_title);
-			if !backend.nil?
-				back_comp << backend
-				backend.descendants.each do |c|
-					back_comp << c
+		 	components = []
+			
+			main_comp = Component.find_by_title(main_component_title);
+			if !main_comp.nil?
+				components << main_comp
+				main_comp.descendants.each do |c|
+					components << c
 				end
 			end
-back_comp.each do |comp|      
+
+components.each do |comp|      
 	f << "
 	\\subsubsection{#{comp.full_title}} "
 
@@ -167,15 +169,17 @@ end #end back_comp.each
 	def export_classes(main_component_title, file)
 		File.open(file, "wb+"){ |f|
 
-		 	back_comp = []
-			backend = Component.find_by_title("Back-end");
-			if !backend.nil?
-				back_comp << backend
-				backend.descendants.each do |c|
-					back_comp << c
+		 	components = []
+			
+			main_comp = Component.find_by_title(main_component_title);
+			if !main_comp.nil?
+				components << main_comp
+				main_comp.descendants.each do |c|
+					components << c
 				end
 			end
-back_comp.each do |comp|      
+
+components.each do |comp|      
 	f << "
 	\\subsubsection{#{comp.full_title}}
 	\\paragraph{Informazioni sul package} "
