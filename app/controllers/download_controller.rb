@@ -140,7 +140,7 @@ components.each do |comp|
 			
 				method.parameters.each do |parameter|
 					f << "
-						\\item[] \\code{#{parameter.title}} \\\\ #{parameter.description}	"
+						\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}	"
 				end
 				f << "
 				\\end{itemize}"
