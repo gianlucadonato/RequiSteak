@@ -31,11 +31,11 @@ Requisteak::Application.routes.draw do
   get '/downloads'                => 'download#index'
   get '/downloads/use_cases'      => 'download#export_use_cases', as: 'downloads_use_cases'
   get '/downloads/requirements'   => 'download#export_requirements', as: 'downloads_requirements'
-  get '/downloads/back-end'       => 'download#export_backend', as: 'downloads_backend'
-  get '/downloads/front-end'      => 'download#export_frontend', as: 'downloads_frontend'
+  get '/downloads/back_end_specs'       => 'download#export_backend_specs', as: 'downloads_backend_specs'
+  get '/downloads/front_end_specs'      => 'download#export_frontend_specs', as: 'downloads_frontend_specs'
 
-  get '/downloads/back-end-definition'       => 'download#export_backend_definition', as: 'downloads_backend_definition'
-  get '/downloads/front-end-definition'      => 'download#export_frontend_definition', as: 'downloads_frontend_definition'
+  get '/downloads/back_end_definition'       => 'download#export_backend_definition', as: 'downloads_backend_definition'
+  get '/downloads/front_end_definition'      => 'download#export_frontend_definition', as: 'downloads_frontend_definition'
 
   get '/downloads/system_test_requirements'          => 'download#export_ts_req', as: 'downloads_ts_req'
   get '/downloads/validation_test_requirements'      => 'download#export_tv_req', as: 'downloads_tv_req'
