@@ -20,9 +20,9 @@ class UnitMethod < ActiveRecord::Base
 		len = self.parameters.count
 		self.parameters.each_with_index do |p, index|
 			if !((index + 1) == len) 
-				format_title += p.name + ":" + p.parameter_type + ", "
+				format_title += p.format_name + ", "
 			else
-				format_title += p.name + ":" + p.parameter_type
+				format_title += p.format_name
 			end
 		end
 
