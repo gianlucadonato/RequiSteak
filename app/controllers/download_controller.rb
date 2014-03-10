@@ -28,7 +28,9 @@ class DownloadController < ApplicationController
 
 			units = []
 			components.sort!{ |a,b| a <=> b }.each do |comp|
-				units << comp.units
+				comp.units.each do |u|
+					units << u
+				end
 			end
 
 			units.each do |u|
