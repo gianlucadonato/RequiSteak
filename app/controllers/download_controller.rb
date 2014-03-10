@@ -104,7 +104,7 @@ class DownloadController < ApplicationController
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 						u.ancestors.each do |p|
-							f << "\\item[$\\cdot$] \\class{#{p.full_title}}" << "\n"
+							f << "\\item[$\\bullet$] \\class{#{p.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -115,7 +115,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.descendants.each do |c|
-							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
+							f << "\\item[$\\bullet$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -126,7 +126,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.units.each do |c|
-							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
+							f << "\\item[$\\bullet$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
