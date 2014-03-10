@@ -33,6 +33,9 @@ Requisteak::Application.routes.draw do
   get '/downloads/requirements'   => 'download#export_requirements', as: 'downloads_requirements'
   get '/downloads/back-end'       => 'download#export_backend', as: 'downloads_backend'
   get '/downloads/front-end'      => 'download#export_frontend', as: 'downloads_frontend'
+  
+  get '/downloads/back-end-classes'       => 'download#export_backend_classes', as: 'downloads_backend_classes'
+  get '/downloads/front-end-classes'      => 'download#export_frontend_classes', as: 'downloads_frontend_classes'
 
   get '/downloads/system_test_requirements'          => 'download#export_ts_req', as: 'downloads_ts_req'
   get '/downloads/validation_test_requirements'      => 'download#export_tv_req', as: 'downloads_tv_req'
