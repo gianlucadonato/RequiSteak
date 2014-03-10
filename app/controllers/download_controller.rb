@@ -33,9 +33,15 @@ class DownloadController < ApplicationController
 				end
 			end
 
-			units.each do |u|
+	components.each do |comp|
+		f << "" << "\n"
+		f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
+
+		if !comp.units.empty?
+
+			comp.units.each do |u|
 				f << "" << "\n"
-				f << "\\subsection{#{u.title}}" << "\n"
+				f << "\\subsubsection{Specifica classe #{u.title}}" << "\n"
 				
 				# Diagramma
 				f << "" << "\n"
@@ -77,20 +83,24 @@ class DownloadController < ApplicationController
 
 				# Descrizione
 				f << "" << "\n"
-				f << "\\subsubsection*{Descrizione}" << "\n"
+				f << "\\paragraph*{Descrizione}" << "\n"
 				f << "\\begin{itemize}" << "\n"
 				f << "\\item[] #{u.description}" << "\n"
 				f << "\\end{itemize}" << "\n"     
 				
 				f << "" << "\n"
-				f << "\\subsubsection*{Utilizzo}" << "\n"
+				f << "\\paragraph*{Utilizzo}" << "\n"
 				f << "\\begin{itemize}" << "\n"
 				f << "\\item[] #{u.use}" << "\n"
 				f << "\\end{itemize}" << "\n"
 				
 				f << "" << "\n"
+				f << "\\paragraph*{Relazioni con altre classi}" << "\n"
+				f << "% Se non c'è almeno una relazione è un errore, vanno messe in Requisteak" << "\n"
+				f << "\\begin{itemize}" << "\n"
+				
 				if !u.ancestors.empty?
-					f << "\\subsubsection*{Classi Estese}" << "\n"
+					f << "\\item[] Estende la classe:" << "\n"
 					f << "\\begin{itemize}" << "\n"
 					u.ancestors.each do |p|
 						f << "\\item{#{p.full_title}}" << "\n"
@@ -98,9 +108,9 @@ class DownloadController < ApplicationController
 					f << "\\end{itemize}" << "\n"
 				end
 				
-				f << "" << "\n"
+				f << "" << "\n"	
 				if !u.descendants.empty?  
-					f << "\\subsubsection*{Estensioni}" << "\n"
+					f << "\\item[] È estesa dalle classi:" << "\n"
 					f << "\\begin{itemize}" << "\n"
 
 					u.descendants.each do |c|
@@ -111,7 +121,7 @@ class DownloadController < ApplicationController
 
 				f << "" << "\n"
 				if !u.units.empty?  
-					f << "\\subsubsection*{Relazioni con altre classi}" << "\n"
+					f << "\\item[] Utilizza le classi:" << "\n"
 					f << "\\begin{itemize}" << "\n"
 
 					u.units.each do |c|
@@ -119,10 +129,11 @@ class DownloadController < ApplicationController
 					end
 					f << "\\end{itemize}" << "\n"
 				end
-
+				f << "\\end{itemize}" << "\n"
+				
 				# Descrizione attributi
 				f << "" << "\n"
-				f << "\\subsubsection*{Attributi}" << "\n"
+				f << "\\paragraph*{Attributi}" << "\n"
 				
 				if !u.data_fields.empty?
 					f << "\\begin{itemize}" << "\n"
@@ -137,7 +148,7 @@ class DownloadController < ApplicationController
 
 				# Descrizione metodi
 				f << "" << "\n"
-				f << "\\subsubsection*{Metodi}" << "\n"
+				f << "\\paragraph*{Metodi}" << "\n"
 
 				if !u.unit_methods.empty?
 					f << "\\begin{itemize}" << "\n"
@@ -145,10 +156,9 @@ class DownloadController < ApplicationController
 					u.unit_methods.each do |method|
 						f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
 						f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
-						f << "\\item[] \\textbf{Parametri:}" << "\n"
 
 						method.parameters.each do |parameter|
-							f << "\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}" << "\n"
+							f << "\\item[\\cdot] \\code{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -157,6 +167,9 @@ class DownloadController < ApplicationController
 					f << "Assenti" << "\n"
 				end
 			end#end back_comp.each
+		end
+	end
+
 		}
 		send_file(file)
 	end #end export_backend
