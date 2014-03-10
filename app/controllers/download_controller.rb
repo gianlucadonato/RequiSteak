@@ -34,9 +34,9 @@ class DownloadController < ApplicationController
 			end
 
 	components.each do |comp|
-		
+
 		if !comp.units.empty?
-			
+
 			f << "" << "\n"
 			f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
 
@@ -105,7 +105,7 @@ class DownloadController < ApplicationController
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 						u.ancestors.each do |p|
-							f << "\\item[$\\bullet$] \\class{#{p.full_title}}" << "\n"
+							f << "\\item \\class{#{p.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -116,7 +116,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.descendants.each do |c|
-							f << "\\item[$\\bullet$] \\class{#{c.full_title}}" << "\n"
+							f << "\\item \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
