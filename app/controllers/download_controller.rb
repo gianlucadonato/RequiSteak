@@ -123,7 +123,7 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			else
-				f << "Assenti" << "\n"
+				f << "Assenti \\\\" << "\n"
 			end
 
 			f << "\\textbf{Metodi}" << "\n"
@@ -143,7 +143,7 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			else
-				f << "Assenti" << "\n"
+				f << "Assenti \\\\" << "\n"
 			end
 		end
 	end

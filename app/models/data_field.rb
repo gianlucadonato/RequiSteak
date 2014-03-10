@@ -17,7 +17,7 @@ class DataField < ActiveRecord::Base
 		format_title += " " + self.name
 		
 		if data_type?
-			format_title += " : " + self.data_type
+			format_title += ":" + self.data_type
 		end
 
 		return format_title
