@@ -138,7 +138,7 @@ components.each do |comp|
 						\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}
 						\\item[] \\textbf{Parametri:}"
 			
-				methods.parameters.each do |parameter|
+				method.parameters.each do |parameter|
 					f << "
 						\\item[] \\code{#{parameter.title}} \\\\ #{parameter.description}	"
 				end
