@@ -26,54 +26,52 @@ class DownloadController < ApplicationController
 				end
 			end
 
-components.each do |comp|      
-	f << "
-	\\subsubsection{#{comp.full_title}} "
+components.each do |comp|
+	f << "" << "\n"
+	f << "\\subsection{#{comp.full_title}}" << "\n"
 
-	if !comp.units.empty? 
-		f<< "
-		\\paragraph{Classi}"
+	if comp.units.empty? 
+		f << "Non sono presenti classi" << "\n"
+		
+	else
 		comp.units.each do |u| 
-			f << "
-			\\subparagraph{#{u.title}} "
+			f << "" << "\n"
+			f << "\\subparagraph{#{u.title}}" << "\n"
 			
 			# Diagramma
-			f << "
-\\begin{table}[ht]
-\\begin{center}
-\\bgroup
-	\\setlength{\\arrayrulewidth}{0.6mm}
-	\\def\\arraystretch{1}
-		\\begin{tabular}{ | p{12cm} | }
-				\\hline  
-					\\centerline{\\textbf{#{u.title}}}
-		\\\\ \\hline "
+			f << "" << "\n"
+			
+			f << "\\begin{table}[ht]" << "\n"
+			f << "\\begin{center}" << "\n"
+			f << "\\bgroup" << "\n"
+			f << "\\setlength{\\arrayrulewidth}{0.6mm}" << "\n"
+			f << "\\def\\arraystretch{1}" << "\n"
+			f << "\\begin{tabular}{ | p{12cm} | }" << "\n"
+			f << "\\hline" << "\n"
+			f << "\\centerline{\\textbf{#{u.title}}}" << "\n"
+			f << "\\\\ \\hline" << "\n"
 			
 			u.data_fields.each do |datafield|
-				f << "
-					\\code{#{datafield.format_name}} \\\\ "
+				f << "\\code{#{datafield.format_name}} \\\\" << "\n"
 			end
-
-			f << "
-				\\hline"
+			
+			f << "\\hline" << "\n"
 			
 			u.unit_methods.each do |method|
-				f << "
-					\\code{#{method.format_name}} \\\\ "
+				f << "\\code{#{method.format_name}} \\\\" << "\n"
 			end
-
-			f << "
-				\\hline
-		
-		\\end{tabular}
-\\egroup
-\\caption{Classe #{u.title}}
-\\end{center}
-\\end{table} "
-
+			
+			f << "\\hline" << "\n"
+			f << "\\end{tabular}" << "\n"
+			f << "\\egroup" << "\n"
+			f << "\\caption{Classe #{u.title}}" << "\n"
+			f << "\\end{center}" << "\n"
+			f << "\\end{table}" << "\n"
+			
 			# Descrizione
-
-			f << "\\textbf{\\\\ \\\\ Descrizione}" << "\n"
+			f << "" << "\n"
+			
+			f << "\\paragraph*{Descrizione}" << "\n"
 			f << "\\begin{itemize}" << "\n"
 			f << "\\item[] #{u.description}" << "\n"
 			f << "\\end{itemize} " << "\n"     
@@ -81,7 +79,7 @@ components.each do |comp|
 			f << "\\begin{itemize}" << "\n"
 			f << "\\item[] #{u.use}" << "\n"
 			f << "\\end{itemize}" << "\n"
-
+			
 			if !u.ancestors.empty?
 				f << "\\textbf{Classi Estese}" << "\n"
 				f << "\\begin{itemize}" << "\n"
@@ -90,7 +88,7 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			end
-
+			
 			if !u.descendants.empty?  
 				f << "\\textbf{Estensioni}" << "\n"
 				f << "\\begin{itemize}" << "\n"
@@ -100,7 +98,7 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			end
-
+			
 			if !u.units.empty?  
 				f << "\\textbf{Relazioni con altre classi}" << "\n"
 				f << "\\begin{itemize}" << "\n"
@@ -110,10 +108,10 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			end
-
-			# Descrizione metodi e attributi
-
-			f << "\\textbf{Attributi}" << "\n"
+			
+			# Descrizione attributi
+			f << "" << "\n"
+			f << "\\paragraph*{Attributi}" << "\n"
 			
 			if !u.data_fields.empty?
 				f << "\\begin{itemize}" << "\n"
@@ -123,19 +121,21 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			else
-				f << "Assenti \\\\" << "\n"
+				f << "Assenti" << "\n"
 			end
-
-			f << "\\textbf{Metodi}" << "\n"
-
+			
+			# Descrizione metodi
+			f << "" << "\n"
+			f << "\\paragraph*{Metodi}" << "\n"
+			
 			if !u.unit_methods.empty?
 				f << "\\begin{itemize}" << "\n"
-
+				
 				u.unit_methods.each do |method|
 					f << "\\item[] \\textbf{\\code{#{method.format_name}}} \\\\ #{method.description}" << "\n"
 					f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
 					f << "\\item[] \\textbf{Parametri:}" << "\n"
-
+					
 					method.parameters.each do |parameter|
 						f << "\\item[] \\code{#{parameter.name}} \\\\ #{parameter.description}" << "\n"
 					end
@@ -143,7 +143,7 @@ components.each do |comp|
 				end
 				f << "\\end{itemize}" << "\n"
 			else
-				f << "Assenti \\\\" << "\n"
+				f << "Assenti" << "\n"
 			end
 		end
 	end
