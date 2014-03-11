@@ -33,6 +33,16 @@ class UnitTestsController < ApplicationController
       else
         render action: 'new'
       end
+    elsif !params[:unit_method_id].empty?
+      @method = UnitMethod.find_by_id(params[:unit_method_id])
+      @unit_test = UnitTest.new(unit_test_params)
+      if @unit_test.save
+        @method.unit_test = @unit_test
+        @method.save
+        redirect_to @method, notice: "Unit Test successfully added"
+      else
+        render action: 'new'
+      end
     else
       @unit_test = UnitTest.new(unit_test_params)
       if @unit_test.save
@@ -47,6 +57,7 @@ class UnitTestsController < ApplicationController
   def update
     if @unit_test.update(unit_test_params)
       @unit_test.unit_ids = params[:unit_test][:unit_ids] unless params[:unit_test][:unit_ids].blank?
+      @unit_test.unit_method_ids = params[:unit_test][:unit_method_ids] unless params[:unit_test][:unit_method_ids].blank?
       @unit_test.save
       redirect_to @unit_test, notice: 'Unit test was successfully updated.'
     else
@@ -68,6 +79,6 @@ class UnitTestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def unit_test_params
-      params.require(:unit_test).permit(:title, :status, :description, :class_id)
+      params.require(:unit_test).permit(:title, :status, :description, :class_id, :unit_method_id)
     end
 end

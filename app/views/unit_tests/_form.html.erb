@@ -12,7 +12,9 @@
   <% end %>
   <br>
 
-  <%= hidden_field_tag :class_id, "#{params[:class_id]}" %><br>
+  <%= hidden_field_tag :class_id, "#{params[:class_id]}" %>
+  <%= hidden_field_tag :unit_method_id, "#{params[:unit_method_id]}" %>
+
   <div class="row">
     <div class="small-12 columns">
       <label><strong>STATUS</strong></label>

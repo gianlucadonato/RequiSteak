@@ -8,7 +8,12 @@
           <li class="has-form"><%= link_to 'Edit', edit_unit_method_path(@unit_method), class: "info button" %></li> 
           <li class="divider"></li>
           <li class="has-form"><%= link_to 'Delete', @unit_method , method: :delete, class: "alert button" %></li>
-          <li class="divider"></li> 
+          <li class="divider"></li>
+          <li class="divider"></li>
+          <li class="has-form">
+            <%= link_to 'Add Unit Test', new_unit_test_path(unit_method_id: @unit_method), class: "gray button" %>
+          </li>
+          <li class="divider"></li>  
         </ul>
         <ul class="right">
           <li class="has-form"><%= link_to 'Add Parameters', new_parameter_path(unit_method_id: @unit_method), class: "success button" %></li>
@@ -59,6 +64,21 @@
               </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="row panel">
+      <div class="small-12 columns">
+        <h4>UNIT TEST</h4><br>
+        <% if @unit_method.unit_test %>
+
+            <div class="panel">
+              <label><strong><%= link_to @unit_method.unit_test.title, @unit_method.unit_test %></strong></label>
+              <span><%= @unit_method.unit_test.description %></span>
+            </div>
+
+        <% else %>
+            <label><strong>No Unit Test associated.</strong></label>
+        <% end %>
       </div>
     </div>
     <br>
