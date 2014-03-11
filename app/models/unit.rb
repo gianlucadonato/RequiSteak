@@ -30,7 +30,7 @@ class Unit < ActiveRecord::Base
 		elsif missing >= unit_methods.length / 2
 			return "alert"
 		else
-			return "warning"
+			return "orange"
 		end
 	end
 
