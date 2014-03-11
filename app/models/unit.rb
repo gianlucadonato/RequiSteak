@@ -55,7 +55,7 @@ class Unit < ActiveRecord::Base
 		end
 		message += " "
 		if unit_methods.length == 0
-			message +"Mancano i metodi."
+			message += "Mancano i metodi."
 		end
 		return message
 	end
