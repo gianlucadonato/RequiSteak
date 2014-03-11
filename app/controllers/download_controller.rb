@@ -41,13 +41,13 @@ class DownloadController < ApplicationController
 		File.open(file, "wb+"){ |f|
 			
 			f << "\\begin{center}" << "\n"
-			f << "\\begin{longtable}{ | p{11m} | p{3cm} | }" << "\n"
+			f << "\\begin{longtable}{ | p{12m} | p{2cm} | }" << "\n"
 			f << "\\hline" << "\n"
 			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
 			f << " \\\\ \\hline" << "\n"
 		 	
 		 	UnitMethod.all.each do |m|
-		 		f << m.unit.full_title << " \\newline " << m.name << " ()"
+		 		f << m.unit.full_title << "::" << m.name << "()"
 		 		f << " & "
 		 		if m.unit_test
 		 			f << m.unit_test.title
