@@ -16,7 +16,7 @@ gem 'simple_form'
 gem 'ransack'
 
 group :development do
-  gem 'mysql2'
+  	gem 'mysql2'
 	gem 'rails_layout'
 	gem 'jazz_hands'
 end

@@ -23,4 +23,24 @@ class Unit < ActiveRecord::Base
 		full_name += title
 		return full_name
 	end
+
+	def attention_level
+		if missign == 0
+			return ""
+		elsif missing == units.length
+			return "alert"
+		else
+			return "warning"
+		end
+	end
+
+	def missing
+		miss = 0
+		unit_methods.each do |m|
+			if !m.unit_test
+				miss += 1
+			end
+		end
+		return miss
+	end
 end
