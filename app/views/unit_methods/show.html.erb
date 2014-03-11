@@ -56,7 +56,7 @@
                 <td width="150px"><strong>Parameters:</strong></td>
                 <td>
                   <ul> 
-                    <% @unit_method.parameters.each do |p| %>
+                    <% @unit_method.parameters.sort!{ |a,b| a.weight.to_i <=> b.weight.to_i }.each do |p| %>
                       <li><%= link_to p.name, p %></li> 
                     <% end %>
                   </ul>

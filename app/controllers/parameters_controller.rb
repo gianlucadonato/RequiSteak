@@ -53,6 +53,6 @@ class ParametersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def parameter_params
-      params.require(:parameter).permit(:name, :parameter_type, :description, :unit_method_id)
+      params.require(:parameter).permit(:name, :parameter_type, :weight, :description, :unit_method_id)
     end
 end

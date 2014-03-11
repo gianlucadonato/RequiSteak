@@ -19,7 +19,7 @@ class UnitMethod < ActiveRecord::Base
 		format_title += self.name + "("
 
 		len = self.parameters.count
-		self.parameters.each_with_index do |p, index|
+		self.parameters.sort!{ |a,b| a.weight.to_i <=> b.weight.to_i }.each_with_index do |p, index|
 			if !((index + 1) == len) 
 				format_title += p.format_name + ", "
 			else

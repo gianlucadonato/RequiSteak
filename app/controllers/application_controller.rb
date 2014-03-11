@@ -10,4 +10,5 @@ class ApplicationController < ActionController::Base
   def confronta_test(a,b)
   	return a.title.split(' ')[1].split('.').map(&:to_i) <=> b.title.split(' ')[1].split('.').map(&:to_i)
   end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310233548) do
+ActiveRecord::Schema.define(version: 20140311171855) do
 
   create_table "components", force: true do |t|
     t.string   "title",               null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140310233548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "unit_method_id"
+    t.integer  "weight"
   end
 
   create_table "requirements", force: true do |t|
