@@ -25,7 +25,7 @@ class Unit < ActiveRecord::Base
 	end
 
 	def attention_level
-		if missign == 0
+		if missing == 0
 			return ""
 		elsif missing == units.length
 			return "alert"
