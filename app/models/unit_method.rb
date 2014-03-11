@@ -1,5 +1,6 @@
 class UnitMethod < ActiveRecord::Base
 	belongs_to :unit
+	belongs_to :unit_test
 	has_many :parameters
 	
 	def format_name

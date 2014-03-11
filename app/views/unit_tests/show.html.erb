@@ -13,6 +13,8 @@
 	      <!-- Right Nav Section -->
 	        <ul class="right">
 	          <li class="has-form"><a href="#" data-reveal data-reveal-id="addClass" class="button success">Add Class</a></li>
+            <li class="divider"></li>
+            <li class="has-form"><a href="#" data-reveal data-reveal-id="addMethod" class="button orange">Add Method</a></li> 
 	        </ul>
       </section>
     </nav>
@@ -62,12 +64,28 @@
 	    	<% end %>
     	</div>
     </div>
+
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>ASSOCIATED METHODS</h4><br>
+        <% if !@unit_test.unit_methods.empty? %>
+          <% @unit_test.unit_methods.each do |unit_method| %>
+            <div class="panel">
+              <label><strong><%= link_to unit_method.name, unit_method %></strong></label>
+              <span><%= unit_method.description %></span>
+            </div>
+          <% end %>
+        <% else %>
+            <label><strong>No Methods associated.</strong></label>
+        <% end %>
+      </div>
+    </div>
 		<%= link_to '<-- Back', unit_tests_path %>
 		
 	</div>
 </div>
 
-<!-- MODAL WINDOW FOR UML<->REQUIREMENTS ASSOCIATIONS -->
+<!-- MODAL WINDOW FOR UNIT TEST<->CLASS ASSOCIATIONS -->
 <div id="addClass" class="reveal-modal" data-reveal>
   <h3>ADD CLASS</h3>
 
@@ -76,6 +94,19 @@
 
 		  <%= f.submit class: "button" %>
 		<% end %>
+
+  <a class="close-reveal-modal">&#215;</a>        
+</div>
+
+<!-- MODAL WINDOW FOR UNIT TEST<->METHODS ASSOCIATIONS -->
+<div id="addMethod" class="reveal-modal" data-reveal>
+  <h3>ADD METHOD</h3>
+
+    <%= simple_form_for @unit_test do |f| %>
+      <%= f.association :unit_methods, as: :check_boxes, include_blank: false %>
+
+      <%= f.submit class: "button" %>
+    <% end %>
 
   <a class="close-reveal-modal">&#215;</a>        
 </div>
