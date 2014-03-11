@@ -50,11 +50,11 @@ class Unit < ActiveRecord::Base
 
 	def missing_message
 		message = ""
-		if missing_test > 0:
-			message += "Mancano "+missing_test+" test.";
+		if missing_test > 0
+			message += "Mancano "+missing_test+" test."
 		end
-		message += " ";
-		if unit_methods.length == 0:
+		message += " "
+		if unit_methods.length == 0
 			message +"Mancano i metodi."
 		end
 		return message
