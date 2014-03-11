@@ -23,4 +23,40 @@ class Unit < ActiveRecord::Base
 		full_name += title
 		return full_name
 	end
+
+	def attention_level
+		if missing_test == 0
+			if unit_methods.length == 0
+				return "orange"
+			else
+				return ""
+			end
+		elsif missing_test >= unit_methods.length / 2
+			return "alert"
+		else
+			return "orange"
+		end
+	end
+
+	def missing_test
+		miss = 0
+		unit_methods.each do |m|
+			if !m.unit_test
+				miss += 1
+			end
+		end
+		return miss
+	end
+
+	def missing_message
+		message = ""
+		if missing_test > 0
+			message += "Mancano "+missing_test.to_s+" test."
+		end
+		message += " "
+		if unit_methods.length == 0
+			message += "Mancano i metodi."
+		end
+		return message
+	end
 end
