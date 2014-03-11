@@ -41,6 +41,8 @@ class DownloadController < ApplicationController
 		File.open(file, "wb+"){ |f|
 			
 			f << "\\begin{center}" << "\n"
+			f << "\\bgroup" << "\n"
+			f << "\\def\\arraystretch{1.8}" << "\n"
 			f << "\\begin{longtable}{ | p{12m} | p{2cm} | }" << "\n"
 			f << "\\hline" << "\n"
 			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
@@ -57,6 +59,7 @@ class DownloadController < ApplicationController
 
 			f << "\\caption{Metodi-Test}" << "\n"
 			f << "\\end{longtable}" << "\n"
+			f << "\\egroup" << "\n"
 			f << "\\end{center}" << "\n"
 		 	
 		}
