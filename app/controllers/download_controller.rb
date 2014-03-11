@@ -66,38 +66,6 @@ class DownloadController < ApplicationController
 		send_file(file)
 	end
 
-#============= EXPORT INTEGRATION TEST - COMPONENTS TRACKING =============#
-	def export_integration_test_tracking()
-		file = "integration-test-tracking.tex"
-
-		File.open(file, "wb+"){ |f|
-			
-			f << "\\begin{center}" << "\n"
-			f << "\\bgroup" << "\n"
-			f << "\\def\\arraystretch{1.5}" << "\n"
-			f << "\\begin{longtable}{ | p{12cm} | p{2cm} | }" << "\n"
-			f << "\\hline" << "\n"
-			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
-			f << " \\\\ \\hline" << "\n"
-		 	
-		 	UnitMethod.all.each do |m|
-		 		f << m.unit.full_title << "::" << m.name << "()"
-		 		f << " & "
-		 		if m.unit_test
-		 			f << m.unit_test.title
-		 		end
-		 		f << " \\\\ \\hline" << "\n"
-			end
-
-			f << "\\caption{Metodi-Test}" << "\n"
-			f << "\\end{longtable}" << "\n"
-			f << "\\egroup" << "\n"
-			f << "\\end{center}" << "\n"
-		 	
-		}
-		send_file(file)
-	end
-
 #============= EXPORT COMPONENTS DEFINITION =============#
 	def export_backend_definition()
 		return export_definition("Back-end", "backend-definition.tex")
