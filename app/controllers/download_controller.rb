@@ -38,11 +38,11 @@ class DownloadController < ApplicationController
 		if !comp.units.empty?
 
 			f << "" << "\n"
-			f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
+			f << "\\subsection{Componente #{comp.full_title}}" << "\n"
 
 			comp.units.each do |u|
 				f << "" << "\n"
-				f << "\\subsubsection{Specifica classe #{u.title}}" << "\n"
+				f << "\\subsubsection{Classe #{u.title}}" << "\n"
 				
 				# Diagramma
 				f << "" << "\n"
