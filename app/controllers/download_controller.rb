@@ -27,20 +27,20 @@ class DownloadController < ApplicationController
 			end
 
 			units = []
-			components.sort!{ |a,b| a <=> b }.each do |comp|
+			components.sort{ |a,b| a <=> b }.each do |comp|
 				comp.units.each do |u|
 					units << u
 				end
 			end
 
-	components.each do |comp|
+	components.sort{|a,b|a<=>b}.each do |comp|
 
 		if !comp.units.empty?
 
 			f << "" << "\n"
 			f << "\\subsection{Componente #{comp.full_title}}" << "\n"
 
-			comp.units.each do |u|
+			comp.units.sort!{|a,b|a<=>b}.each do |u|
 				f << "" << "\n"
 				f << "\\subsubsection{Classe #{u.title}}" << "\n"
 				
@@ -60,7 +60,7 @@ class DownloadController < ApplicationController
 				if u.data_fields.empty?
 					f << " \\\\ " << "\n"
 				else
-					u.data_fields.each do |datafield|
+					u.data_fields.sort{|a,b|a<=>b}.each do |datafield|
 						f << "\\code{#{datafield.format_name}} \\\\" << "\n"
 					end
 				end
@@ -70,7 +70,7 @@ class DownloadController < ApplicationController
 				if u.unit_methods.empty?
 					f << " \\\\ " << "\n"
 				else
-					u.unit_methods.each do |method|
+					u.unit_methods.sort{|a,b|a<=>b}.each do |method|
 						f << "\\code{#{method.format_name}} \\\\" << "\n"
 					end
 				end
@@ -101,7 +101,7 @@ class DownloadController < ApplicationController
 				if !u.ancestors.empty? or !u.descendants.empty? or !u.units.empty?
 					f << "\\begin{itemize}" << "\n"
 					
-					if !u.ancestors.empty?
+					if !u.ancestors.sort{|a,b|a<=>b}.empty?
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 						u.ancestors.each do |p|
@@ -115,7 +115,7 @@ class DownloadController < ApplicationController
 						f << "\\item[] È estesa dalle classi:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 
-						u.descendants.each do |c|
+						u.descendants.sort{|a,b|a<=>b}.each do |c|
 							f << "\\item \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
@@ -126,12 +126,15 @@ class DownloadController < ApplicationController
 						f << "\\item[] Utilizza le classi:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 
-						u.units.each do |c|
+						u.units.sort{|a,b|a<=>b}.each do |c|
 							f << "\\item[$\\bullet$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
 					f << "\\end{itemize}" << "\n"
+				else
+					f << "Assenti" << "\n"
+					f << "% TODO: deve esserci almeno una relazione con questa classe!!!" << "\n"
 				end
 				
 				# Descrizione attributi
@@ -140,7 +143,7 @@ class DownloadController < ApplicationController
 				
 				f << "\\begin{itemize}" << "\n"
 				if !u.data_fields.empty?
-					u.data_fields.each do |datafield|
+					u.data_fields.sort{|a,b|a<=>b}.each do |datafield|
 						f << "\\item[] \\attribute{#{datafield.format_name}} \\\\ #{datafield.description}" << "\n"
 					end
 				else
@@ -155,12 +158,12 @@ class DownloadController < ApplicationController
 				f << "\\begin{itemize}" << "\n"
 				if !u.unit_methods.empty?
 
-					u.unit_methods.each do |method|
+					u.unit_methods.sort{|a,b|a<=>b}.each do |method|
 						f << "\\item[] \\method{#{method.format_name}} \\\\ #{method.description}" << "\n"
 						
 						if !method.parameters.empty?
 							f << "\\begin{itemize}\\addtolength{\\itemsep}{-0.5\\baselineskip}" << "\n"
-							method.parameters.each do |parameter|
+							method.parameters.sort{|a,b|a<=>b}.each do |parameter|
 								f << "\\item[$\\circ$] \\parameter{#{parameter.format_name}} \\\\ #{parameter.description}" << "\n"
 							end
 							f << "\\end{itemize}" << "\n"
