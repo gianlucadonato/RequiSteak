@@ -42,7 +42,7 @@ class DownloadController < ApplicationController
 			
 			f << "\\begin{center}" << "\n"
 			f << "\\bgroup" << "\n"
-			f << "\\def\\arraystretch{1.8}" << "\n"
+			f << "\\def\\arraystretch{1.5}" << "\n"
 			f << "\\begin{longtable}{ | p{12m} | p{2cm} | }" << "\n"
 			f << "\\hline" << "\n"
 			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
