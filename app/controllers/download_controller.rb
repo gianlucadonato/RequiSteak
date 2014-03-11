@@ -138,23 +138,22 @@ class DownloadController < ApplicationController
 				f << "" << "\n"
 				f << "\\paragraph*{Attributi}" << "\n"
 				
+				f << "\\begin{itemize}" << "\n"
 				if !u.data_fields.empty?
-					f << "\\begin{itemize}" << "\n"
-
 					u.data_fields.each do |datafield|
 						f << "\\item[] \\attribute{#{datafield.format_name}} \\\\ #{datafield.description}" << "\n"
 					end
-					f << "\\end{itemize}" << "\n"
 				else
-					f << "Assenti" << "\n"
+					f << "\\item[] Assenti" << "\n"
 				end
+				f << "\\end{itemize}" << "\n"
 
 				# Descrizione metodi
 				f << "" << "\n"
 				f << "\\paragraph*{Metodi}" << "\n"
 
+				f << "\\begin{itemize}" << "\n"
 				if !u.unit_methods.empty?
-					f << "\\begin{itemize}" << "\n"
 
 					u.unit_methods.each do |method|
 						f << "\\item[] \\method{#{method.format_name}} \\\\ #{method.description}" << "\n"
@@ -167,10 +166,10 @@ class DownloadController < ApplicationController
 							f << "\\end{itemize}" << "\n"
 						end
 					end
-					f << "\\end{itemize}" << "\n"
 				else
-					f << "Assenti" << "\n"
+					f << "\\item[] Assenti" << "\n"
 				end
+				f << "\\end{itemize}" << "\n"
 			end #end back_comp.each
 		end
 	end
