@@ -41,7 +41,7 @@ class DownloadController < ApplicationController
 		File.open(file, "wb+"){ |f|
 			
 			f << "\\begin{center}" << "\n"
-			f << "\\begin{longtable}{ | p{3cm} | p{11cm} | }" << "\n"
+			f << "\\begin{longtable}{ | p{11m} | p{3cm} | }" << "\n"
 			f << "\\hline" << "\n"
 			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
 			f << " \\\\ \\hline" << "\n"
