@@ -47,7 +47,7 @@ class DownloadController < ApplicationController
 			f << " \\\\ \\hline" << "\n"
 		 	
 		 	UnitMethod.all.each do |m|
-		 		f << m.component.full_title << "\\newline" << m.title << "()"
+		 		f << m.unit.full_title << "\\newline" << m.title << "()"
 		 		f << " & "
 		 		if m.unit_test
 		 			f << m.unit_test.title
