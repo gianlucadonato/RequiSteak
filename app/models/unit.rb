@@ -27,7 +27,7 @@ class Unit < ActiveRecord::Base
 	def attention_level
 		if missing == 0
 			return ""
-		elsif missing == unit_methods.length 
+		elsif missing >= unit_methods.length / 2
 			return "alert"
 		else
 			return "warning"
