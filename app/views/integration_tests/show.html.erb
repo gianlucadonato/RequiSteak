@@ -70,7 +70,7 @@
   <h3>ADD COMPONENTS</h3>
 
 		<%= simple_form_for @integration_test do |f| %>
-		  <%= f.association :components, as: :check_boxes, include_blank: false %>
+		  <%= f.association :components, as: :check_boxes, label_method: :full_name, value_method: :id, include_blank: false %>
 		  
 		  <%= f.submit class: "button" %>
 		<% end %>
