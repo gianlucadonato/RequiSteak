@@ -43,7 +43,7 @@ class DownloadController < ApplicationController
 			f << "\\begin{center}" << "\n"
 			f << "\\begin{longtable}{ | p{3cm} | p{11cm} | }" << "\n"
 			f << "\\hline" << "\n"
-			f << "\\cellcolor[gray]{0.9} \\textbf{Requisito} & \\cellcolor[gray]{0.9} \\textbf{Classe}" << "\n"
+			f << "\\cellcolor[gray]{0.9} \\textbf{Classe e Metodo} & \\cellcolor[gray]{0.9} \\textbf{Test}" << "\n"
 			f << " \\\\ \\hline" << "\n"
 		 	
 		 	UnitMethod.all.each do |m|
