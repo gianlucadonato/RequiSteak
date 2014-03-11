@@ -40,7 +40,7 @@
                   <td><%= link_to 'Show', unit %></td>
                   <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                   <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                  <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
                 </tr>
               <% elsif unit.full_title.include?("Service") %>
                   <% front_services << unit %>
@@ -58,7 +58,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
             <tr class="table-separator">
@@ -71,7 +71,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
           </tbody>
@@ -110,7 +110,7 @@
                   <td><%= link_to 'Show', unit %></td>
                   <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                   <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                  <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
                 </tr>
               <% elsif unit.full_title.include?("Model") %>
                   <% back_models << unit %>
@@ -130,7 +130,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
             <tr class="table-separator">
@@ -143,7 +143,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
             <tr class="table-separator">
@@ -156,7 +156,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
           </tbody>
@@ -188,7 +188,7 @@
                 <td><%= link_to 'Show', unit %></td>
                 <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
                 <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <td class="disabled button <%= unit.attention_level %>">Mancano <%= unit.missing %> test</td>
+                <td class="disabled button <%= unit.attention_level %>"><%= missing_message %></td>
               </tr>
             <% end %>
           </tbody>
