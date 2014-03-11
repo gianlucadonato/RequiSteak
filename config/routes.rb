@@ -37,6 +37,8 @@ Requisteak::Application.routes.draw do
   get '/downloads/back_end_definition'       => 'download#export_backend_definition', as: 'downloads_backend_definition'
   get '/downloads/front_end_definition'      => 'download#export_frontend_definition', as: 'downloads_frontend_definition'
 
+  get '/downloads/unit_test_tracking'       => 'download#export_unit_test_tracking', as: 'downloads_export_unit_test_tracking'
+
   get '/downloads/system_test_requirements'          => 'download#export_ts_req', as: 'downloads_ts_req'
   get '/downloads/validation_test_requirements'      => 'download#export_tv_req', as: 'downloads_tv_req'
 
