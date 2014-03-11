@@ -26,7 +26,7 @@ class Unit < ActiveRecord::Base
 
 	def attention_level
 		if missing_test == 0
-			if unit_methods.length == 0:
+			if unit_methods.length == 0
 				return "orange"
 			else
 				return ""
