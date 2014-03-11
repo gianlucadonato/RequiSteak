@@ -34,10 +34,11 @@ class DownloadController < ApplicationController
 			end
 
 	components.each do |comp|
-		f << "" << "\n"
-		f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
 
 		if !comp.units.empty?
+
+			f << "" << "\n"
+			f << "\\subsection{Specifica componente #{comp.full_title}}" << "\n"
 
 			comp.units.each do |u|
 				f << "" << "\n"
@@ -104,7 +105,7 @@ class DownloadController < ApplicationController
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
 						u.ancestors.each do |p|
-							f << "\\item[$\\cdot$] \\class{#{p.full_title}}" << "\n"
+							f << "\\item \\class{#{p.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -115,7 +116,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.descendants.each do |c|
-							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
+							f << "\\item \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -126,7 +127,7 @@ class DownloadController < ApplicationController
 						f << "\\begin{itemize}" << "\n"
 
 						u.units.each do |c|
-							f << "\\item[$\\cdot$] \\class{#{c.full_title}}" << "\n"
+							f << "\\item[$\\bullet$] \\class{#{c.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
 					end
@@ -137,23 +138,22 @@ class DownloadController < ApplicationController
 				f << "" << "\n"
 				f << "\\paragraph*{Attributi}" << "\n"
 				
+				f << "\\begin{itemize}" << "\n"
 				if !u.data_fields.empty?
-					f << "\\begin{itemize}" << "\n"
-
 					u.data_fields.each do |datafield|
 						f << "\\item[] \\attribute{#{datafield.format_name}} \\\\ #{datafield.description}" << "\n"
 					end
-					f << "\\end{itemize}" << "\n"
 				else
-					f << "Assenti" << "\n"
+					f << "\\item[] Assenti" << "\n"
 				end
+				f << "\\end{itemize}" << "\n"
 
 				# Descrizione metodi
 				f << "" << "\n"
 				f << "\\paragraph*{Metodi}" << "\n"
 
+				f << "\\begin{itemize}" << "\n"
 				if !u.unit_methods.empty?
-					f << "\\begin{itemize}" << "\n"
 
 					u.unit_methods.each do |method|
 						f << "\\item[] \\method{#{method.format_name}} \\\\ #{method.description}" << "\n"
@@ -166,10 +166,10 @@ class DownloadController < ApplicationController
 							f << "\\end{itemize}" << "\n"
 						end
 					end
-					f << "\\end{itemize}" << "\n"
 				else
-					f << "Assenti" << "\n"
+					f << "\\item[] Assenti" << "\n"
 				end
+				f << "\\end{itemize}" << "\n"
 			end #end back_comp.each
 		end
 	end
