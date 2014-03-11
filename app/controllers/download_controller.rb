@@ -47,7 +47,7 @@ class DownloadController < ApplicationController
 				# Diagramma
 				f << "" << "\n"
 				
-				f << "\\begin{table}[ht]" << "\n"
+				f << "\\begin{table}[H]" << "\n"
 				f << "\\begin{center}" << "\n"
 				f << "\\bgroup" << "\n"
 				f << "\\setlength{\\arrayrulewidth}{0.6mm}" << "\n"
