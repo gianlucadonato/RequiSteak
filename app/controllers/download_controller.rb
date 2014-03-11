@@ -21,7 +21,7 @@ class DownloadController < ApplicationController
 			main_comp = Component.find_by_title(main_component_title);
 			if !main_comp.nil?
 				components << main_comp
-				main_comp.descendants.each do |c|
+				main_comp.descendants.sort{|a,b|a<=>b}.each do |c|
 					components << c
 				end
 			end
@@ -33,7 +33,7 @@ class DownloadController < ApplicationController
 				end
 			end
 
-	components.sort{|a,b|a<=>b}.each do |comp|
+	components.each do |comp|
 
 		if !comp.units.empty?
 
@@ -101,10 +101,10 @@ class DownloadController < ApplicationController
 				if !u.ancestors.empty? or !u.descendants.empty? or !u.units.empty?
 					f << "\\begin{itemize}" << "\n"
 					
-					if !u.ancestors.sort{|a,b|a<=>b}.empty?
+					if !u.ancestors.empty?
 						f << "\\item[] Estende la classe:" << "\n"
 						f << "\\begin{itemize}" << "\n"
-						u.ancestors.each do |p|
+						u.ancestors.sort{|a,b|a<=>b}.each do |p|
 							f << "\\item \\class{#{p.full_title}}" << "\n"
 						end
 						f << "\\end{itemize}" << "\n"
