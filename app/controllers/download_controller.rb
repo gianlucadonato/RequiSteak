@@ -66,6 +66,37 @@ class DownloadController < ApplicationController
 		send_file(file)
 	end
 
+	def export_unit_tests
+		file = "unit-tests.tex"
+
+		File.open(file, "wb+"){ |f|
+			
+			f << "\\begin{center}" << "\n"
+			f << "\\bgroup" << "\n"
+			f << "\\def\\arraystretch{1.5}" << "\n"
+			f << "\\begin{longtable}{ | p{3cm} | p{9cm} | p{2cm} | }" << "\n"
+			f << "\\hline" << "\n"
+			f << "\\cellcolor[gray]{0.9} \\textbf{Nome} & \\cellcolor[gray]{0.9} \\textbf{Descrizione} & \\cellcolor[gray]{0.9} \\textbf{Stato}" << "\n"
+			f << " \\\\ \\hline" << "\n"
+		 	
+		 	UnitTest.all.each do |m|
+		 		f << m.title
+		 		f << " & "
+		 		f << m.description
+		 		f << " & "
+		 		f << "Success"
+		 		f << " \\\\ \\hline" << "\n"
+			end
+
+			f << "\\caption{Test di Unità}" << "\n"
+			f << "\\end{longtable}" << "\n"
+			f << "\\egroup" << "\n"
+			f << "\\end{center}" << "\n"
+		 	
+		}
+		send_file(file)
+	end
+
 #============= EXPORT COMPONENTS DEFINITION =============#
 	def export_backend_definition()
 		return export_definition("Back-end", "backend-definition.tex")
