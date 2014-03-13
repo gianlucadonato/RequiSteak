@@ -11,4 +11,7 @@ class ApplicationController < ActionController::Base
   	return a.title.split(' ')[1].split('.').map(&:to_i) <=> b.title.split(' ')[1].split('.').map(&:to_i)
   end
 
+  def confronta_test_unita(a,b)
+  	return a.title.split(' ')[2].to_i <=> b.title.split(' ')[2].to_i
+  end
 end

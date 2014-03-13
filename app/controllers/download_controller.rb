@@ -79,7 +79,7 @@ class DownloadController < ApplicationController
 			f << "\\cellcolor[gray]{0.9} \\textbf{Nome} & \\cellcolor[gray]{0.9} \\textbf{Descrizione} & \\cellcolor[gray]{0.9} \\textbf{Stato}" << "\n"
 			f << " \\\\ \\hline" << "\n"
 		 	
-		 	UnitTest.all.each do |m|
+		 	UnitTest.all.sort!{ |a,b| confronta_test_unita(a,b) }.each do |m|
 		 		f << m.title
 		 		f << " & "
 		 		f << m.description
