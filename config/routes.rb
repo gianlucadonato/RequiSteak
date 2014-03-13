@@ -40,6 +40,8 @@ Requisteak::Application.routes.draw do
   get '/downloads/system_test_requirements'          => 'download#export_ts_req', as: 'downloads_ts_req'
   get '/downloads/validation_test_requirements'      => 'download#export_tv_req', as: 'downloads_tv_req'
 
+  get '/downloads/unit_tests'           => 'download#export_unit_tests', as: 'downloads_unit_tests'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
