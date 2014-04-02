@@ -84,7 +84,12 @@ class DownloadController < ApplicationController
 		 		f << " & "
 		 		f << m.description
 		 		f << " & "
-		 		f << "Success"
+		 		if m.status == true
+		 			f << "N.E"
+		 		else
+		 			f << "Success"
+		 		end
+		 		f << ""
 		 		f << " \\\\ \\hline" << "\n"
 			end
 
